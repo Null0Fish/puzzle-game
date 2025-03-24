@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddm285fnvegnj"]
+
+[ext_resource type="FontFile" uid="uid://tbc3f6f8v5hr" path="res://assets/other/small_font.ttf" id="1_3byt0"]
+
+[node name="info_text" type="Label"]
+offset_top = -0.117985
+offset_right = 64.0
+offset_bottom = 39.882
+theme_override_colors/font_color = Color(0.172833, 0.172833, 0.172833, 1)
+theme_override_fonts/font = ExtResource("1_3byt0")
+theme_override_font_sizes/font_size = 5
+text = "Tutorial text here!"
+autowrap_mode = 3

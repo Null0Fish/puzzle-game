@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgclo84g5ejc3"]
+
+[ext_resource type="Script" path="res://scripts/bat.gd" id="1_j3c13"]
+[ext_resource type="Texture2D" uid="uid://c1kw6kgxngd3c" path="res://assets/icons/arrow_blue_last.png" id="2_m1vor"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n0xqh"]
+size = Vector2(16, 16)
+
+[node name="Bat" type="RigidBody2D"]
+script = ExtResource("1_j3c13")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_m1vor")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_n0xqh")

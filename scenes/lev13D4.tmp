@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://pefi0rvorern"]
+
+[ext_resource type="Script" path="res://scripts/level_menu.gd" id="1_i3wit"]
+[ext_resource type="PackedScene" uid="uid://61ajonhq2g6l" path="res://scenes/level_grid.tscn" id="2_tsf0f"]
+
+[node name="LevelMenu" type="MarginContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -98.0
+offset_right = 120.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_i3wit")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Level Select
+"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="LevelGrid" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_tsf0f")]
+layout_mode = 2
