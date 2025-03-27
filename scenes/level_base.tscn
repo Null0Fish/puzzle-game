@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://crfpgs7m65kr2"]
+[gd_scene load_steps=11 format=4 uid="uid://crfpgs7m65kr2"]
 
 [ext_resource type="Script" uid="uid://dvahp7cotmlpa" path="res://scripts/level_base.gd" id="1_r71if"]
 [ext_resource type="PackedScene" uid="uid://6i873xlrfq18" path="res://scenes/player.tscn" id="3_dmeoe"]
@@ -6,13 +6,22 @@
 [ext_resource type="PackedScene" uid="uid://cc1rbmayploob" path="res://scenes/global_tile_map.tscn" id="5_qb2hu"]
 [ext_resource type="PackedScene" uid="uid://cfsfwps6dsd7j" path="res://scenes/gui/level_gui.tscn" id="6_worh7"]
 [ext_resource type="FontFile" uid="uid://tbc3f6f8v5hr" path="res://assets/other/small_font.ttf" id="7_414bq"]
+[ext_resource type="PackedScene" uid="uid://cv7fs25avikep" path="res://scenes/level_name.tscn" id="8_2v7b3"]
 [ext_resource type="Script" uid="uid://c57utluiid80e" path="res://scripts/InputHandler.gd" id="8_le3ix"]
+[ext_resource type="FontFile" uid="uid://b66nc4dsrjg1t" path="res://assets/other/normal_font.ttf" id="9_6k8qy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4xmh2"]
 size = Vector2(352, 18.375)
 
 [node name="LevelBase" type="Node2D"]
 script = ExtResource("1_r71if")
+
+[node name="Input" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 8.0
+script = ExtResource("8_le3ix")
+metadata/_edit_lock_ = true
 
 [node name="GlobalTileMap" parent="." instance=ExtResource("5_qb2hu")]
 
@@ -22,19 +31,8 @@ tile_map_data = PackedByteArray("AAAAAAAAAQAMAAIAAAAAAAEAAQAMAAIAAAAAAAIAAQAMAAI
 [node name="Foreground" parent="GlobalTileMap" index="1"]
 tile_map_data = PackedByteArray("AAD//wwAAAAEAAMAAAD//wsAAAADAAEAAAD//woAAAADAAEAAAD//wkAAAADAAEAAAD//wgAAAADAAEAAAD//wcAAAADAAEAAAD//wYAAAADAAEAAAD//wUAAAADAAEAAAD//wQAAAADAAEAAAD//wMAAAADAAEAAAD//wIAAAADAAEAAAD//wEAAAADAAEAAAD//wAAAAAEAAEAAAD/////AAAAAAAAAAAUAAwAAAAHAAMAAAATAAwAAAABAAMAAAASAAwAAAABAAMAAAARAAwAAAABAAMAAAAQAAwAAAABAAMAAAAPAAwAAAABAAMAAAAOAAwAAAABAAMAAAANAAwAAAABAAMAAAAEAAwAAAABAAMAAAADAAwAAAABAAMAAAACAAwAAAABAAMAAAABAAwAAAABAAMAAAAAAAwAAAABAAMAAAAUAAsAAAADAAEAAAAUAAoAAAADAAEAAAAUAAkAAAADAAEAAAAUAAgAAAADAAEAAAAUAAcAAAADAAEAAAAUAAYAAAADAAEAAAAUAAUAAAADAAEAAAAUAAQAAAADAAEAAAAUAAMAAAADAAEAAAAUAAIAAAADAAEAAAAUAAEAAAADAAEAAAAUAAAAAAAHAAEAAAAUAP//AAACAAAAAAATAP//AAABAAAAAAASAP//AAABAAAAAAARAP//AAABAAAAAAAQAP//AAABAAAAAAAPAP//AAABAAAAAAAOAP//AAABAAAAAAANAP//AAABAAAAAAAMAP//AAABAAAAAAALAP//AAABAAAAAAAKAP//AAABAAAAAAAJAP//AAABAAAAAAAIAP//AAABAAAAAAAHAP//AAABAAAAAAAGAP//AAABAAAAAAAFAP//AAABAAAAAAAEAP//AAABAAAAAAADAP//AAABAAAAAAACAP//AAABAAAAAAABAP//AAABAAAAAAAAAP//AAABAAAAAAAFAAwAAAABAAMAAAAGAAwAAAABAAMAAAAHAAwAAAABAAMAAAAIAAwAAAABAAMAAAAJAAwAAAABAAMAAAAKAAwAAAABAAMAAAALAAwAAAABAAMAAAAMAAwAAAABAAMAAAATAAAAAAABAAIAAAASAAAAAAABAAIAAAARAAAAAAABAAIAAAAQAAAAAAABAAIAAAAPAAAAAAABAAIAAAAOAAAAAAABAAIAAAANAAAAAAABAAIAAAAMAAAAAAABAAIAAAALAAAAAAABAAIAAAAKAAAAAAABAAIAAAAJAAAAAAABAAIAAAAIAAAAAAABAAIAAAAHAAAAAAABAAIAAAAGAAAAAAABAAIAAAAFAAAAAAABAAIAAAAEAAAAAAABAAIAAAADAAAAAAABAAIAAAACAAAAAAABAAIAAAABAAAAAAABAAIAAAAAAAAAAAABAAIAAAA=")
 
-[node name="Chest" parent="." instance=ExtResource("3_vg8a1")]
-position = Vector2(312, 88)
-
-[node name="Player" parent="." instance=ExtResource("3_dmeoe")]
-position = Vector2(8, 88)
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 8.0
-script = ExtResource("8_le3ix")
-
 [node name="LevelGUI" parent="." instance=ExtResource("6_worh7")]
+position = Vector2(136, 0)
 
 [node name="LevelLabel" type="Label" parent="."]
 offset_left = 283.0
@@ -44,12 +42,35 @@ offset_bottom = 9.0
 theme_override_fonts/font = ExtResource("7_414bq")
 theme_override_font_sizes/font_size = 5
 text = "Level: 0"
+metadata/_edit_lock_ = true
 
 [node name="Area2D" type="Area2D" parent="."]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(160, 198.812)
 shape = SubResource("RectangleShape2D_4xmh2")
+
+[node name="LevelName" parent="." instance=ExtResource("8_2v7b3")]
+metadata/_edit_lock_ = true
+
+[node name="TutorialText" type="Label" parent="."]
+visible = false
+offset_left = 77.6274
+offset_top = 6.43252
+offset_right = 117.627
+offset_bottom = 29.4325
+theme_override_colors/font_color = Color(0.172549, 0.172549, 0.172549, 1)
+theme_override_fonts/font = ExtResource("9_6k8qy")
+theme_override_font_sizes/font_size = 16
+text = "text"
+
+[node name="Player" parent="." instance=ExtResource("3_dmeoe")]
+position = Vector2(8, 88)
+
+[node name="Chest" parent="." instance=ExtResource("3_vg8a1")]
+position = Vector2(312, 88)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 

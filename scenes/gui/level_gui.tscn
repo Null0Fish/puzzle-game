@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://bt3bsualusgqv" path="res://assets/pixle_art/gui/restart_button.png" id="5_r4655"]
 
 [node name="LevelGUI" type="Node2D"]
-position = Vector2(136, 0)
 script = ExtResource("1_8elk5")
 
 [node name="AdjacentGUI" parent="." instance=ExtResource("1_uuanb")]

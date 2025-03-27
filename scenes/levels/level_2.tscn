@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=4 uid="uid://bkpv1lt0oxgl7"]
+[gd_scene load_steps=2 format=4 uid="uid://bkpv1lt0oxgl7"]
 
 [ext_resource type="PackedScene" uid="uid://crfpgs7m65kr2" path="res://scenes/level_base.tscn" id="1_5pm44"]
-[ext_resource type="PackedScene" uid="uid://ddm285fnvegnj" path="res://scenes/level_specific/info_text.tscn" id="2_yplwh"]
 
 [node name="level_2" instance=ExtResource("1_5pm44")]
 
@@ -14,21 +13,7 @@ tile_map_data = PackedByteArray("AAAPAAkAAQACAAAAAAAQAAkAAQACAAAAAAAQAAoAAQACAAA
 [node name="Extras" parent="GlobalTileMap" index="3"]
 tile_map_data = PackedByteArray("AAADAAMAAgAEAAAAAAADAAQAAgAEAAAAAAADAAUAAgAEAAAAAAAJAAQAAgAEAAAAAAAJAAUAAgAEAAAAAAARAAMAAgAEAAAAAAARAAQAAgAEAAAAAAARAAUAAgAEAAAAAAAGAAUAAgACAAAAAAAQAAcAAgACAAAAAAAKAAgAAgAEAAIAAAACAAYAAgAIAAAAAAA=")
 
-[node name="Player" parent="." index="2"]
+[node name="Player" parent="." index="7"]
 position = Vector2(8, 120)
-
-[node name="tutorial_text" parent="." index="6" instance=ExtResource("2_yplwh")]
-offset_left = 14.879
-offset_top = 144.0
-offset_right = 134.879
-offset_bottom = 195.0
-text = "Place a bomb by left clicking. Detonate a placed bomb by right-clicking it."
-
-[node name="tutorial_text2" parent="." index="7" instance=ExtResource("2_yplwh")]
-offset_left = 80.0
-offset_top = 20.0
-offset_right = 272.0
-offset_bottom = 71.0
-text = "These are your bombs. Swap between bomb types with number keys or clicking the icon"
 
 [editable path="GlobalTileMap"]

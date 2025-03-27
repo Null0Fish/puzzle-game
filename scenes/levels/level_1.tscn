@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=4 uid="uid://ck4kc3lfpd58f"]
+[gd_scene load_steps=2 format=4 uid="uid://ck4kc3lfpd58f"]
 
 [ext_resource type="PackedScene" uid="uid://crfpgs7m65kr2" path="res://scenes/level_base.tscn" id="1_eiord"]
-[ext_resource type="PackedScene" uid="uid://ddm285fnvegnj" path="res://scenes/level_specific/info_text.tscn" id="2_duehr"]
 
 [node name="level_1" instance=ExtResource("1_eiord")]
 
@@ -14,14 +13,7 @@ tile_map_data = PackedByteArray("AAARAAUAAQAEAAAAAAASAAUAAQAEAAAAAAASAAYAAQAEAAA
 [node name="Extras" parent="GlobalTileMap" index="3"]
 tile_map_data = PackedByteArray("AAAEAAIAAgAEAAAAAAAEAAMAAgAEAAAAAAAEAAQAAgAEAAAAAAANAAEAAgAEAAAAAAANAAIAAgAEAAAAAAANAAMAAgAEAAAAAAAEAAUAAgAEAAAAAAAEAAYAAgAEAAAAAAAKAAQAAgAIAAAAAAACAAoAAgAEAAIAAAAPAAkAAgACAAIAAAAQAAMAAgACAAAAAAABAAUAAgACAAAAAAA=")
 
-[node name="Chest" parent="." index="1"]
+[node name="Chest" parent="." index="8"]
 position = Vector2(312, 56)
-
-[node name="tutorial_text" parent="." index="6" instance=ExtResource("2_duehr")]
-offset_left = 128.0
-offset_top = 96.0
-offset_right = 192.0
-offset_bottom = 138.0
-text = "If you get stuck, restart the level with the restart button. Or press 'R'."
 
 [editable path="GlobalTileMap"]
