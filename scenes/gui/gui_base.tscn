@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://dfngjymfs5wjk" path="res://assets/other/global_tile_map.tres" id="1_ch777"]
 [ext_resource type="Texture2D" uid="uid://bmyfi2t4kf7mx" path="res://assets/pixle_art/other/closed_chest.png" id="3_dvhi7"]
 
-[node name="GUIBase" type="Node"]
+[node name="GUIBase" type="Node2D"]
 
 [node name="ClosedChest" type="Sprite2D" parent="."]
 position = Vector2(296, 56)
@@ -13,16 +13,16 @@ texture = ExtResource("3_dvhi7")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -96.0
-offset_top = 10.0
-offset_right = 104.0
-offset_bottom = 33.0
+offset_left = 75.0
+offset_top = 12.0
+offset_right = 275.0
+offset_bottom = 35.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 text = "Click to add title"
 horizontal_alignment = 1
 
-[node name="TilesGUI" type="Node" parent="."]
+[node name="TilesGUI" type="Node2D" parent="."]
 
 [node name="Background" type="TileMapLayer" parent="TilesGUI"]
 z_index = -1

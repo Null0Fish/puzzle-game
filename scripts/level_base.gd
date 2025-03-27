@@ -2,10 +2,13 @@ extends Node2D
 
 const TILE_SIZE = Global.TILE_SIZE
 
+@export var LevelName : String
+
 @onready var tilemap : TileMapLayer = $GlobalTileMap
 @onready var player : CharacterBody2D = $Player
 @onready var guis : Array = $LevelGUI.get_guis()
 @onready var level_label : Label = $LevelLabel
+@onready var level_name: Label = $LevelName
 
 var bomb_scene : PackedScene = preload("res://scenes/bomb.tscn")
 
@@ -16,6 +19,7 @@ var labels : Array = []
 var bombs_available : Array
 
 func _ready():
+	level_name.text = LevelName
 	level_label.text = "Level: " + str(Global.get_current_level() + 1)
 	Global.paused = false
 	Global.current_bomb_type = Global.DIAGONAL
