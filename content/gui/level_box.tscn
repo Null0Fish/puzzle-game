@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2o4ft3h7jlaf"]
+
+[ext_resource type="FontFile" uid="uid://tbc3f6f8v5hr" path="res://assets/fonts/small_font.ttf" id="1_3sbxk"]
+[ext_resource type="Script" uid="uid://o2vg5tkringv" path="res://content/gui/level_box.gd" id="1_dsnmk"]
+[ext_resource type="Texture2D" uid="uid://da4flkv6jx3ey" path="res://assets/gui/level_box_background.png" id="2_bxxdi"]
+[ext_resource type="Texture2D" uid="uid://bf2e0foifmvu3" path="res://assets/gui/small_lock.png" id="3_m1oeg"]
+
+[node name="LevelBox" type="PanelContainer"]
+offset_right = 16.0
+offset_bottom = 16.0
+script = ExtResource("1_dsnmk")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_bxxdi")
+
+[node name="Lock" type="TextureRect" parent="."]
+visible = false
+layout_mode = 2
+texture = ExtResource("3_m1oeg")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(1, 2)
+
+[node name="Label" type="Label" parent="Node2D"]
+offset_top = 2.30279
+offset_right = 16.0
+offset_bottom = 14.3028
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.835294, 0.254902, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("1_3sbxk")
+theme_override_font_sizes/font_size = 7
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

@@ -11,12 +11,12 @@ config_version=5
 [application]
 
 config/name="Bomb Miner"
-run/main_scene="res://scenes/gui/home_screen.tscn"
+run/main_scene="res://content/gui/home_screen.tscn"
 config/features=PackedStringArray("4.4", "Mobile")
 
 [autoload]
 
-Global="*res://scripts/global.gd"
+Global="*res://content/global.gd"
 
 [display]
 
