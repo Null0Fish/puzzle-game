@@ -24,6 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TitleUI"]
+layout_mode = 0
 offset_left = 112.0
 offset_top = 29.0
 offset_right = 208.0
@@ -109,6 +110,7 @@ anchor_bottom = 0.5
 offset_left = -104.0
 offset_top = -40.0
 offset_right = 104.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_vdpax")
@@ -125,3 +127,4 @@ position = Vector2(160, 96)
 [connection signal="pressed" from="TitleUI/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="TitleUI/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="TitleUI/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MenuUI/HomeButton" to="." method="_on_home_button_pressed"]
