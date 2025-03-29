@@ -24,8 +24,8 @@ func _ready():
 		level_gui.bomb_gui.show()
 	else:
 		level_gui.bomb_gui.hide()
-	level_gui.level_name.text = LevelName
-	level_gui.level_label.text = "Level: " + str(Global.get_current_level() + 1)
+	level_gui.set_name(LevelName)
+	level_gui.set_level(str(Global.get_current_level() + 1))
 	Global.paused = false
 	Global.current_bomb_type = Global.DIAGONAL
 	var level_num = Global.get_current_level()

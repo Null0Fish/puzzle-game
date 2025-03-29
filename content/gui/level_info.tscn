@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://hdgt7r6w4gub"]
+
+[ext_resource type="Script" uid="uid://dx2ajbft27u0q" path="res://content/gui/level_info.gd" id="1_m7733"]
+[ext_resource type="FontFile" uid="uid://b66nc4dsrjg1t" path="res://assets/fonts/normal_font.ttf" id="2_x43af"]
+[ext_resource type="FontFile" uid="uid://tbc3f6f8v5hr" path="res://assets/fonts/small_font.ttf" id="3_fyfxi"]
+
+[node name="LevelInfo" type="CenterContainer"]
+offset_right = 320.0
+offset_bottom = 192.0
+script = ExtResource("1_m7733")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TitleLable" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_x43af")
+text = "Name Here"
+
+[node name="LevelLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fyfxi")
+theme_override_font_sizes/font_size = 5
+text = "Level: 0"
+horizontal_alignment = 1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

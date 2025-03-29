@@ -1,7 +1,6 @@
 extends Control
 
-@onready var level_label: Label = $LevelLabel
-@onready var level_name: Label = $LevelName
+@onready var level_info: CenterContainer = $LevelInfo
 @onready var bomb_gui: Control = $BombGUI
 
 func get_guis():
@@ -20,3 +19,9 @@ func _on_level_button_pressed():
 
 func _on_restart_button_pressed():
 	Global.reset()
+
+func set_title(text : String):
+	level_info.set_title(text)
+
+func set_level(text : String):
+	level_info.set_level(text)
