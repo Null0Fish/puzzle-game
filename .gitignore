@@ -1,6 +1,8 @@
 # Godot-specific files
 .import/
+.godot/
 godot/
 mono/
 .cache/
 .editor_settings-*.tres
+
