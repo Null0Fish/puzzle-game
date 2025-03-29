@@ -1,8 +1,7 @@
 # Godot-specific files
+# Godot-specific ignores
 .import/
 .godot/
-godot/
-mono/
-.cache/
-.editor_settings-*.tres
+.godot/mono/
+*.import
 
