@@ -1,7 +1,7 @@
 extends Control
 
-@onready var label: Label = $TitleUI/VBoxContainer/PlayButton/Label
 @onready var camera_2d: Camera2D = $Camera2D
+@onready var label: Label = $TitleUI/PlayButton/Label
 
 const DELTA_POS : int = 320
 
