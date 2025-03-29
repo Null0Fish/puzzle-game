@@ -1,7 +1,11 @@
-extends Node2D
+extends Control
 
 func get_guis():
-	return [$AdjacentGUI, $DiagonalGUI, $FullGUI]
+	return [
+		$BombGUI/HBoxContainer/AdjacentGUI, 
+		$BombGUI/HBoxContainer/DiagonalGUI, 
+		$BombGUI/HBoxContainer/FullGUI
+		]
 
 func _on_home_button_pressed():
 	get_tree().change_scene_to_file("res://content/gui/start_screen.tscn")

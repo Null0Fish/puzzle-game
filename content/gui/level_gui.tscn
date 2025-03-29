@@ -8,57 +8,112 @@
 [ext_resource type="Texture2D" uid="uid://b6qgjxbqlvl6u" path="res://assets/gui/home_button.png" id="5_5umfk"]
 [ext_resource type="Texture2D" uid="uid://bt3bsualusgqv" path="res://assets/gui/restart_button.png" id="5_r4655"]
 
-[node name="LevelGUI" type="Node2D"]
+[node name="LevelGUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 320.0
+offset_bottom = 192.0
 script = ExtResource("1_8elk5")
 
-[node name="AdjacentGUI" parent="." instance=ExtResource("1_uuanb")]
-
-[node name="DiagonalGUI" parent="." instance=ExtResource("1_uuanb")]
-position = Vector2(16, 0)
-
-[node name="FullGUI" parent="." instance=ExtResource("1_uuanb")]
-position = Vector2(32, 0)
-
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -4.2245
-offset_top = -0.117984
-offset_right = -0.224503
-offset_bottom = 15.882
-texture = ExtResource("3_nplj0")
-
-[node name="TextureRect2" type="TextureRect" parent="."]
-offset_left = 48.0
-offset_right = 52.0
+[node name="BombGUI" type="Control" parent="."]
+custom_minimum_size = Vector2(56, 16)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -28.0
+offset_right = 28.0
 offset_bottom = 16.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BombGUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -8.0
+offset_right = 24.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 16
+
+[node name="AdjacentGUI" parent="BombGUI/HBoxContainer" instance=ExtResource("1_uuanb")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="DiagonalGUI" parent="BombGUI/HBoxContainer" instance=ExtResource("1_uuanb")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="FullGUI" parent="BombGUI/HBoxContainer" instance=ExtResource("1_uuanb")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="LeftTextureRect" type="TextureRect" parent="BombGUI"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -8.0
+offset_right = 4.0
+offset_bottom = 8.0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("3_nplj0")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="RightTextureRect" type="TextureRect" parent="BombGUI"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_nplj0")
 
-[node name="Background" type="TextureRect" parent="Node2D"]
-offset_left = -150.0
-offset_right = -103.0
+[node name="ControlGUI" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 47.0
 offset_bottom = 17.0
+
+[node name="Background" type="TextureRect" parent="ControlGUI"]
+layout_mode = 1
+offset_right = 48.0
+offset_bottom = 16.0
 texture = ExtResource("3_6o77t")
 
-[node name="HomeButton" type="TextureButton" parent="Node2D"]
-offset_left = -136.0
-offset_right = -120.0
-offset_bottom = 16.0
+[node name="HBoxContainer" type="HBoxContainer" parent="ControlGUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="HomeButton" type="TextureButton" parent="ControlGUI/HBoxContainer"]
+layout_mode = 2
 texture_normal = ExtResource("5_5umfk")
 
-[node name="LevelButton" type="TextureButton" parent="Node2D"]
-visible = false
-offset_left = -135.121
-offset_right = -119.121
-offset_bottom = 16.0
+[node name="LevelButton" type="TextureButton" parent="ControlGUI/HBoxContainer"]
+layout_mode = 2
 texture_normal = ExtResource("4_u0pcm")
 
-[node name="RestartButton" type="TextureButton" parent="Node2D"]
-offset_left = -120.183
-offset_right = -104.183
-offset_bottom = 16.0
+[node name="RestartButton" type="TextureButton" parent="ControlGUI/HBoxContainer"]
+layout_mode = 2
 texture_normal = ExtResource("5_r4655")
 
-[connection signal="pressed" from="Node2D/HomeButton" to="." method="_on_home_button_pressed"]
-[connection signal="pressed" from="Node2D/LevelButton" to="." method="_on_level_button_pressed"]
-[connection signal="pressed" from="Node2D/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="ControlGUI/HBoxContainer/HomeButton" to="." method="_on_home_button_pressed"]
+[connection signal="pressed" from="ControlGUI/HBoxContainer/LevelButton" to="." method="_on_level_button_pressed"]
+[connection signal="pressed" from="ControlGUI/HBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

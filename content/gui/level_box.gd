@@ -3,8 +3,8 @@ extends PanelContainer
 var locked
 var level_num
 
-@onready var lock = $Lock
-@onready var label = $Node2D/Label
+@onready var label: Label = $Background/CenterContainer2/Label
+@onready var lock: TextureRect = $Background/CenterContainer/Lock
 
 func set_locked(status : bool):
 	locked = status

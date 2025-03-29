@@ -20,7 +20,7 @@ func _input(event):
 		for i in Global.MAX_LEVELS:
 			if not Global.unlocked_levels.has(i):
 				Global.unlocked_levels.append(i)
-				$LevelGrid._ready()
+				$MenuUI/LevelGrid._ready()
 
 func _on_play_button_pressed():
 	Global.set_level(max_level_num)

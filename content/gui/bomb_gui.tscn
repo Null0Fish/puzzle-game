@@ -7,11 +7,14 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yyuc4"]
 bg_color = Color(0.133333, 0.12549, 0.203922, 1)
 
-[node name="BombGUI" type="Node2D"]
+[node name="BombGUI" type="Control"]
 z_index = 2
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_87gd4")
 
 [node name="Panel" type="Panel" parent="."]
+layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_yyuc4")
@@ -24,10 +27,16 @@ region_enabled = true
 region_rect = Rect2(32, 0, 16, 16)
 
 [node name="BombCount" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 13.0
 offset_top = 11.0
-offset_right = 22.0
-offset_bottom = 20.0
+offset_right = 17.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0.598845, 0.618756, 0.191105, 1)
 theme_override_fonts/font = ExtResource("3_v788k")
 theme_override_font_sizes/font_size = 5
