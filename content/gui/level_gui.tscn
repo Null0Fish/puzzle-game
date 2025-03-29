@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfsfwps6dsd7j"]
+[gd_scene load_steps=10 format=3 uid="uid://cfsfwps6dsd7j"]
 
 [ext_resource type="Script" uid="uid://2vc8fm0ou8ic" path="res://content/gui/level_gui.gd" id="1_8elk5"]
 [ext_resource type="PackedScene" uid="uid://8xsf5j74u2cf" path="res://content/gui/bomb_gui.tscn" id="1_uuanb"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://212mqtlm5mpm" path="res://assets/gui/level_button.png" id="4_u0pcm"]
 [ext_resource type="Texture2D" uid="uid://b6qgjxbqlvl6u" path="res://assets/gui/home_button.png" id="5_5umfk"]
 [ext_resource type="Texture2D" uid="uid://bt3bsualusgqv" path="res://assets/gui/restart_button.png" id="5_r4655"]
+[ext_resource type="FontFile" uid="uid://tbc3f6f8v5hr" path="res://assets/fonts/small_font.ttf" id="8_xxy6k"]
+[ext_resource type="PackedScene" uid="uid://cv7fs25avikep" path="res://content/gui/level_name.tscn" id="9_83etd"]
 
 [node name="LevelGUI" type="Control"]
 layout_mode = 3
@@ -113,6 +115,34 @@ texture_normal = ExtResource("4_u0pcm")
 [node name="RestartButton" type="TextureButton" parent="ControlGUI/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("5_r4655")
+
+[node name="LevelLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_top = 3.0
+offset_bottom = 9.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("8_xxy6k")
+theme_override_font_sizes/font_size = 5
+text = "Level: 0"
+
+[node name="LevelName" parent="." instance=ExtResource("9_83etd")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -7.5
+offset_right = 70.0
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="pressed" from="ControlGUI/HBoxContainer/HomeButton" to="." method="_on_home_button_pressed"]
 [connection signal="pressed" from="ControlGUI/HBoxContainer/LevelButton" to="." method="_on_level_button_pressed"]
