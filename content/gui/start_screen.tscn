@@ -151,7 +151,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_vdpax")
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="pressed" from="TitleUI/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="TitleUI/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="TitleUI/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="MenuUI/HomeButton" to="." method="_on_home_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

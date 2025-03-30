@@ -2,11 +2,14 @@ extends Control
 
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var label: Label = $TitleUI/PlayButton/Label
+@onready var timer: Timer = $Timer
 
 const DELTA_POS : int = 320
+const CAMERA_MOVE_TIME : float = 1.5
 
 var max_level_num : int = 0
 var max_tutorial_num : int = 0
+var block_input : bool = false
 
 func _ready():
 	for level in Global.unlocked_levels:
@@ -26,14 +29,24 @@ func _on_play_button_pressed():
 	Global.set_level(max_level_num)
 
 func _on_menu_button_pressed():
-	move_camera_to(camera_2d.position.x + DELTA_POS)
+	if not block_input:
+		timer.start(CAMERA_MOVE_TIME)
+		move_camera_to(camera_2d.position.x + DELTA_POS)
+		block_input = true
 
 func _on_settings_button_pressed():
 	pass
 
 func _on_home_button_pressed():
-	move_camera_to(camera_2d.position.x - DELTA_POS)
+	if not block_input:
+		timer.start(CAMERA_MOVE_TIME)
+		move_camera_to(camera_2d.position.x - DELTA_POS)
+		block_input = true
 
 func move_camera_to(target_x: float) -> void:
 	var tween := get_tree().create_tween()
-	tween.tween_property(camera_2d, "position:x", target_x, 1.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(camera_2d, "position:x", target_x, CAMERA_MOVE_TIME).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+
+func _on_timer_timeout() -> void:
+	block_input = false
