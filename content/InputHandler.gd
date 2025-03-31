@@ -12,9 +12,10 @@ func _input(event):
 	
 	var current_bomb_type = Global.current_bomb_type
 	if event is InputEventMouseButton and event.is_released():
+		print("mosue input found")
 		var cell = tilemap.local_to_map(event.position)
 		# Disables clicking on GUI
-		if (cell.x > 2 and cell.y > 0) or (cell.x > 7 and cell.x < 12 and cell.y > 0):
+		if cell.y > 0:
 			if event.button_index == MOUSE_BUTTON_LEFT:
 				level_base.handle_left_click(cell)
 			elif event.button_index == MOUSE_BUTTON_RIGHT and level_base.bomb_locations.has(cell):

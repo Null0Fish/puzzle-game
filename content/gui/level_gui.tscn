@@ -118,7 +118,7 @@ layout_mode = 2
 texture_normal = ExtResource("5_r4655")
 
 [node name="LevelInfo" parent="." instance=ExtResource("8_xxy6k")]
-layout_mode = 0
+layout_mode = 1
 
 [connection signal="pressed" from="ControlGUI/HBoxContainer/HomeButton" to="." method="_on_home_button_pressed"]
 [connection signal="pressed" from="ControlGUI/HBoxContainer/LevelButton" to="." method="_on_level_button_pressed"]

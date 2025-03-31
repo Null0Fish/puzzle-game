@@ -9,6 +9,7 @@ const TILE_SIZE = Global.TILE_SIZE
 @onready var player : CharacterBody2D = $Player
 @onready var guis : Array = $LevelGUI.get_guis()
 @onready var level_gui: Control = $LevelGUI
+@onready var foreground: TileMapLayer = $GlobalTileMap/Foreground
 
 
 var bomb_scene : PackedScene = preload("res://content/level_specific/bomb.tscn")
@@ -91,14 +92,22 @@ func get_all_crate_cells() -> Array:
 
 func can_place_bomb(cell: Vector2i, type: int) -> bool:
 	if bombs_available[type] <= 0:
+		print("err1")
 		return false
 	if bomb_locations.has(cell):
+		print("err2")
 		return false
 	if not player.is_on_floor() or tilemap.get_player_cells().has(cell):
+		print("err3")
 		return false
 	for crate in get_all_crate_cells():
 		if crate.has(cell):
+			print("err4")
 			return false
+	if not foreground.get_cell_source_id(cell) == -1:
+		print(foreground.get_cell_source_id(cell))
+		print("err5")
+		return false
 	return true
 
 func _on_area_2d_body_entered(body):

@@ -24,6 +24,8 @@ func _input(event):
 			if not Global.unlocked_levels.has(i):
 				Global.unlocked_levels.append(i)
 				$MenuUI/LevelGrid._ready()
+	if event.is_action_released("test"):
+		get_tree().change_scene_to_file("res://content/levels/level_2.tscn")
 
 func _on_play_button_pressed():
 	Global.set_level(max_level_num)
