@@ -34,15 +34,17 @@ func _on_panel_gui_input(event):
 			if event.pressed:
 				if _is_mouse_over_bomb(event.position):
 					dragging = true
+					_scene_root().is_dragging = true
 					Global.current_bomb_type = type
 					_create_ghost_bomb()
 			else:
 				if dragging:
 					dragging = false
+					_scene_root().is_dragging = false
 					if ghost_bomb:
 						ghost_bomb.queue_free()
 						ghost_bomb = null
-					get_tree().get_current_scene().try_place_bomb(get_global_mouse_position())
+					_scene_root().try_place_bomb(get_global_mouse_position())
 
 func _is_mouse_over_bomb(mouse_position: Vector2) -> bool:
 	return panel.get_rect().has_point(mouse_position)
@@ -54,7 +56,10 @@ func _create_ghost_bomb():
 	ghost_bomb.region_enabled = true
 	ghost_bomb.region_rect = sprite.region_rect
 	ghost_bomb.z_index = 7
-	get_tree().get_current_scene().add_child(ghost_bomb)
+	_scene_root().add_child(ghost_bomb)
+
+func _scene_root():
+	return get_tree().get_current_scene()
 
 func upgrade():
 	var rect_pos = sprite.region_rect.position

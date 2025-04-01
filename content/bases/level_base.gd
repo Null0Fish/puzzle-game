@@ -3,6 +3,7 @@ extends Node2D
 @export var level_name: String
 @export var show_ui: bool
 
+@onready var hover_layer: TileMapLayer = $GlobalTileMap/HoverLayer
 @onready var tilemap: TileMapLayer = $GlobalTileMap
 @onready var foreground: TileMapLayer = $GlobalTileMap/Foreground
 @onready var player: CharacterBody2D = $Player
@@ -18,13 +19,14 @@ var bomb_locations: Array = []
 var crates: Array = []
 var bombs_available: Array
 var last_placement_time: float
-
+var is_dragging: bool
 
 func _ready():
 	_initialize_level()
 	_populate_crate_list()
 
 func _initialize_level():
+	is_dragging = false
 	last_placement_time = 0.0
 	level_gui.set_name(level_name)
 	level_gui.set_level(str(Global.get_current_level() + 1))
@@ -49,6 +51,9 @@ func _populate_crate_list():
 			crates.append(child)
 
 func _process(_delta):
+	hover_layer.clear()
+	if is_dragging:
+		hover_layer.set_cell(hover_layer.local_to_map(get_local_mouse_position()), 0, Vector2i(0, 0))
 	for i in range(bombs_placed.size()):
 		bomb_locations[i] = tilemap.local_to_map(bombs_placed[i].position)
 

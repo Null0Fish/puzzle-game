@@ -1,12 +1,20 @@
-[gd_scene load_steps=9 format=4 uid="uid://crfpgs7m65kr2"]
+[gd_scene load_steps=12 format=4 uid="uid://crfpgs7m65kr2"]
 
 [ext_resource type="Script" uid="uid://dvahp7cotmlpa" path="res://content/bases/level_base.gd" id="1_r71if"]
 [ext_resource type="PackedScene" uid="uid://6i873xlrfq18" path="res://content/level_specific/player.tscn" id="3_dmeoe"]
+[ext_resource type="Texture2D" uid="uid://bjvvhs886uyl0" path="res://assets/tiles/hover_tile.png" id="3_q2un2"]
 [ext_resource type="PackedScene" uid="uid://c3xsraeg0wpln" path="res://content/level_specific/chest.tscn" id="3_vg8a1"]
 [ext_resource type="PackedScene" uid="uid://cc1rbmayploob" path="res://content/global_tile_map.tscn" id="5_qb2hu"]
 [ext_resource type="PackedScene" uid="uid://cfsfwps6dsd7j" path="res://content/gui/level_gui.tscn" id="6_worh7"]
 [ext_resource type="Script" uid="uid://22vxynpu2cw0" path="res://content/bases/input.gd" id="7_lhmjq"]
 [ext_resource type="FontFile" uid="uid://b66nc4dsrjg1t" path="res://assets/fonts/normal_font.ttf" id="9_6k8qy"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q2un2"]
+texture = ExtResource("3_q2un2")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_cmumu"]
+sources/0 = SubResource("TileSetAtlasSource_q2un2")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4xmh2"]
 size = Vector2(352, 18.375)
@@ -23,6 +31,9 @@ tile_map_data = PackedByteArray("AAAAAAAAAQAMAAIAAAAAAAEAAQAMAAIAAAAAAAIAAQAMAAI
 
 [node name="Foreground" parent="GlobalTileMap" index="1"]
 tile_map_data = PackedByteArray("AAD//wwAAAAEAAMAAAD//wsAAAADAAEAAAD//woAAAADAAEAAAD//wkAAAADAAEAAAD//wgAAAADAAEAAAD//wcAAAADAAEAAAD//wYAAAADAAEAAAD//wUAAAADAAEAAAD//wQAAAADAAEAAAD//wMAAAADAAEAAAD//wIAAAADAAEAAAD//wEAAAADAAEAAAD//wAAAAAEAAEAAAD/////AAAAAAAAAAAUAAwAAAAHAAMAAAATAAwAAAABAAMAAAASAAwAAAABAAMAAAARAAwAAAABAAMAAAAQAAwAAAABAAMAAAAPAAwAAAABAAMAAAAOAAwAAAABAAMAAAANAAwAAAABAAMAAAAEAAwAAAABAAMAAAADAAwAAAABAAMAAAACAAwAAAABAAMAAAABAAwAAAABAAMAAAAAAAwAAAABAAMAAAAUAAsAAAADAAEAAAAUAAoAAAADAAEAAAAUAAkAAAADAAEAAAAUAAgAAAADAAEAAAAUAAcAAAADAAEAAAAUAAYAAAADAAEAAAAUAAUAAAADAAEAAAAUAAQAAAADAAEAAAAUAAMAAAADAAEAAAAUAAIAAAADAAEAAAAUAAEAAAADAAEAAAAUAAAAAAAHAAEAAAAUAP//AAACAAAAAAATAP//AAABAAAAAAASAP//AAABAAAAAAARAP//AAABAAAAAAAQAP//AAABAAAAAAAPAP//AAABAAAAAAAOAP//AAABAAAAAAANAP//AAABAAAAAAAMAP//AAABAAAAAAALAP//AAABAAAAAAAKAP//AAABAAAAAAAJAP//AAABAAAAAAAIAP//AAABAAAAAAAHAP//AAABAAAAAAAGAP//AAABAAAAAAAFAP//AAABAAAAAAAEAP//AAABAAAAAAADAP//AAABAAAAAAACAP//AAABAAAAAAABAP//AAABAAAAAAAAAP//AAABAAAAAAAFAAwAAAABAAMAAAAGAAwAAAABAAMAAAAHAAwAAAABAAMAAAAIAAwAAAABAAMAAAAJAAwAAAABAAMAAAAKAAwAAAABAAMAAAALAAwAAAABAAMAAAAMAAwAAAABAAMAAAATAAAAAAABAAIAAAASAAAAAAABAAIAAAARAAAAAAABAAIAAAAQAAAAAAABAAIAAAAPAAAAAAABAAIAAAAOAAAAAAABAAIAAAANAAAAAAABAAIAAAAMAAAAAAABAAIAAAALAAAAAAABAAIAAAAKAAAAAAABAAIAAAAJAAAAAAABAAIAAAAIAAAAAAABAAIAAAAHAAAAAAABAAIAAAAGAAAAAAABAAIAAAAFAAAAAAABAAIAAAAEAAAAAAABAAIAAAADAAAAAAABAAIAAAACAAAAAAABAAIAAAABAAAAAAABAAIAAAAAAAAAAAABAAIAAAA=")
+
+[node name="HoverLayer" type="TileMapLayer" parent="GlobalTileMap"]
+tile_set = SubResource("TileSet_cmumu")
 
 [node name="LevelGUI" parent="." instance=ExtResource("6_worh7")]
 metadata/_edit_lock_ = true
