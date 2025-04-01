@@ -1,10 +1,11 @@
 extends Area2D
+
 class_name Chest
 
-@onready var open_texture : Texture = preload("res://assets/chest/open_chest.png")
-@onready var timer : Timer = $Timer
+@onready var open_texture: Texture = preload("res://assets/chest/open_chest.png")
+@onready var timer: Timer = $Timer
 
-var next_level : int
+var next_level: int
 
 func _on_body_entered(body : Node):
 	if body is Player:

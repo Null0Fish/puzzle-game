@@ -1,13 +1,13 @@
 extends CharacterBody2D
+
 class_name Player
 
-const PLAYER_SIZE = Global.PLAYER_SIZE
-
-const SPEED : float = 75.0
-const JUMP_VELOCITY : float = -280.0
-
-@onready var sprite : Sprite2D = $PlayerSprite
+@onready var sprite: Sprite2D = $PlayerSprite
 @onready var window_size = get_viewport_rect().size
+
+const PLAYER_SIZE = Global.PLAYER_SIZE
+const SPEED: float = 75.0
+const JUMP_VELOCITY: float = -280.0
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -37,9 +37,9 @@ func _physics_process(delta):
 		window_size.y - PLAYER_SIZE / 2.0
 	)
 
-	update_facing_direction()
+	_update_facing_direction()
 
-func update_facing_direction():
+func _update_facing_direction():
 	if velocity.x > 0:
 		sprite.flip_h = false
 	elif velocity.x < 0:

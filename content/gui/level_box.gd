@@ -1,10 +1,10 @@
 extends PanelContainer
 
-var locked
-var level_num
-
 @onready var label: Label = $Background/CenterContainer2/Label
 @onready var lock: TextureRect = $Background/CenterContainer/Lock
+
+var locked
+var level_num
 
 func set_locked(status : bool):
 	locked = status

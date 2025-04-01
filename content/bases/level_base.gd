@@ -1,7 +1,5 @@
 extends Node2D
 
-const TILE_SIZE = Global.TILE_SIZE
-
 @export var level_name: String
 @export var show_ui: bool
 
@@ -11,18 +9,23 @@ const TILE_SIZE = Global.TILE_SIZE
 @onready var level_gui: Control = $LevelGUI
 @onready var guis: Array = level_gui.get_guis()
 
+const TILE_SIZE = Global.TILE_SIZE
+
 var bomb_scene: PackedScene = preload("res://content/level_specific/bomb.tscn")
 
 var bombs_placed: Array = []
 var bomb_locations: Array = []
 var crates: Array = []
 var bombs_available: Array
+var last_placement_time: float
+
 
 func _ready():
 	_initialize_level()
 	_populate_crate_list()
 
 func _initialize_level():
+	last_placement_time = 0.0
 	level_gui.set_name(level_name)
 	level_gui.set_level(str(Global.get_current_level() + 1))
 	Global.paused = false
@@ -52,37 +55,7 @@ func _process(_delta):
 func upgrade_bomb_type(bomb_type: int):
 	guis[bomb_type].upgrade()
 
-func handle_left_click(cell: Vector2i):
-	if can_place_bomb(cell, Global.current_bomb_type):
-		place_bomb(cell, Global.current_bomb_type)
-	elif cell in bomb_locations:
-		_remove_bomb(cell)
-
-func handle_right_click(cell: Vector2i):
-	var index = bomb_locations.find(cell)
-	if index != -1:
-		detonate_bomb(bombs_placed[index])
-
-func place_bomb(cell: Vector2i, bomb_type: int):
-	var bomb = bomb_scene.instantiate()
-	bomb.position = Vector2(cell.x * TILE_SIZE + TILE_SIZE / 2, cell.y * TILE_SIZE + TILE_SIZE / 2)
-	add_child(bomb)
-	bomb.init(tilemap, bomb_type)
-	
-	bombs_placed.append(bomb)
-	bomb_locations.append(cell)
-	bombs_available[bomb_type] -= 1
-	guis[bomb_type].set_bomb_count(bombs_available[bomb_type])
-
-func detonate_bomb(bomb: Bomb):
-	var index = bombs_placed.find(bomb)
-	if index != -1:
-		bomb.detonate(tilemap.local_to_map(player.global_position))
-		bombs_placed.remove_at(index)
-		bomb_locations.remove_at(index)
-
-func _remove_bomb(cell: Vector2i):
-	var index = bomb_locations.find(cell)
+func _pick_up_bomb(index: int):
 	if index != -1:
 		var bomb = bombs_placed[index]
 		bomb_locations.remove_at(index)
@@ -92,13 +65,23 @@ func _remove_bomb(cell: Vector2i):
 		bomb.queue_free()
 		guis[bomb.type].set_bomb_count(bombs_available[bomb.type])
 
-func get_all_crate_cells() -> Array:
-	var cells = []
-	for crate in crates:
-		cells.append_array(tilemap.get_near_cells(crate))
-	return cells
+func _place_bomb(cell: Vector2i, bomb_type: int):
+	var bomb = bomb_scene.instantiate()
+	bomb.position = Vector2(cell.x * TILE_SIZE + TILE_SIZE / 2, cell.y * TILE_SIZE + TILE_SIZE / 2)
+	add_child(bomb)
+	bomb.init(tilemap, bomb_type)
+	bombs_placed.append(bomb)
+	bomb_locations.append(cell)
+	bombs_available[bomb_type] -= 1
+	guis[bomb_type].set_bomb_count(bombs_available[bomb_type])
+	last_placement_time = Time.get_ticks_msec() / 1000.0
 
-func can_place_bomb(cell: Vector2i, bomb_type: int) -> bool:
+func _detonate_bomb(index: int):
+	bombs_placed[index].detonate(tilemap.local_to_map(player.global_position))
+	bombs_placed.remove_at(index)
+	bomb_locations.remove_at(index)
+
+func _can_place_bomb(cell: Vector2i, bomb_type: int) -> bool:
 	if bombs_available[bomb_type] <= 0:
 		return false
 	if cell in bomb_locations:
@@ -109,11 +92,32 @@ func can_place_bomb(cell: Vector2i, bomb_type: int) -> bool:
 		return false
 	if foreground.get_cell_source_id(cell) != -1:
 		return false
-	for crate_cells in get_all_crate_cells():
+	for crate_cells in _get_all_crate_cells():
 		if cell in crate_cells:
 			return false
 	return true
 
+func _get_all_crate_cells() -> Array:
+	var cells = []
+	for crate in crates:
+		cells.append_array(tilemap.get_near_cells(crate))
+	return cells
+
 func _on_area_2d_body_entered(body):
 	if body is Player:
 		body.call_deferred("die")
+
+func try_pick_up_bomb(cell: Vector2i):
+	var index = bomb_locations.find(cell)
+	if index != -1:
+		_pick_up_bomb(index)
+
+func try_detonate_bomb(cell: Vector2i):
+	var index = bomb_locations.find(cell)
+	if index != -1:
+		_detonate_bomb(index)
+
+func try_place_bomb(cell: Vector2):
+	cell = tilemap.local_to_map(cell)
+	if _can_place_bomb(cell, Global.current_bomb_type):
+		_place_bomb(cell, Global.current_bomb_type)

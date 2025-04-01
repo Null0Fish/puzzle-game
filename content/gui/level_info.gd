@@ -1,15 +1,16 @@
 extends CenterContainer
 
-const LEVEL_TEXT : String = "Level: "
-
 @onready var timer: Timer = $Timer
 @onready var title_lable: Label = $VBoxContainer/TitleLable
 @onready var level_label: Label = $VBoxContainer/LevelLabel
 
-var should_fade : bool = false
+const LEVEL_TEXT: String = "Level: "
+
+var should_fade: bool
 
 func _ready() -> void:
 	show()
+	should_fade = false
 	timer.start(.5)
 
 func _process(_delta: float) -> void:

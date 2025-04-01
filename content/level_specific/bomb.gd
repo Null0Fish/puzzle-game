@@ -1,13 +1,12 @@
 extends RigidBody2D
+
 class_name Bomb
 
 const ADJACENT: int = Global.ADJACENT
 const DIAGONAL: int = Global.DIAGONAL
 const FULL: int = Global.FULL
-
 const WARNING_TILE_ATLAS: Vector2i = Vector2i(0, 0)
 const WARNING_ID: int = 3
-
 const BOMB_TEXTURES: Dictionary = {
 	ADJACENT: preload("res://assets/bombs/adjacent_bomb.png"),
 	DIAGONAL: preload("res://assets/bombs/diagonal_bomb.png"),

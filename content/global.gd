@@ -48,7 +48,6 @@ func get_bombs_available(level : int) -> Array:
 	return NONE.duplicate()
 
 func set_level(level_num : int):
-	print("tried")
 	if level_num <= MAX_LEVELS:
 		get_tree().change_scene_to_file(LEVEL_FILE + str(level_num) + ".tscn")
 	else:
