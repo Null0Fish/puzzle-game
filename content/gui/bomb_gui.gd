@@ -11,15 +11,23 @@ var style_box_flat: StyleBoxFlat = StyleBoxFlat.new()
 
 var dragging: bool = false
 var ghost_bomb: Sprite2D = null
+var tween: Tween = null
 
 func _process(_delta):
 	_update_panel_style()
 	if dragging:
 		sprite.modulate.a = .75
 		if ghost_bomb:
-			ghost_bomb.global_position = get_global_mouse_position()
+			var target_position = (get_global_mouse_position() / TILE_SIZE).floor() * TILE_SIZE + Vector2(TILE_SIZE / 2, TILE_SIZE / 2)
+			_move_ghost_bomb(target_position)
 	else:
 		sprite.modulate.a = 1
+
+func _move_ghost_bomb(target_position: Vector2):
+	if tween and tween.is_running():
+		tween.kill()
+	tween = create_tween()
+	tween.tween_property(ghost_bomb, "global_position", target_position, 0.25).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 func _update_panel_style():
 	if Global.current_bomb_type == type:
