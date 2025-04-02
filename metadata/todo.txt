@@ -1,15 +1,14 @@
-URGENT
-- Bombs can be detonated in mid air
-- Issues with level GUI had to remove level_menu button as it is no longer compatible
+ToDo Plan:
+	- Rework level gui to make it pretty
+	- Make plaed bombs dragable
+	- maybe give them ui when clicked on to say detonate or pick up if clicked on
 
-Code Bugs:
+URGENT:
+	- Bombs can be detonated in mid air
+
+Implimentation Flaws:
 	- Bombs can be placed where a crate is
 	- Lava should have a higher z value than the player 
-
-Other Iuuses:
-	- Deal with floating chestss, put hard rock under them or give them gravity ugh
-	- Info text can be hard to read, eventualy make the text come from signs in levels
-	- Not enought dark bomb warning sprites
 
 To Add Features:
 	- Change level menu level button if the level is done "perfectly" fewest bombs possible
