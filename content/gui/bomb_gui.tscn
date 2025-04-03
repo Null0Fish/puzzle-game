@@ -14,6 +14,7 @@ anchors_preset = 0
 script = ExtResource("1_87gd4")
 
 [node name="Panel" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0

@@ -9,7 +9,10 @@ func _input(event):
 		
 	if event.is_action_released("restart_level"):
 		Global.reset()
-		
+	
+	if event.is_action_released("exit"):
+		get_tree().change_scene_to_file("res://content/gui/start_screen.tscn")
+	
 	for key in range(KEY_0, KEY_9 + 1):
 		if Input.is_key_pressed(key):
 			Global.current_bomb_type = clamp(int(char(key)) - 1, 0, Global.LAST_BOMB)

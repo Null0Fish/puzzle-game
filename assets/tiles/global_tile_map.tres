@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://dfngjymfs5wjk"]
+[gd_resource type="TileSet" load_steps=15 format=3 uid="uid://dfngjymfs5wjk"]
 
 [ext_resource type="Texture2D" uid="uid://cjsc322y0bplp" path="res://assets/tiles/tilesets.png" id="1_vwspr"]
 [ext_resource type="Texture2D" uid="uid://blw1ho6lu6ksa" path="res://assets/tiles/tiles.png" id="2_wkrqe"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dyrkgm6wt01e1" path="res://assets/tiles/alert_sprites.png" id="4_1uhtq"]
 [ext_resource type="Texture2D" uid="uid://bsl2take0dani" path="res://assets/tiles/key_set.png" id="5_3gq5s"]
 [ext_resource type="Texture2D" uid="uid://bmyfi2t4kf7mx" path="res://assets/chest/closed_chest.png" id="6_wkrqe"]
+[ext_resource type="Texture2D" uid="uid://c37lsx65fia65" path="res://assets/tiles/mine_shaft_tiles.png" id="7_kauop"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u3tbd"]
 resource_name = "TileSets"
@@ -1052,6 +1053,35 @@ texture = ExtResource("5_3gq5s")
 texture = ExtResource("6_wkrqe")
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1uhtq"]
+texture = ExtResource("7_kauop")
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 2
+0:1/0/terrains_peering_bit/right_side = 2
+0:1/0/terrains_peering_bit/left_side = 2
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 2
+1:1/0/terrains_peering_bit/bottom_side = 2
+1:1/0/terrains_peering_bit/top_side = 2
+1:2/0 = 0
+1:2/0/terrain_set = 0
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 2
+0:0/0/terrains_peering_bit/right_side = 2
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 2
+1:0/0/terrains_peering_bit/right_side = 2
+1:0/0/terrains_peering_bit/bottom_side = 2
+1:0/0/terrains_peering_bit/left_side = 2
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 2
+2:0/0/terrains_peering_bit/left_side = 2
+
 [resource]
 physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
@@ -1059,6 +1089,8 @@ terrain_set_0/terrain_0/name = "WeakStone"
 terrain_set_0/terrain_0/color = Color(0.239216, 0.568627, 0.541176, 1)
 terrain_set_0/terrain_1/name = "StrongStone"
 terrain_set_0/terrain_1/color = Color(0.57848, 0.392947, 0.294025, 1)
+terrain_set_0/terrain_2/name = "mine_shaft 2"
+terrain_set_0/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
 custom_data_layer_0/name = "Lava"
 custom_data_layer_0/type = 1
 custom_data_layer_1/name = "Breakable"
@@ -1071,3 +1103,4 @@ sources/3 = SubResource("TileSetAtlasSource_3q4xh")
 sources/0 = SubResource("TileSetAtlasSource_u3tbd")
 sources/2 = SubResource("TileSetAtlasSource_8vica")
 sources/5 = SubResource("TileSetAtlasSource_kauop")
+sources/6 = SubResource("TileSetAtlasSource_1uhtq")
