@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Player
 
-@onready var sprite: Sprite2D = $PlayerSprite
+@onready var sprite: AnimatedSprite2D = $PlayerSprite
 @onready var window_size = get_viewport_rect().size
 
 const PLAYER_SIZE = Global.PLAYER_SIZE
@@ -40,10 +40,12 @@ func _physics_process(delta):
 	_update_facing_direction()
 
 func _update_facing_direction():
-	if velocity.x > 0:
-		sprite.flip_h = false
-	elif velocity.x < 0:
-		sprite.flip_h = true
+	if velocity.x < 0:
+		sprite.play("run_left")
+	elif velocity.x > 0:
+		sprite.play("run_right")
+	else:
+		sprite.play("idle")
 
 func die():
 	Global.call_deferred("reset")

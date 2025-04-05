@@ -14,12 +14,10 @@ anchors_preset = 0
 script = ExtResource("1_87gd4")
 
 [node name="Panel" type="Panel" parent="."]
-visible = false
-layout_mode = 0
+layout_mode = 1
 offset_right = 16.0
 offset_bottom = 16.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_yyuc4")
-metadata/_edit_use_anchors_ = true
 
 [node name="BombIcon" type="Sprite2D" parent="."]
 position = Vector2(8, 8)

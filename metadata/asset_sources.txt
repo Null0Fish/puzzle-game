@@ -9,4 +9,9 @@ Lava:
 Chest:
 	- https://skalding.itch.io/chest-16x16-open-and-closed
 Font:
+	NOT TRUE
 	- https://www.fontspace.com/teeny-tiny-pixls-font-f30095
+chars:
+	https://almostapixel.itch.io/smallburg-town-pack
+miner chars:
+	https://itch.io/queue/c/1113979/16x16-characters?game_id=1674001

@@ -16,42 +16,34 @@ offset_right = 320.0
 offset_bottom = 192.0
 script = ExtResource("1_8elk5")
 
-[node name="BombGUI" type="Control" parent="."]
+[node name="BombGUI" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -16.0
-offset_right = 48.0
-grow_vertical = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="BombGUI"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -16.0
-offset_right = 64.0
-grow_vertical = 0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_right = 32.0
+offset_bottom = 16.0
+grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 16
 
-[node name="AdjacentGUI" parent="BombGUI/HBoxContainer" instance=ExtResource("1_uuanb")]
+[node name="AdjacentGUI" parent="BombGUI" instance=ExtResource("1_uuanb")]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="DiagonalGUI" parent="BombGUI/HBoxContainer" instance=ExtResource("1_uuanb")]
+[node name="DiagonalGUI" parent="BombGUI" instance=ExtResource("1_uuanb")]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="FullGUI" parent="BombGUI/HBoxContainer" instance=ExtResource("1_uuanb")]
+[node name="FullGUI" parent="BombGUI" instance=ExtResource("1_uuanb")]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="TextureRect" type="TextureRect" parent="BombGUI/HBoxContainer"]
+[node name="QuestionButton" type="TextureButton" parent="BombGUI"]
 layout_mode = 2
-texture = ExtResource("3_xxy6k")
+texture_normal = ExtResource("3_xxy6k")
 
 [node name="ControlGUI" type="Control" parent="."]
 visible = false
@@ -98,6 +90,7 @@ offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[connection signal="pressed" from="BombGUI/QuestionButton" to="." method="_on_question_button_pressed"]
 [connection signal="pressed" from="ControlGUI/HBoxContainer/HomeButton" to="." method="_on_home_button_pressed"]
 [connection signal="pressed" from="ControlGUI/HBoxContainer/LevelButton" to="." method="_on_level_button_pressed"]
 [connection signal="pressed" from="ControlGUI/HBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

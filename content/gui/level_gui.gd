@@ -5,10 +5,10 @@ extends Control
 
 func get_guis():
 	return [
-		$BombGUI/HBoxContainer/AdjacentGUI, 
-		$BombGUI/HBoxContainer/DiagonalGUI, 
-		$BombGUI/HBoxContainer/FullGUI
-		]
+		$BombGUI/AdjacentGUI, 
+		$BombGUI/DiagonalGUI, 
+		$BombGUI/FullGUI
+	]
 
 func _on_home_button_pressed():
 	get_tree().change_scene_to_file("res://content/gui/start_screen.tscn")
@@ -19,6 +19,9 @@ func _on_level_button_pressed():
 
 func _on_restart_button_pressed():
 	Global.reset()
+
+func _on_question_button_pressed() -> void:
+	pass # Replace with function body.
 
 func set_title(text : String):
 	level_info.set_title(text)
