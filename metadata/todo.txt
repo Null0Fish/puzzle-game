@@ -1,15 +1,25 @@
-ToDo Plan:
-	- Rework level gui to make it pretty
-	- Make plaed bombs dragable
-	- maybe give them ui when clicked on to say detonate or pick up if clicked on
+Core Gameplay Features:
+	- Bomb Interactions:
+		- Make placed bombs draggable
+	- Visual Layers:
+		- Redo warning layers to add tilelayer children with opaque tiles
+		- Rework hover layer:
+			- Make tile red when invalid for placement
+	- Animations & Effects:
+		- Player jump and death animations
+		- Chest open particles/animation
+		- Add sound effects (general need)
 
-URGENT:
-	- Bombs can be detonated in mid air
+Current Bugs / Issues:
+	 - Bombs can be detonated in mid-air (fix required)
 
-Implimentation Flaws:
-	- Bombs can be placed where a crate is
-	- Lava should have a higher z value than the player 
-
-To Add Features:
-	- Change level menu level button if the level is done "perfectly" fewest bombs possible
-	- Make some sort of indicator icon that can be used to give players hints as to where bombs should be placed
+Advanced / Future Features:
+	- Level Progression:
+		- Update level menu buttons if a level is completed perfectly (fewest bombs possible)
+	- Player Guidance:
+		- Create indicator icons to hint at optimal bomb placements
+	- Optimization:
+		- Refactor all tile layers to reduce redundant resources
+	- Bomb UI:
+		- Option to Detonate
+		- Option to Pick up
