@@ -11,14 +11,14 @@ tile_map_data = PackedByteArray("AAD//wwAAAAAAAIAAAD//wsAAAAAAAEAAAD//woAAAAEAAI
 [node name="Extras" parent="GlobalTileMap" index="3"]
 tile_map_data = PackedByteArray("AAADAAMAAgAEAAAAAAADAAQAAgAEAAAAAAADAAUAAgAEAAAAAAALAAMAAgAEAAAAAAALAAQAAgAEAAAAAAALAAUAAgAEAAAAAAALAAYAAgAEAAAAAAASAAkAAgAEAAIAAAAOAAkAAQACAAAAAAAPAAkAAQACAAAAAAAPAAoAAQACAAAAAAAPAAAAAQAEAAAAAAAOAAAAAQAEAAAAAAA=")
 
-[node name="Crate" parent="." index="6" instance=ExtResource("2_l3ooc")]
-position = Vector2(40, 152)
-
-[node name="Player" parent="." index="8"]
+[node name="Player" parent="." index="3"]
 position = Vector2(8, 152.5)
 
-[node name="Chest" parent="." index="9"]
+[node name="Chest" parent="." index="4"]
 position = Vector2(312, 56)
+
+[node name="Crate" parent="." index="6" instance=ExtResource("2_l3ooc")]
+position = Vector2(40, 152)
 
 [connection signal="property_list_changed" from="GlobalTileMap/Extras" to="GlobalTileMap" method="_on_extras_property_list_changed"]
 [connection signal="hidden" from="GlobalTileMap/Warning" to="GlobalTileMap" method="_on_warning_hidden"]

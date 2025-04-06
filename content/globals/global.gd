@@ -18,7 +18,7 @@ const GUI_TILES : Array = [
 ]
 
 # Level information
-const MAX_LEVELS : int = 6
+const MAX_LEVELS : int = 5
 const BOMBS_AVAILABLE : Array = [
 	NONE,
 	NONE,

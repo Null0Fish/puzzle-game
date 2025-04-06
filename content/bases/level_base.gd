@@ -97,15 +97,15 @@ func _can_place_bomb(cell: Vector2i, bomb_type: int) -> bool:
 		return false
 	if foreground.get_cell_source_id(cell) != -1:
 		return false
-	for crate_cells in _get_all_crate_cells():
-		if cell in crate_cells:
+	for crate_cell in _get_all_crate_cells():
+		if cell == crate_cell:
 			return false
 	return true
 
 func _get_all_crate_cells() -> Array:
 	var cells = []
 	for crate in crates:
-		cells.append_array(tile_layers.get_near_cells(crate))
+		cells.append(tile_layers.local_to_map(crate.global_position))
 	return cells
 
 func _on_area_2d_body_entered(body):

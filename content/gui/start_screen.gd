@@ -30,7 +30,7 @@ func _handle_debug_input(event):
 
 func _handle_test_input(event):
 	if event.is_action_released("test"):
-		get_tree().change_scene_to_file("res://content/levels/level_2.tscn")
+		get_tree().change_scene_to_file("res://content/levels/level_3.tscn")
 
 func _on_play_button_pressed():
 	Global.set_level(max_level_num)
