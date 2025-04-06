@@ -55,16 +55,16 @@ func detonate(player_cell: Vector2i):
 	tilemap.static_objects.erase(self)
 	
 	for cell in cells_to_detonate:
-		var particles = explosion_scene.instantiate()
-		particles.global_position = tilemap.map_to_local(cell)
-		particles.get_child(0).emitting = true
-		get_tree().current_scene.add_child(particles)
 
 		if cell == player_cell:
 			Global.reset()
 		tilemap.warning.set_cell(cell, -1)
 		var cell_data = tilemap.foreground.get_cell_tile_data(cell)
 		if cell_data and cell_data.get_custom_data("Breakable"):
+			var particles = explosion_scene.instantiate()
+			particles.global_position = tilemap.map_to_local(cell)
+			particles.get_child(0).emitting = true
+			get_tree().current_scene.add_child(particles)
 			tilemap.foreground.set_cell(cell, -1)
 			_update_surrounding(cell)
 		tilemap.ores.set_cell(cell, -1)

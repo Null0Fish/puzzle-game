@@ -1,13 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://colkrg5oluhjq"]
 
 [sub_resource type="Gradient" id="Gradient_6exm7"]
-colors = PackedColorArray(0.62341, 0.717037, 0.219299, 1, 1, 0.168627, 0.0117647, 1)
+offsets = PackedFloat32Array(0, 0.155093, 0.80787, 0.997685)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.133333, 0, 1, 0.843137, 1, 0, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_4x37k"]
 gradient = SubResource("Gradient_6exm7")
 
 [sub_resource type="Gradient" id="Gradient_8j8xx"]
-colors = PackedColorArray(1, 1, 1, 1, 0.720467, 0.720468, 0.720467, 0.439216)
+colors = PackedColorArray(0.820607, 0.830189, 0.763283, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ckick"]
 gradient = SubResource("Gradient_8j8xx")
@@ -15,8 +16,8 @@ gradient = SubResource("Gradient_8j8xx")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6exm7"]
 particle_flag_disable_z = true
 spread = 180.0
-initial_velocity_min = 200.0
-initial_velocity_max = 300.0
+initial_velocity_min = 25.0
+initial_velocity_max = 75.0
 gravity = Vector3(0, 300, 0)
 color_ramp = SubResource("GradientTexture1D_ckick")
 color_initial_ramp = SubResource("GradientTexture1D_4x37k")
@@ -26,8 +27,8 @@ z_index = 100
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
-amount = 50
-lifetime = 0.5
+amount = 20
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_6exm7")
