@@ -16,15 +16,15 @@ const BOMB_TEXTURES: Dictionary = {
 @onready var bomb_sprite: Sprite2D = $BombSprite 
 @onready var raycast: RayCast2D = $RayCast2D
 
-var tilemap: TileMapLayer
+var tile_layers: TileMapLayer
 var type: int
 var cells_to_detonate: Array = []
 
 func init(map: TileMapLayer, variant: int):
-	tilemap = map
+	tile_layers = map
 	type = variant
 	bomb_sprite.texture = BOMB_TEXTURES[type]
-	tilemap.static_objects.append(self)
+	tile_layers.static_objects.append(self)
 
 func _process(_delta):
 	_detect_player_collision()
@@ -35,16 +35,16 @@ func _detect_player_collision():
 		Global.reset()
 
 func _update_warning_cells():
-	cells_to_detonate = _get_cells_to_detonate(tilemap.local_to_map(global_position))
+	cells_to_detonate = _get_cells_to_detonate(tile_layers.local_to_map(global_position))
 	for cell in cells_to_detonate:
-		if tilemap.warning.get_cell_source_id(cell) != -1:
-			var atlas_pos = tilemap.warning.get_cell_atlas_coords(cell)
+		if tile_layers.warning.get_cell_source_id(cell) != -1:
+			var atlas_pos = tile_layers.warning.get_cell_atlas_coords(cell)
 			if atlas_pos != Vector2i(0, 2):
-				tilemap.warning.set_cell(cell, WARNING_ID, atlas_pos + Vector2i(1, 0))
+				tile_layers.warning.set_cell(cell, WARNING_ID, atlas_pos + Vector2i(1, 0))
 			else:
 				print("Not enough bomb warning tiles in atlas!")
 		else:
-			tilemap.warning.set_cell(cell, WARNING_ID, WARNING_TILE_ATLAS)
+			tile_layers.warning.set_cell(cell, WARNING_ID, WARNING_TILE_ATLAS)
 
 func is_on_floor() -> bool:
 	return raycast.is_colliding() and (raycast.get_collider() is TileMap or raycast.get_collider() is RigidBody2D)
@@ -52,22 +52,22 @@ func is_on_floor() -> bool:
 func detonate(player_cell: Vector2i):
 	var explosion_scene = preload("res://content/level_specific/explosion_particles.tscn")
 	
-	tilemap.static_objects.erase(self)
+	tile_layers.static_objects.erase(self)
 	
 	for cell in cells_to_detonate:
 
 		if cell == player_cell:
 			Global.reset()
-		tilemap.warning.set_cell(cell, -1)
-		var cell_data = tilemap.foreground.get_cell_tile_data(cell)
+		tile_layers.warning.set_cell(cell, -1)
+		var cell_data = tile_layers.foreground.get_cell_tile_data(cell)
 		if cell_data and cell_data.get_custom_data("Breakable"):
 			var particles = explosion_scene.instantiate()
-			particles.global_position = tilemap.map_to_local(cell)
+			particles.global_position = tile_layers.map_to_local(cell)
 			particles.get_child(0).emitting = true
 			get_tree().current_scene.add_child(particles)
-			tilemap.foreground.set_cell(cell, -1)
+			tile_layers.foreground.set_cell(cell, -1)
 			_update_surrounding(cell)
-		tilemap.ores.set_cell(cell, -1)
+		tile_layers.ores.set_cell(cell, -1)
 	
 	queue_free()
 
@@ -88,15 +88,15 @@ func _get_cells_to_detonate(cell: Vector2i) -> Array:
 
 # This wonderful code was written by u/nwb712, tysm!
 func _update_surrounding(pos: Vector2):
-	var surrounding = tilemap.foreground.get_surrounding_cells(pos)
+	var surrounding = tile_layers.foreground.get_surrounding_cells(pos)
 	var to_update = []
 	for cell in surrounding:
-		var cell_data = tilemap.foreground.get_cell_tile_data(cell)
-		if tilemap.foreground.get_cell_source_id(cell) != -1 and cell_data and cell_data.get_custom_data("Breakable"):
+		var cell_data = tile_layers.foreground.get_cell_tile_data(cell)
+		if tile_layers.foreground.get_cell_source_id(cell) != -1 and cell_data and cell_data.get_custom_data("Breakable"):
 			to_update.append(cell)
 	for cell in to_update:
-		tilemap.foreground.set_cell(cell, -1)
-	tilemap.foreground.set_cells_terrain_connect(to_update, 0, 0)
+		tile_layers.foreground.set_cell(cell, -1)
+	tile_layers.foreground.set_cells_terrain_connect(to_update, 0, 0)
 
 # Calls level_base.gd so arrays can properly be updated, then detonates locally
 func die():

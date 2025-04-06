@@ -4,7 +4,7 @@ extends Node2D
 @export var show_ui: bool
 
 @onready var hover_layer: TileMapLayer = $GlobalTileMap/HoverLayer
-@onready var tilemap: TileMapLayer = $GlobalTileMap
+@onready var tile_layers: TileMapLayer = $GlobalTileMap
 @onready var foreground: TileMapLayer = $GlobalTileMap/Foreground
 @onready var player: CharacterBody2D = $Player
 @onready var level_gui: Control = $LevelGUI
@@ -55,7 +55,7 @@ func _process(_delta):
 	if is_dragging:
 		hover_layer.set_cell(hover_layer.local_to_map(get_local_mouse_position()), 0, Vector2i(0, 0))
 	for i in range(bombs_placed.size()):
-		bomb_locations[i] = tilemap.local_to_map(bombs_placed[i].position)
+		bomb_locations[i] = tile_layers.local_to_map(bombs_placed[i].position)
 
 func upgrade_bomb_type(bomb_type: int):
 	guis[bomb_type].upgrade()
@@ -66,7 +66,7 @@ func _pick_up_bomb(index: int):
 		bomb_locations.remove_at(index)
 		bombs_placed.remove_at(index)
 		bombs_available[bomb.type] += 1
-		tilemap.static_objects.erase(bomb)
+		tile_layers.static_objects.erase(bomb)
 		bomb.queue_free()
 		guis[bomb.type].set_bomb_count(bombs_available[bomb.type])
 
@@ -74,7 +74,7 @@ func _place_bomb(cell: Vector2i, bomb_type: int):
 	var bomb = bomb_scene.instantiate()
 	bomb.position = Vector2(cell.x * TILE_SIZE + TILE_SIZE / 2, cell.y * TILE_SIZE + TILE_SIZE / 2)
 	add_child(bomb)
-	bomb.init(tilemap, bomb_type)
+	bomb.init(tile_layers, bomb_type)
 	bombs_placed.append(bomb)
 	bomb_locations.append(cell)
 	bombs_available[bomb_type] -= 1
@@ -82,7 +82,7 @@ func _place_bomb(cell: Vector2i, bomb_type: int):
 	last_placement_time = Time.get_ticks_msec() / 1000.0
 
 func _detonate_bomb(index: int):
-	bombs_placed[index].detonate(tilemap.local_to_map(player.global_position))
+	bombs_placed[index].detonate(tile_layers.local_to_map(player.global_position))
 	bombs_placed.remove_at(index)
 	bomb_locations.remove_at(index)
 
@@ -93,7 +93,7 @@ func _can_place_bomb(cell: Vector2i, bomb_type: int) -> bool:
 		return false
 	if not player.is_on_floor():
 		return false
-	if cell in tilemap.get_player_cells():
+	if cell in tile_layers.get_player_cells():
 		return false
 	if foreground.get_cell_source_id(cell) != -1:
 		return false
@@ -105,7 +105,7 @@ func _can_place_bomb(cell: Vector2i, bomb_type: int) -> bool:
 func _get_all_crate_cells() -> Array:
 	var cells = []
 	for crate in crates:
-		cells.append_array(tilemap.get_near_cells(crate))
+		cells.append_array(tile_layers.get_near_cells(crate))
 	return cells
 
 func _on_area_2d_body_entered(body):
@@ -123,6 +123,6 @@ func try_detonate_bomb(cell: Vector2i):
 		_detonate_bomb(index)
 
 func try_place_bomb(cell: Vector2):
-	cell = tilemap.local_to_map(cell)
+	cell = tile_layers.local_to_map(cell)
 	if _can_place_bomb(cell, Global.current_bomb_type):
 		_place_bomb(cell, Global.current_bomb_type)
