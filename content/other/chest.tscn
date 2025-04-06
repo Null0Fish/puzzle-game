@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c3xsraeg0wpln"]
 
-[ext_resource type="Script" uid="uid://djryv5q0gsn6t" path="res://content/level_specific/chest.gd" id="1_vvc5f"]
+[ext_resource type="Script" uid="uid://djryv5q0gsn6t" path="res://content/other/chest.gd" id="1_vvc5f"]
 [ext_resource type="Texture2D" uid="uid://bmyfi2t4kf7mx" path="res://assets/chest/closed_chest.png" id="2_p2sbf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gaelh"]

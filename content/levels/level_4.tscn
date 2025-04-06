@@ -13,10 +13,11 @@ tile_map_data = PackedByteArray("AAAEAAgAAQAEAAAAAAAEAAkAAQAEAAAAAAAFAAkAAQAEAAA
 [node name="Extras" parent="GlobalTileMap" index="3"]
 tile_map_data = PackedByteArray("AAACAAIAAgAEAAAAAAACAAMAAgAEAAAAAAACAAQAAgAEAAAAAAAIAAQAAgAEAAAAAAAIAAUAAgAEAAAAAAAIAAYAAgAEAAAAAAAPAAIAAgAEAAAAAAAPAAMAAgAEAAAAAAAPAAQAAgAEAAAAAAAPAAUAAgAEAAAAAAAMAAgAAgACAAIAAAADAAYAAgACAAAAAAAFAAUAAgAIAAAAAAAOAAkAAgAIAAAAAAA=")
 
-[node name="Chest" parent="." index="1"]
-position = Vector2(312, 104)
+[node name="LevelGUI" parent="." index="3"]
+offset_left = 135.775
+offset_right = 455.775
 
-[node name="LevelGUI" parent="." index="4"]
-position = Vector2(135.775, 0)
+[node name="Chest" parent="." index="5"]
+position = Vector2(312, 104)
 
 [editable path="GlobalTileMap"]

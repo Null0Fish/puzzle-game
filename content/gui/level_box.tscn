@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://o2vg5tkringv" path="res://content/gui/level_box.gd" id="1_dsnmk"]
 [ext_resource type="Texture2D" uid="uid://da4flkv6jx3ey" path="res://assets/gui/level_box_background.png" id="2_bxxdi"]
-[ext_resource type="Texture2D" uid="uid://bf2e0foifmvu3" path="res://assets/gui/small_lock.png" id="3_m1oeg"]
+[ext_resource type="Texture2D" uid="uid://bf2e0foifmvu3" path="res://assets/gui/level_box_lock.png" id="3_m1oeg"]
 [ext_resource type="FontFile" uid="uid://b66nc4dsrjg1t" path="res://assets/fonts/normal_font.ttf" id="4_85x4q"]
 
 [node name="LevelBox" type="PanelContainer"]

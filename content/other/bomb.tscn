@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://d4axcaigntahs"]
+[gd_scene load_steps=5 format=3 uid="uid://d4axcaigntahs"]
 
-[ext_resource type="Script" uid="uid://3r1iiqm6f5rc" path="res://content/level_specific/bomb.gd" id="1_ukdw2"]
+[ext_resource type="Script" uid="uid://3r1iiqm6f5rc" path="res://content/other/bomb.gd" id="1_ukdw2"]
 [ext_resource type="Texture2D" uid="uid://dci5icq3graxa" path="res://assets/bombs/full_bomb.png" id="2_wpwxc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0ngs4"]
@@ -9,9 +9,6 @@ height = 13.0772
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ngs4"]
 size = Vector2(0.829786, 15.9155)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_suti3"]
-size = Vector2(16, 18)
 
 [node name="Bomb" type="RigidBody2D"]
 can_sleep = false
@@ -33,12 +30,3 @@ shape = SubResource("RectangleShape2D_0ngs4")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, 9)
-
-[node name="Area2D" type="Area2D" parent="."]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_suti3")
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

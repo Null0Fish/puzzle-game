@@ -12,7 +12,7 @@ extends Node2D
 
 const TILE_SIZE = Global.TILE_SIZE
 
-var bomb_scene: PackedScene = preload("res://content/level_specific/bomb.tscn")
+var bomb_scene: PackedScene = preload("res://content/other/bomb.tscn")
 
 var bombs_placed: Array = []
 var bomb_locations: Array = []
