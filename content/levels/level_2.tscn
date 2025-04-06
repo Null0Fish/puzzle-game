@@ -13,7 +13,7 @@ tile_map_data = PackedByteArray("AAAPAAkAAQACAAAAAAAQAAkAAQACAAAAAAAQAAoAAQACAAA
 [node name="Extras" parent="GlobalTileMap" index="3"]
 tile_map_data = PackedByteArray("AAADAAMAAgAEAAAAAAADAAQAAgAEAAAAAAADAAUAAgAEAAAAAAAJAAQAAgAEAAAAAAAJAAUAAgAEAAAAAAARAAMAAgAEAAAAAAARAAQAAgAEAAAAAAARAAUAAgAEAAAAAAAGAAUAAgACAAAAAAAQAAcAAgACAAAAAAAKAAgAAgAEAAIAAAACAAYAAgAIAAAAAAA=")
 
-[node name="Player" parent="." index="7"]
+[node name="Player" parent="." index="4"]
 position = Vector2(8, 120)
 
 [editable path="GlobalTileMap"]

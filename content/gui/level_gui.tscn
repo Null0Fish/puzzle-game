@@ -77,6 +77,7 @@ layout_mode = 2
 texture_normal = ExtResource("5_r4655")
 
 [node name="LevelInfo" parent="." instance=ExtResource("8_xxy6k")]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

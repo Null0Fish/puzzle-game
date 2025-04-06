@@ -1,5 +1,3 @@
-Godot Icons:
-	- https://zeromatrix.itch.io/rpgiab-icons
 Tile Set:
 	- https://trident19.itch.io/caves-and-mines-tileset-2d-asset-pack
 Key:
@@ -9,9 +7,7 @@ Lava:
 Chest:
 	- https://skalding.itch.io/chest-16x16-open-and-closed
 Font:
-	NOT TRUE
 	- https://www.fontspace.com/teeny-tiny-pixls-font-f30095
-chars:
+	- https://www.fontspace.com/et-bt6001-font-f9581
+Characters:
 	https://almostapixel.itch.io/smallburg-town-pack
-miner chars:
-	https://itch.io/queue/c/1113979/16x16-characters?game_id=1674001
