@@ -11,9 +11,12 @@ extends Node2D
 @onready var guis: Array = level_gui.get_guis()
 
 const TILE_SIZE = Global.TILE_SIZE
+const HOVER_SOURCE : int = 0
 
 var bomb_scene: PackedScene = preload("res://content/other/bomb.tscn")
 
+var allow_hover_cords : Vector2i = Vector2i(0, 0)
+var disallow_hover_cords : Vector2i = Vector2i(2, 0)
 var bombs_placed: Array = []
 var bomb_locations: Array = []
 var crates: Array = []
@@ -53,9 +56,17 @@ func _populate_crate_list():
 func _process(_delta):
 	hover_layer.clear()
 	if is_dragging:
-		hover_layer.set_cell(hover_layer.local_to_map(get_local_mouse_position()), 0, Vector2i(0, 0))
+		var cell = tile_layers.local_to_map(get_local_mouse_position())
+		if _can_place_bomb(cell, Global.current_bomb_type):
+			_update_hover_layer(allow_hover_cords)
+		else:
+			_update_hover_layer(disallow_hover_cords)
 	for i in range(bombs_placed.size()):
 		bomb_locations[i] = tile_layers.local_to_map(bombs_placed[i].position)
+
+func _update_hover_layer(atlas_cords: Vector2i):
+	hover_layer.set_cell(hover_layer.local_to_map(get_local_mouse_position()), HOVER_SOURCE, atlas_cords)
+
 
 func upgrade_bomb_type(bomb_type: int):
 	guis[bomb_type].upgrade()

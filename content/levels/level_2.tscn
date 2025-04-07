@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=4 uid="uid://bkpv1lt0oxgl7"]
+[gd_scene load_steps=5 format=4 uid="uid://bkpv1lt0oxgl7"]
 
 [ext_resource type="PackedScene" uid="uid://crfpgs7m65kr2" path="res://content/bases/level_base.tscn" id="1_5pm44"]
+[ext_resource type="Texture2D" uid="uid://bjvvhs886uyl0" path="res://assets/tiles/hover_tile.png" id="2_nmoru"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hrw15"]
+texture = ExtResource("2_nmoru")
+0:0/0 = 0
+2:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_3o461"]
+sources/0 = SubResource("TileSetAtlasSource_hrw15")
 
 [node name="level_2" instance=ExtResource("1_5pm44")]
 
@@ -12,6 +21,10 @@ tile_map_data = PackedByteArray("AAAPAAkAAQACAAAAAAAQAAkAAQACAAAAAAAQAAoAAQACAAA
 
 [node name="Extras" parent="GlobalTileMap" index="3"]
 tile_map_data = PackedByteArray("AAADAAMAAgAEAAAAAAADAAQAAgAEAAAAAAADAAUAAgAEAAAAAAAJAAQAAgAEAAAAAAAJAAUAAgAEAAAAAAARAAMAAgAEAAAAAAARAAQAAgAEAAAAAAARAAUAAgAEAAAAAAAGAAUAAgACAAAAAAAQAAcAAgACAAAAAAAKAAgAAgAEAAIAAAACAAYAAgAIAAAAAAA=")
+
+[node name="HoverLayer" parent="GlobalTileMap" index="5"]
+tile_map_data = PackedByteArray("AAANAAQAAAACAAAAAAAMAAQAAAAAAAAAAAALAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAUAAAACAAAAAAALAAUAAAACAAAAAAAMAAUAAAACAAAAAAANAAUAAAACAAAAAAA=")
+tile_set = SubResource("TileSet_3o461")
 
 [node name="Player" parent="." index="3"]
 position = Vector2(8, 120)
