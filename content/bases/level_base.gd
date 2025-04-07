@@ -78,7 +78,7 @@ func _pick_up_bomb(index: int):
 		bombs_placed.remove_at(index)
 		bombs_available[bomb.type] += 1
 		tile_layers.static_objects.erase(bomb)
-		bomb.queue_free()
+		bomb.remove()
 		guis[bomb.type].set_bomb_count(bombs_available[bomb.type])
 
 func _place_bomb(cell: Vector2i, bomb_type: int):

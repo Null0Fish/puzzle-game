@@ -9,7 +9,7 @@ const MAX_BOMB_LEVEL : int = 2
 const NONE : Array = [0, 0, 0]
 
 # Tile information
-const PLAYER_SIZE : float = 8.0
+const PLAYER_SIZE : float = 16.0
 const TILE_SIZE : float = 16.0
 const GUI_TILES : Array = [
 	Vector2i(0, 0),
@@ -40,6 +40,7 @@ var paused : bool = false
 var current_bomb_type : int = DIAGONAL
 var bomb_levels : Array = [0, 0, 0]
 var unlocked_levels : Array = [0]
+var solid_warning_layers : Array = []
 
 # Functions
 func get_bombs_available(level : int) -> Array:
@@ -47,8 +48,15 @@ func get_bombs_available(level : int) -> Array:
 		return BOMBS_AVAILABLE[level].duplicate()
 	return NONE.duplicate()
 
+func has_solid_warning_tile_at(cell : Vector2i):
+	for solid_warning_layer in solid_warning_layers:
+		if solid_warning_layer.get_cell_source_id(cell) != -1:
+			return true
+	return false
+
 func set_level(level_num : int):
 	if level_num <= MAX_LEVELS:
+		reset()
 		get_tree().change_scene_to_file(LEVEL_FILE + str(level_num) + ".tscn")
 	else:
 		print("Uh oh no more levels D;")
@@ -59,4 +67,5 @@ func get_current_level() -> int:
 func reset():
 	current_bomb_type = DIAGONAL
 	bomb_levels = [0, 0, 0]
+	solid_warning_layers = []
 	get_tree().reload_current_scene()

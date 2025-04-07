@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://d4axcaigntahs"]
+[gd_scene load_steps=11 format=3 uid="uid://d4axcaigntahs"]
 
 [ext_resource type="Script" uid="uid://3r1iiqm6f5rc" path="res://content/other/bomb.gd" id="1_ukdw2"]
 [ext_resource type="Texture2D" uid="uid://dci5icq3graxa" path="res://assets/bombs/full_bomb.png" id="2_wpwxc"]
-[ext_resource type="Texture2D" uid="uid://dyrkgm6wt01e1" path="res://assets/tiles/warning_tile.png" id="3_o2vj0"]
+[ext_resource type="Texture2D" uid="uid://dyrkgm6wt01e1" path="res://assets/tiles/opaque_warning_tile.png" id="3_o2vj0"]
+[ext_resource type="Texture2D" uid="uid://dofboosxtvhm3" path="res://assets/tiles/solid_warning_tile.png" id="4_fpio6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0ngs4"]
 radius = 6.15214
@@ -17,6 +18,13 @@ texture = ExtResource("3_o2vj0")
 
 [sub_resource type="TileSet" id="TileSet_1ff8c"]
 sources/0 = SubResource("TileSetAtlasSource_fpio6")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ff8c"]
+texture = ExtResource("4_fpio6")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_7o66m"]
+sources/0 = SubResource("TileSetAtlasSource_1ff8c")
 
 [node name="Bomb" type="RigidBody2D"]
 can_sleep = false
@@ -39,7 +47,12 @@ shape = SubResource("RectangleShape2D_0ngs4")
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, 9)
 
-[node name="WarningLayer" type="TileMapLayer" parent="."]
+[node name="OpaqueWarningLayer" type="TileMapLayer" parent="."]
 z_index = 2
 use_parent_material = true
 tile_set = SubResource("TileSet_1ff8c")
+
+[node name="SolidWarningLayer" type="TileMapLayer" parent="."]
+z_index = 2
+use_parent_material = true
+tile_set = SubResource("TileSet_7o66m")

@@ -42,6 +42,6 @@ tile_set = ExtResource("1_g3lo4")
 metadata/_edit_lock_ = true
 
 [node name="HoverLayer" type="TileMapLayer" parent="."]
-z_index = 2
+z_index = 4
 tile_set = SubResource("TileSet_3o461")
 metadata/_edit_lock_ = true

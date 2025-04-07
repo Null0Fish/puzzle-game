@@ -13,7 +13,8 @@ const BOMB_TEXTURES: Dictionary = {
 	FULL: preload("res://assets/bombs/full_bomb.png")
 }
 
-@onready var warning_layer: TileMapLayer = $WarningLayer
+@onready var opaque_warning_layer: TileMapLayer = $OpaqueWarningLayer
+@onready var solid_warning_layer: TileMapLayer = $SolidWarningLayer
 @onready var bomb_sprite: Sprite2D = $BombSprite 
 @onready var raycast: RayCast2D = $RayCast2D
 
@@ -26,10 +27,10 @@ func init(map: TileMapLayer, variant: int):
 	tile_layers = map
 	type = variant
 	bomb_sprite.texture = BOMB_TEXTURES[type]
+	Global.solid_warning_layers.append(solid_warning_layer)
 	tile_layers.static_objects.append(self)
 
 func _process(_delta):
-	warning_layer.global_position = Vector2(0, 0)
 	_detect_player_collision()
 	_update_warning_cells()
 
@@ -38,10 +39,16 @@ func _detect_player_collision():
 		Global.reset()
 
 func _update_warning_cells():
-	warning_layer.clear()
-	cells_to_detonate = _get_cells_to_detonate(warning_layer.local_to_map(global_position))
+	solid_warning_layer.global_position = Vector2.ZERO
+	opaque_warning_layer.global_position = Vector2.ZERO
+	solid_warning_layer.clear()
+	opaque_warning_layer.clear()
+	cells_to_detonate = _get_cells_to_detonate(tile_layers.local_to_map(global_position))
 	for cell in cells_to_detonate:
-		warning_layer.set_cell(cell, WARNING_ID, WARNING_TILE_ATLAS)
+		if not Global.has_solid_warning_tile_at(cell):
+			solid_warning_layer.set_cell(cell, WARNING_ID, WARNING_TILE_ATLAS)
+		else:
+			opaque_warning_layer.set_cell(cell, WARNING_ID, WARNING_TILE_ATLAS)
 
 func is_on_floor() -> bool:
 	return raycast.is_colliding() and (raycast.get_collider() is TileMap or raycast.get_collider() is RigidBody2D)
@@ -57,7 +64,7 @@ func detonate(player_cell: Vector2i):
 			tile_layers.foreground.set_cell(cell, -1)
 			_update_surrounding(cell)
 		tile_layers.ores.set_cell(cell, -1)
-	queue_free()
+	remove()
 
 func _create_explosion_particles(cell: Vector2i):
 	var particles = explosion_scene.instantiate()
@@ -68,6 +75,7 @@ func _create_explosion_particles(cell: Vector2i):
 func _get_cells_to_detonate(cell: Vector2i) -> Array:
 	var bomb_level = Global.bomb_levels[type]
 	var cells = []
+	cells.append(cell)
 	for y in range(cell.y - bomb_level - 1, cell.y + bomb_level + 2):
 		for x in range(cell.x - bomb_level - 1, cell.x + bomb_level + 2):
 			if cell.x != x or cell.y != y:
@@ -94,4 +102,5 @@ func die():
 	get_tree().current_scene.detonate_bomb(self)
 
 func remove():
+	Global.solid_warning_layers.remove_at(Global.solid_warning_layers.find(solid_warning_layer))
 	queue_free()

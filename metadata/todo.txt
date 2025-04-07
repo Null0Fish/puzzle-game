@@ -1,8 +1,6 @@
 Core Gameplay Features:
 	- Bomb Interactions:
 		- Make placed bombs draggable
-	- Visual Layers:
-		- Redo warning layers to add tilelayer children with opaque tiles
 	- Animations & Effects:
 		- Player jump and death animations
 		- Chest open particles/animation
