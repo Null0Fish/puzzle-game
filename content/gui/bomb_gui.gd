@@ -8,7 +8,6 @@ const TILE_SIZE = Global.TILE_SIZE
 
 var type: int
 var style_box_flat: StyleBoxFlat = StyleBoxFlat.new()
-
 var dragging: bool = false
 var ghost_bomb: Sprite2D = null
 var tween: Tween = null

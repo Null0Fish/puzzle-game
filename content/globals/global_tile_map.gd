@@ -4,7 +4,6 @@ extends TileMapLayer
 @onready var foreground: TileMapLayer = $Foreground
 @onready var ores: TileMapLayer = $Ores
 @onready var extras: TileMapLayer = $Extras
-@onready var warning: TileMapLayer = $Warning
 @onready var static_objects: Array = [$"../Player"]
 @onready var player: Player = $"../Player"
 
@@ -12,7 +11,6 @@ const VINE_ATLAS: Vector2i = Vector2i(4, 0)
 const KEY_SET_ID: int = 4
 
 func _process(_delta):
-	_clear_warnings()
 	_destroy_floating_objects()
 	_check_static_object_collisions()
 
@@ -43,9 +41,6 @@ func _destroy_floating_objects():
 		elif not _is_normal_cell(cell_below):
 			extras.set_cell(cell, -1)
 
-func _clear_warnings():
-	for warning_cell in warning.get_used_cells():
-		warning.set_cell(warning_cell, -1)
 
 func _is_vine(cell: Vector2i) -> bool:
 	return extras.get_cell_atlas_coords(cell) == VINE_ATLAS
