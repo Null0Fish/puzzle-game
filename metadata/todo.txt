@@ -6,9 +6,6 @@ Core Gameplay Features:
 		- Add sound effects (general need)
 	- Tutorial:
 		- Information text should be added to the first few levels
-		- The question mark button should do something
-	- Bomb GUI:
-		- Add propper background
 
 Advanced / Future Features:
 	- Level Progression:
@@ -17,3 +14,5 @@ Advanced / Future Features:
 		- Create indicator icons to hint at optimal bomb placements
 	- Optimization:
 		- Refactor all tile layers to reduce redundant resources
+	- Bomb GUI:
+		- Make question button toggle with bomb gui
