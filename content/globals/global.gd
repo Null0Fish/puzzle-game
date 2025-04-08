@@ -24,10 +24,18 @@ const BOMBS_AVAILABLE : Array = [
 	NONE,
 	[3, 3, 3],
 	[0, 1, 0],
-	[1, 1, 1],
+	[2, 2, 2],
 ]
 
 const LEVEL_FILE : String = "res://content/levels/level_"
+
+# GUI Information
+const GUI_CELLS : Array = [
+	Vector2i(8,0),
+	Vector2i(9,0),
+	Vector2i(10,0),
+	Vector2i(11,0),
+]
 
 # State variables
 var paused : bool = false

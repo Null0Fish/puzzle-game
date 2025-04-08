@@ -59,7 +59,7 @@ func detonate(player_cell: Vector2i):
 		if cell == player_cell:
 			Global.reset()
 		var cell_data = tile_layers.foreground.get_cell_tile_data(cell)
-		if cell_data and cell_data.get_custom_data("Breakable"):
+		if cell_data and cell_data.get_custom_data("Breakable") and not cell in Global.GUI_CELLS:
 			_create_explosion_particles(cell)
 			tile_layers.foreground.set_cell(cell, -1)
 			_update_surrounding(cell)

@@ -38,6 +38,9 @@ func _on_play_button_pressed():
 func _on_menu_button_pressed():
 	_move_camera(DELTA_POS)
 
+func _on_settings_button_pressed() -> void:
+	pass # Replace with function body.
+
 func _on_home_button_pressed():
 	_move_camera(-DELTA_POS)
 
@@ -46,7 +49,6 @@ func _move_camera(offset: float):
 		return
 	block_input = true
 	timer.start(CAMERA_MOVE_TIME)
-	
 	var target_x = camera_2d.position.x + offset
 	var tween := get_tree().create_tween()
 	tween.tween_property(camera_2d, "position:x", target_x, CAMERA_MOVE_TIME).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)

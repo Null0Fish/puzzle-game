@@ -115,9 +115,10 @@ func _can_place_bomb(cell: Vector2i, bomb_type: int) -> bool:
 		return false
 	if foreground.get_cell_source_id(cell) != -1:
 		return false
-	for crate_cell in _get_all_crate_cells():
-		if cell == crate_cell:
-			return false
+	if cell in Global.GUI_CELLS:
+		return false
+	if cell in _get_all_crate_cells():
+		return false
 	return true
 
 func _get_all_crate_cells() -> Array:
