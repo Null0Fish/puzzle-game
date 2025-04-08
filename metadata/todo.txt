@@ -3,8 +3,12 @@ Core Gameplay Features:
 		- Make placed bombs draggable
 	- Animations & Effects:
 		- Player jump and death animations
-		- Chest open particles/animation
 		- Add sound effects (general need)
+	- Tutorial:
+		- Information text should be added to the first few levels
+		- The question mark button should do something
+	- Bomb GUI:
+		- Add propper background
 
 Advanced / Future Features:
 	- Level Progression:

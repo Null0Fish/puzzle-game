@@ -12,6 +12,7 @@ z_index = 2
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_87gd4")
+metadata/_edit_group_ = true
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1

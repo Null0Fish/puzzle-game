@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccjisfwchk5mo"]
+
+[ext_resource type="Texture2D" uid="uid://bpw5ibrrxhv81" path="res://assets/gui/question_mark.png" id="1_0ycyd"]
+[ext_resource type="Script" uid="uid://yc0g6j4qpu87" path="res://content/gui/question_gui.gd" id="1_h1bev"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1bev"]
+bg_color = Color(0.133333, 0.12549, 0.203922, 1)
+
+[node name="QuestionGUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 8
+script = ExtResource("1_h1bev")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_h1bev")
+
+[node name="QuestionButton" type="TextureButton" parent="."]
+layout_mode = 1
+offset_right = 16.0
+offset_bottom = 16.0
+texture_normal = ExtResource("1_0ycyd")
+
+[connection signal="pressed" from="QuestionButton" to="." method="_on_question_button_pressed"]

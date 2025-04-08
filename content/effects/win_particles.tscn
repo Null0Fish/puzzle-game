@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c52aht0fne1ud"]
+
+[sub_resource type="Gradient" id="Gradient_ot20p"]
+colors = PackedColorArray(0, 1, 0, 1, 9.35541e-07, 0.26907, 9.62615e-08, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bq7ek"]
+gradient = SubResource("Gradient_ot20p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ot20p"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 98, 0)
+color_initial_ramp = SubResource("GradientTexture1D_bq7ek")
+
+[node name="WinParticles" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 200
+explosiveness = 0.5
+process_material = SubResource("ParticleProcessMaterial_ot20p")
