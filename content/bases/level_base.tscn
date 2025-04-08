@@ -45,6 +45,6 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("7_lhmjq")
 
-[connection signal="body_entered" from="DeathBox" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="DeathBox" to="." method="_on_death_box_body_entered"]
 
 [editable path="GlobalTileMap"]

@@ -51,7 +51,7 @@ func _update_warning_cells():
 			opaque_warning_layer.set_cell(cell, WARNING_ID, WARNING_TILE_ATLAS)
 
 func is_on_floor() -> bool:
-	return raycast.is_colliding() and (raycast.get_collider() is TileMap or raycast.get_collider() is RigidBody2D)
+	return raycast.is_colliding() and (raycast.get_collider() is TileMapLayer or raycast.get_collider() is RigidBody2D)
 
 func detonate(player_cell: Vector2i):	
 	tile_layers.static_objects.erase(self)
@@ -64,7 +64,6 @@ func detonate(player_cell: Vector2i):
 			tile_layers.foreground.set_cell(cell, -1)
 			_update_surrounding(cell)
 		tile_layers.ores.set_cell(cell, -1)
-	remove()
 
 func _create_explosion_particles(cell: Vector2i):
 	var particles = explosion_scene.instantiate()

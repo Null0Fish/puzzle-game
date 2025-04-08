@@ -6,9 +6,6 @@ Core Gameplay Features:
 		- Chest open particles/animation
 		- Add sound effects (general need)
 
-Current Bugs / Issues:
-	 - Bombs can be detonated in mid-air (fix required)
-
 Advanced / Future Features:
 	- Level Progression:
 		- Update level menu buttons if a level is completed perfectly (fewest bombs possible)
@@ -16,6 +13,3 @@ Advanced / Future Features:
 		- Create indicator icons to hint at optimal bomb placements
 	- Optimization:
 		- Refactor all tile layers to reduce redundant resources
-	- Bomb UI:
-		- Option to Detonate
-		- Option to Pick up

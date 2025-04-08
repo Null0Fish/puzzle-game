@@ -9,4 +9,4 @@ func _on_area_2d_body_entered(body):
 			queue_free()
 			Global.bomb_levels[current_bomb_type] = Global.bomb_levels[current_bomb_type] + 1
 		else:
-			print("ERROR NO MORE LEVELS")
+			print("ERROR NO MORE UPGRADES POSSIBLE")
