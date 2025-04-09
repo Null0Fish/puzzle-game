@@ -58,6 +58,7 @@ func detonate(player_cell: Vector2i):
 	for cell in cells_to_detonate:
 		if cell == player_cell:
 			Global.restart()
+			return
 		var cell_data = tile_layers.foreground.get_cell_tile_data(cell)
 		if cell_data and cell_data.get_custom_data("Breakable") and not cell in Global.GUI_CELLS:
 			_create_explosion_particles(cell)
@@ -101,5 +102,8 @@ func die():
 	get_tree().current_scene.try_detonate_bomb(tile_layers.local_to_map(position))
 
 func remove():
-	Global.solid_warning_layers.remove_at(Global.solid_warning_layers.find(solid_warning_layer))
+	# VERY BAD CODE
+	var index = Global.solid_warning_layers.find(solid_warning_layer)
+	if index != -1:
+		Global.solid_warning_layers.remove_at(index)
 	queue_free()

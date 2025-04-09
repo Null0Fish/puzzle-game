@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=4 uid="uid://ck4kc3lfpd58f"]
+[gd_scene load_steps=3 format=4 uid="uid://ck4kc3lfpd58f"]
 
 [ext_resource type="PackedScene" uid="uid://crfpgs7m65kr2" path="res://content/bases/level_base.tscn" id="1_eiord"]
+[ext_resource type="PackedScene" uid="uid://cqkwtlr5v4t2k" path="res://content/level_specific/tutorial_text.tscn" id="2_j2lr0"]
 
 [node name="level_1" instance=ExtResource("1_eiord")]
 level_name = "Restarting"
@@ -15,7 +16,14 @@ tile_map_data = PackedByteArray("AAARAAUAAQAEAAAAAAASAAUAAQAEAAAAAAASAAYAAQAEAAA
 [node name="Extras" parent="GlobalTileMap" index="3"]
 tile_map_data = PackedByteArray("AAAEAAIAAgAEAAAAAAAEAAMAAgAEAAAAAAAEAAQAAgAEAAAAAAANAAEAAgAEAAAAAAANAAIAAgAEAAAAAAANAAMAAgAEAAAAAAAEAAUAAgAEAAAAAAAEAAYAAgAEAAAAAAAKAAQAAgAIAAAAAAACAAoAAgAEAAIAAAAPAAkAAgACAAIAAAAQAAMAAgACAAAAAAABAAUAAgACAAAAAAA=")
 
-[node name="Chest" parent="." index="4"]
+[node name="Chest" parent="." index="5"]
 position = Vector2(312, 56)
+
+[node name="TutorialText" parent="." index="7" instance=ExtResource("2_j2lr0")]
+offset_left = 131.0
+offset_top = 116.0
+offset_right = 197.0
+offset_bottom = 136.0
+text = "If you get stuck you can use r to restart"
 
 [editable path="GlobalTileMap"]

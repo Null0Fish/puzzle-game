@@ -5,13 +5,13 @@ Core Gameplay Features:
 		- Player jump and death animations
 		- Add sound effects (general need)
 	- Tutorial:
-		- Information text should be added to the first few levels
 		- To add clarity, bombs should have hover-tips that say their bomb type
-	- General:
-		- Add some crisp level transition effects (maybe just fade to black) 
 
 Debugging:
 	- Issues arise when a player jumps next two crates, causes quasi death
+
+Level Design:
+	- Would be more optimal if bomb upgrades and crates could be placed as tiles
 
 Advanced / Future Features:
 	- Level Progression:

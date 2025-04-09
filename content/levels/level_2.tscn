@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://bkpv1lt0oxgl7"]
+[gd_scene load_steps=7 format=4 uid="uid://bkpv1lt0oxgl7"]
 
 [ext_resource type="PackedScene" uid="uid://crfpgs7m65kr2" path="res://content/bases/level_base.tscn" id="1_5pm44"]
 [ext_resource type="Texture2D" uid="uid://bjvvhs886uyl0" path="res://assets/tiles/hover_tile.png" id="2_nmoru"]
+[ext_resource type="Script" uid="uid://dysl6ca35mti0" path="res://content/levels/tutorial_text_controler.gd" id="3_jukad"]
+[ext_resource type="PackedScene" uid="uid://cqkwtlr5v4t2k" path="res://content/level_specific/tutorial_text.tscn" id="4_2jvad"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hrw15"]
 texture = ExtResource("2_nmoru")
@@ -26,7 +28,38 @@ tile_map_data = PackedByteArray("AAADAAMAAgAEAAAAAAADAAQAAgAEAAAAAAADAAUAAgAEAAA
 [node name="HoverLayer" parent="GlobalTileMap" index="4"]
 tile_set = SubResource("TileSet_3o461")
 
-[node name="Player" parent="." index="3"]
+[node name="Player" parent="." index="4"]
 position = Vector2(8, 120)
+
+[node name="TutorialTextControler" type="Node" parent="." index="7"]
+script = ExtResource("3_jukad")
+
+[node name="FirstTutorialText" parent="TutorialTextControler" index="0" instance=ExtResource("4_2jvad")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 74.0
+offset_top = 11.0
+offset_right = 114.0
+offset_bottom = 34.0
+grow_horizontal = 1
+grow_vertical = 1
+text = "Drag a bomb to place it"
+
+[node name="SecondTutorialText" parent="TutorialTextControler" index="1" instance=ExtResource("4_2jvad")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 44.0
+offset_top = 147.0
+offset_right = 83.9996
+offset_bottom = 173.0
+grow_horizontal = 1
+grow_vertical = 1
+text = "Detonate bombs by right clicking them"
 
 [editable path="GlobalTileMap"]

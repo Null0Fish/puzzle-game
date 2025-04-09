@@ -21,7 +21,7 @@ func _on_body_entered(body : Node):
 			Global.unlocked_levels.append(next_level)
 		Global.paused = true
 		win_particles.show()
-		timer.start(1.5)
+		timer.start(1.65)
 
 func _on_timer_timeout():
 	await fade.fade_out()
