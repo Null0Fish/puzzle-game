@@ -11,9 +11,11 @@ var should_fade: bool
 func _ready() -> void:
 	show()
 	should_fade = false
-	timer.start(.5)
+	timer.start(.75)
 
 func _process(_delta: float) -> void:
+	if Global.has_restarted:
+		hide()
 	if should_fade:
 		modulate.a -= .01
 

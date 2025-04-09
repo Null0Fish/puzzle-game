@@ -56,4 +56,4 @@ func _update_facing_direction():
 		sprite.play("idle")
 
 func die():
-	Global.call_deferred("reset")
+	Global.call_deferred("restart")

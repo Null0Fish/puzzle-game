@@ -36,7 +36,7 @@ func _process(_delta):
 
 func _detect_player_collision():
 	if raycast.is_colliding() and raycast.get_collider() is Player:
-		Global.reset()
+		Global.restart()
 
 func _update_warning_cells():
 	solid_warning_layer.global_position = Vector2.ZERO
@@ -57,7 +57,7 @@ func detonate(player_cell: Vector2i):
 	tile_layers.static_objects.erase(self)
 	for cell in cells_to_detonate:
 		if cell == player_cell:
-			Global.reset()
+			Global.restart()
 		var cell_data = tile_layers.foreground.get_cell_tile_data(cell)
 		if cell_data and cell_data.get_custom_data("Breakable") and not cell in Global.GUI_CELLS:
 			_create_explosion_particles(cell)

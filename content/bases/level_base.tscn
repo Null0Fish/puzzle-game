@@ -15,6 +15,18 @@ script = ExtResource("1_r71if")
 level_name = "Text Here"
 show_ui = true
 
+[node name="Fade" type="ColorRect" parent="."]
+visible = false
+z_index = 27
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 320.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.309804, 0.403922, 0.505882, 1)
+
 [node name="GlobalTileMap" parent="." instance=ExtResource("5_qb2hu")]
 
 [node name="Background" parent="GlobalTileMap" index="0"]

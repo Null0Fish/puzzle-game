@@ -8,7 +8,7 @@ func _input(event):
 		return
 		
 	if event.is_action_released("restart_level"):
-		Global.reset()
+		Global.restart()
 	
 	if event.is_action_released("exit"):
 		get_tree().change_scene_to_file("res://content/gui/start_screen.tscn")

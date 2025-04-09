@@ -9,6 +9,7 @@ extends Node2D
 @onready var player: CharacterBody2D = $Player
 @onready var level_gui: Control = $LevelGUI
 @onready var guis: Array = level_gui.get_guis()
+@onready var fade: ColorRect = $Fade
 
 const TILE_SIZE = Global.TILE_SIZE
 const HOVER_SOURCE: int = 0
@@ -25,6 +26,7 @@ var last_placement_time: float
 var is_dragging: bool
 
 func _ready():
+	fade.show()
 	_initialize_level()
 	_populate_crate_list()
 
@@ -64,7 +66,7 @@ func _process(_delta):
 			_update_hover_layer(allow_hover_cords)
 		else:
 			_update_hover_layer(disallow_hover_cords)
-	
+	fade.modulate.a -= 0.01
 	_update_bomb_locations()
 
 func _update_hover_layer(atlas_cords: Vector2i):

@@ -21,7 +21,7 @@ func _on_level_button_pressed():
 	get_tree().change_scene_to_file("res://content/gui/start_screen.tscn")
 
 func _on_restart_button_pressed():
-	Global.reset()
+	Global.restart()
 
 func _on_question_button_pressed() -> void:
 	pass # Replace with function body.

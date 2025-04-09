@@ -26,6 +26,8 @@ const BOMBS_AVAILABLE : Array = [
 	[0, 1, 0],
 	[2, 2, 2],
 ]
+var current_level_num : int = 0
+var has_restarted : bool = false
 
 const LEVEL_FILE : String = "res://content/levels/level_"
 
@@ -61,6 +63,7 @@ func has_solid_warning_tile_at(cell : Vector2i):
 func set_level(level_num : int):
 	if level_num <= MAX_LEVELS:
 		reset()
+		current_level_num = level_num
 		get_tree().change_scene_to_file(LEVEL_FILE + str(level_num) + ".tscn")
 	else:
 		print("ERROR NO MORE LEVELS")
@@ -69,7 +72,15 @@ func set_level(level_num : int):
 func get_current_level() -> int:
 	return get_tree().current_scene.scene_file_path.to_int()
 
+func restart():
+	has_restarted = true
+	current_bomb_type = DIAGONAL
+	bomb_levels = [0, 0, 0]
+	solid_warning_layers = []
+	get_tree().reload_current_scene()
+
 func reset():
+	has_restarted = false
 	current_bomb_type = DIAGONAL
 	bomb_levels = [0, 0, 0]
 	solid_warning_layers = []
