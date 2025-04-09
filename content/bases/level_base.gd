@@ -31,15 +31,18 @@ func _ready():
 func _initialize_level():
 	is_dragging = false
 	last_placement_time = 0.0
-	level_gui.set_name(level_name)
+	level_gui.set_title(level_name)
 	level_gui.set_level(str(Global.get_current_level() + 1))
 	Global.paused = false
 	Global.current_bomb_type = Global.DIAGONAL
 	
+	var level_gui_background = level_gui.get_gui_background()
 	if show_ui:
 		level_gui.bomb_gui.show()
+		level_gui_background.show()
 	else:
 		level_gui.bomb_gui.hide()
+		level_gui_background.hide()
 	
 	var level_num = Global.get_current_level()
 	bombs_available = Global.get_bombs_available(level_num)

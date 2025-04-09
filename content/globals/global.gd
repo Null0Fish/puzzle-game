@@ -18,7 +18,7 @@ const GUI_TILES : Array = [
 ]
 
 # Level information
-const MAX_LEVELS : int = 5
+const MAX_LEVELS : int = 4
 const BOMBS_AVAILABLE : Array = [
 	NONE,
 	NONE,
@@ -46,6 +46,8 @@ var solid_warning_layers : Array = []
 
 # Functions
 func get_bombs_available(level : int) -> Array:
+	if level == -1:
+		return [9, 9, 9]
 	if BOMBS_AVAILABLE.size() >= level + 1:
 		return BOMBS_AVAILABLE[level].duplicate()
 	return NONE.duplicate()
@@ -62,6 +64,7 @@ func set_level(level_num : int):
 		get_tree().change_scene_to_file(LEVEL_FILE + str(level_num) + ".tscn")
 	else:
 		print("ERROR NO MORE LEVELS")
+		get_tree().change_scene_to_file("res://content/gui/start_screen.tscn")
 
 func get_current_level() -> int:
 	return get_tree().current_scene.scene_file_path.to_int()

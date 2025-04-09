@@ -7,6 +7,9 @@ Core Gameplay Features:
 	- Tutorial:
 		- Information text should be added to the first few levels
 
+Debugging:
+	- Issues arise when a player jumps next two crates, cause quasi death
+
 Advanced / Future Features:
 	- Level Progression:
 		- Update level menu buttons if a level is completed perfectly (fewest bombs possible)

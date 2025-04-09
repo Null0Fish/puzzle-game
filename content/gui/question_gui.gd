@@ -1,7 +1,7 @@
 extends Control
 
-@onready var panel: Panel = $VBoxContainer/CenterContainer/Panel
-@onready var label: Label = $VBoxContainer/Label
+@onready var label: Label = $Label
+@onready var panel: Panel = $CenterContainer/Panel
 
 var style_box_flat: StyleBoxFlat = StyleBoxFlat.new()
 var is_active_panel: bool = false

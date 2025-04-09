@@ -13,29 +13,30 @@ anchors_preset = 0
 size_flags_horizontal = 8
 script = ExtResource("1_h1bev")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 2
 offset_right = 16.0
 offset_bottom = 16.0
-theme_override_constants/separation = 14
-metadata/_edit_group_ = true
-
-[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
-layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="Panel" type="Panel" parent="VBoxContainer/CenterContainer"]
+[node name="Panel" type="Panel" parent="CenterContainer"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_h1bev")
 
-[node name="QuestionButton" type="TextureButton" parent="VBoxContainer/CenterContainer"]
+[node name="QuestionButton" type="TextureButton" parent="CenterContainer"]
 layout_mode = 2
+focus_mode = 0
 texture_normal = ExtResource("1_0ycyd")
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="."]
 visible = false
+z_index = 10
 layout_mode = 2
+offset_left = -48.0
+offset_top = 30.0
+offset_right = 62.0
+offset_bottom = 100.0
 size_flags_horizontal = 8
 theme_override_constants/line_spacing = 15
 theme_override_fonts/font = ExtResource("3_aoqm3")
@@ -45,5 +46,6 @@ Detonate Bomb right click
 Pick Up Bomb left click
 Exit esc or b
 Move WASD"
+horizontal_alignment = 1
 
-[connection signal="pressed" from="VBoxContainer/CenterContainer/QuestionButton" to="." method="_on_question_button_pressed"]
+[connection signal="pressed" from="CenterContainer/QuestionButton" to="." method="_on_question_button_pressed"]

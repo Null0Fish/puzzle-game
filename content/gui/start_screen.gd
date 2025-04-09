@@ -23,14 +23,14 @@ func _input(event):
 	_handle_test_input(event)
 
 func _handle_debug_input(event):
-	if event.is_action_released("debug"):
-		for i in Global.MAX_LEVELS:
+	if event.is_action_released("debug_unlock_levels"):
+		for i in Global.MAX_LEVELS + 1:
 			Global.unlocked_levels.append(i)
 		$MenuUI/LevelGrid._ready()
 
 func _handle_test_input(event):
-	if event.is_action_released("test"):
-		get_tree().change_scene_to_file("res://content/levels/level_2.tscn")
+	if event.is_action_released("debug_test_level"):
+		get_tree().change_scene_to_file("res://content/levels/level_-1.tscn")
 
 func _on_play_button_pressed():
 	Global.set_level(max_level_num)
