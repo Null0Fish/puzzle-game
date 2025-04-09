@@ -8,5 +8,3 @@ func _on_area_2d_body_entered(body):
 			get_tree().current_scene.upgrade_bomb_type(current_bomb_type)
 			queue_free()
 			Global.bomb_levels[current_bomb_type] = Global.bomb_levels[current_bomb_type] + 1
-		else:
-			print("ERROR NO MORE UPGRADES POSSIBLE")

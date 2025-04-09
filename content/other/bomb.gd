@@ -98,7 +98,7 @@ func _update_surrounding(pos: Vector2):
 	tile_layers.foreground.set_cells_terrain_connect(to_update, 0, 0)
 
 func die():
-	get_tree().current_scene.detonate_bomb(self)
+	get_tree().current_scene.try_detonate_bomb(tile_layers.local_to_map(position))
 
 func remove():
 	Global.solid_warning_layers.remove_at(Global.solid_warning_layers.find(solid_warning_layer))
