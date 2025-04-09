@@ -85,3 +85,11 @@ func reset():
 	bomb_levels = [0, 0, 0]
 	solid_warning_layers = []
 	get_tree().reload_current_scene()
+
+func type_to_string(type : int):
+	if type == ADJACENT:
+		return "Adjacent"
+	if type == DIAGONAL:
+		return "Diagonal"
+	if type == FULL:
+		return "Full"

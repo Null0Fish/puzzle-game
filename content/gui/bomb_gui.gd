@@ -3,6 +3,7 @@ extends Control
 @onready var sprite: Sprite2D = $BombIcon
 @onready var bomb_count: Label = $BombCount
 @onready var panel: Panel = $Panel
+@onready var tooltip_label: Label = $TooltipLabel
 
 const TILE_SIZE = Global.TILE_SIZE
 
@@ -14,13 +15,21 @@ var tween: Tween = null
 
 func _process(_delta):
 	_update_panel_style()
+	
+	if panel.get_rect().has_point(panel.get_local_mouse_position()):
+		tooltip_label.text = Global.type_to_string(type)
+		tooltip_label.visible = true
+	else:
+		tooltip_label.visible = false
+
 	if dragging:
-		sprite.modulate.a = .75
+		sprite.modulate.a = 0.75
 		if ghost_bomb:
 			var target_position = (get_global_mouse_position() / TILE_SIZE).floor() * TILE_SIZE + Vector2(TILE_SIZE / 2, TILE_SIZE / 2)
 			_move_ghost_bomb(target_position)
 	else:
 		sprite.modulate.a = 1
+
 
 func _move_ghost_bomb(target_position: Vector2):
 	if tween and tween.is_running():

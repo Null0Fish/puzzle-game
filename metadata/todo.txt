@@ -4,8 +4,6 @@ Core Gameplay Features:
 	- Animations & Effects:
 		- Player jump and death animations
 		- Add sound effects (general need)
-	- Tutorial:
-		- To add clarity, bombs should have hover-tips that say their bomb type
 
 Debugging:
 	- Issues arise when a player jumps next two crates, causes quasi death

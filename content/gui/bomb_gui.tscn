@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://8xsf5j74u2cf"]
+[gd_scene load_steps=6 format=3 uid="uid://8xsf5j74u2cf"]
 
 [ext_resource type="Script" uid="uid://dk8nnm4du2m7w" path="res://content/gui/bomb_gui.gd" id="1_87gd4"]
 [ext_resource type="Texture2D" uid="uid://c43ocwt4gt5wy" path="res://assets/bombs/all_bomb_set.png" id="2_2jvug"]
 [ext_resource type="FontFile" uid="uid://tbc3f6f8v5hr" path="res://assets/fonts/small_font.ttf" id="3_v788k"]
+[ext_resource type="FontFile" uid="uid://b66nc4dsrjg1t" path="res://assets/fonts/normal_font.ttf" id="4_ioryl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yyuc4"]
 bg_color = Color(0.133333, 0.12549, 0.203922, 1)
@@ -11,8 +12,9 @@ bg_color = Color(0.133333, 0.12549, 0.203922, 1)
 z_index = 2
 layout_mode = 3
 anchors_preset = 0
+size_flags_horizontal = 4
+size_flags_vertical = 0
 script = ExtResource("1_87gd4")
-metadata/_edit_group_ = true
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -41,5 +43,17 @@ theme_override_colors/font_color = Color(0.598845, 0.618756, 0.191105, 1)
 theme_override_fonts/font = ExtResource("3_v788k")
 theme_override_font_sizes/font_size = 5
 text = "0"
+
+[node name="TooltipLabel" type="Label" parent="."]
+z_index = 4096
+layout_mode = 0
+offset_left = -18.0
+offset_top = 22.0
+offset_right = 38.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("4_ioryl")
+theme_override_font_sizes/font_size = 8
+text = "Type"
+horizontal_alignment = 1
 
 [connection signal="gui_input" from="Panel" to="." method="_on_panel_gui_input"]
