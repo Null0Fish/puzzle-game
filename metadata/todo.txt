@@ -3,7 +3,7 @@ Core Gameplay Features:
 		- Make placed bombs draggable
 	- Animations & Effects:
 		- Player jump and death animations
-		- Add sound effects (general need)
+		- Add sound effects
 
 Debugging:
 	- Issues arise when a player jumps next two crates, causes quasi death

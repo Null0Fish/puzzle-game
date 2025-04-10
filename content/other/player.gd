@@ -4,6 +4,7 @@ class_name Player
 
 @onready var sprite: AnimatedSprite2D = $PlayerSprite
 @onready var window_size = get_viewport_rect().size
+#@onready var die_player: AudioStreamPlayer = $DiePlayer
 
 const PLAYER_SIZE = Global.PLAYER_SIZE
 const SPEED: float = 75.0
@@ -56,4 +57,5 @@ func _update_facing_direction():
 		sprite.play("idle")
 
 func die():
+	#Global.play_audio(die_player)
 	Global.call_deferred("restart")

@@ -10,4 +10,6 @@ Font:
 	- https://www.fontspace.com/teeny-tiny-pixls-font-f30095
 	- https://www.fontspace.com/et-bt6001-font-f9581
 Characters:
-	https://almostapixel.itch.io/smallburg-town-pack
+	- https://almostapixel.itch.io/smallburg-town-pack
+Explosion Sound:
+	- https://mixkit.co/free-sound-effects/explosion/

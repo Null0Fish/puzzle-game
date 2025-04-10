@@ -10,6 +10,7 @@ extends Node2D
 @onready var level_gui: Control = $LevelGUI
 @onready var guis: Array = level_gui.get_guis()
 @onready var fade: ColorRect = $Fade
+@onready var explosion_player: AudioStreamPlayer = $ExplosionPlayer
 
 const TILE_SIZE = Global.TILE_SIZE
 const HOVER_SOURCE: int = 0
@@ -93,6 +94,7 @@ func _place_bomb(cell: Vector2i, bomb_type: int):
 
 func _detonate_bomb(index: int):
 	if bombs_placed[index].is_on_floor():
+		explosion_player.play()
 		bombs_placed[index].detonate(tile_layers.local_to_map(player.global_position))
 		_remove_bomb_at(index)
 

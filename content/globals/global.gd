@@ -93,3 +93,6 @@ func type_to_string(type : int):
 		return "Diagonal"
 	if type == FULL:
 		return "Full"
+
+func play_audio(audio_player : AudioStreamPlayer):
+	audio_player.play()
