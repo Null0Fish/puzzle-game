@@ -46,15 +46,12 @@ metadata/_edit_lock_ = true
 
 [node name="AdjacentGUI" parent="BombGUI" instance=ExtResource("1_uuanb")]
 layout_mode = 2
-size_flags_horizontal = 4
 
 [node name="DiagonalGUI" parent="BombGUI" instance=ExtResource("1_uuanb")]
 layout_mode = 2
-size_flags_horizontal = 4
 
 [node name="FullGUI" parent="BombGUI" instance=ExtResource("1_uuanb")]
 layout_mode = 2
-size_flags_horizontal = 4
 
 [node name="QuestionGUI" parent="BombGUI" instance=ExtResource("3_xxy6k")]
 layout_mode = 2
