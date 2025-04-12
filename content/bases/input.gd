@@ -1,7 +1,7 @@
 extends Control
 
 @onready var level_base: Node2D = $".."
-@onready var tile_layers: TileMapLayer = $"../GlobalTileMap"
+@onready var root_tile_layer: TileMapLayer = $"../RootTileLayer"
 
 func _input(event):
 	if Global.paused:
@@ -18,7 +18,7 @@ func _input(event):
 			Global.current_bomb_type = clamp(int(char(key)) - 1, 0, Global.LAST_BOMB)
 	
 	if event is InputEventMouseButton and event.is_released():
-		var cell: Vector2i = tile_layers.local_to_map(event.position)
+		var cell: Vector2i = root_tile_layer.local_to_map(event.position)
 		if level_base.bomb_locations.has(cell):
 			if event.button_index == MOUSE_BUTTON_RIGHT:
 				level_base.try_detonate_bomb(cell)

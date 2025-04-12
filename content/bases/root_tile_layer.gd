@@ -1,9 +1,8 @@
 extends TileMapLayer
 
-@onready var background: TileMapLayer = $Background
-@onready var foreground: TileMapLayer = $Foreground
-@onready var ores: TileMapLayer = $Ores
-@onready var extras: TileMapLayer = $Extras
+@onready var foreground_layer: TileMapLayer = $ForegroundLayer
+@onready var decorative_layer: TileMapLayer = $DecorativeLayer
+@onready var ore_layer: TileMapLayer = $OreLayer
 @onready var static_objects: Array = [$"../Player"]
 @onready var player: Player = $"../Player"
 
@@ -23,33 +22,33 @@ func _check_static_object_collisions():
 			_handle_key_collision(object_cell)
 
 func _handle_key_collision(object_cell: Vector2i):
-	var key_coord = foreground.get_cell_atlas_coords(object_cell)
+	var key_coord = foreground_layer.get_cell_atlas_coords(object_cell)
 	var lock_atlas_coords = key_coord + Vector2i(0, 1)
-	for cell in foreground.get_used_cells():
-		if foreground.get_cell_atlas_coords(cell) == lock_atlas_coords \
-		and foreground.get_cell_source_id(cell) == KEY_SET_ID:
-			foreground.set_cell(cell, -1)
-	foreground.set_cell(object_cell, -1)
+	for cell in foreground_layer.get_used_cells():
+		if foreground_layer.get_cell_atlas_coords(cell) == lock_atlas_coords \
+		and foreground_layer.get_cell_source_id(cell) == KEY_SET_ID:
+			foreground_layer.set_cell(cell, -1)
+	foreground_layer.set_cell(object_cell, -1)
 
 func _destroy_floating_objects():
-	for cell in extras.get_used_cells():
+	for cell in decorative_layer.get_used_cells():
 		var cell_below = cell + Vector2i(0, 1)
 		var cell_above = cell + Vector2i(0, -1)
 		if _is_vine(cell):
 			if not _is_vine(cell_above) and not _is_normal_cell(cell_above):
-				extras.set_cell(cell, -1)
+				decorative_layer.set_cell(cell, -1)
 		elif not _is_normal_cell(cell_below):
-			extras.set_cell(cell, -1)
+			decorative_layer.set_cell(cell, -1)
 
 
 func _is_vine(cell: Vector2i) -> bool:
-	return extras.get_cell_atlas_coords(cell) == VINE_ATLAS
+	return decorative_layer.get_cell_atlas_coords(cell) == VINE_ATLAS
 
 func _is_normal_cell(cell: Vector2i) -> bool:
-	return foreground.get_cell_source_id(cell) != -1
+	return foreground_layer.get_cell_source_id(cell) != -1
 
 func _is_on_cell_type(type: String, cell: Vector2i) -> bool:
-	var cell_data = foreground.get_cell_tile_data(cell)
+	var cell_data = foreground_layer.get_cell_tile_data(cell)
 	return cell_data and cell_data.get_custom_data(type)
 
 func get_near_cells(object) -> Array:

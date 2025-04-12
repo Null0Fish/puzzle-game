@@ -19,16 +19,16 @@ const BOMB_TEXTURES: Dictionary = {
 @onready var raycast: RayCast2D = $RayCast2D
 
 var explosion_scene = preload("res://content/effects/explosion_particles.tscn")
-var tile_layers: TileMapLayer
+var root_tile_layer: TileMapLayer
 var type: int
 var cells_to_detonate: Array = []
 
 func init(map: TileMapLayer, variant: int):
-	tile_layers = map
+	root_tile_layer = map
 	type = variant
 	bomb_sprite.texture = BOMB_TEXTURES[type]
 	Global.solid_warning_layers.append(solid_warning_layer)
-	tile_layers.static_objects.append(self)
+	root_tile_layer.static_objects.append(self)
 
 func _process(_delta):
 	_detect_player_collision()
@@ -43,7 +43,7 @@ func _update_warning_cells():
 	opaque_warning_layer.global_position = Vector2.ZERO
 	solid_warning_layer.clear()
 	opaque_warning_layer.clear()
-	cells_to_detonate = _get_cells_to_detonate(tile_layers.local_to_map(global_position))
+	cells_to_detonate = _get_cells_to_detonate(root_tile_layer.local_to_map(global_position))
 	for cell in cells_to_detonate:
 		if not Global.has_solid_warning_tile_at(cell):
 			solid_warning_layer.set_cell(cell, WARNING_ID, WARNING_TILE_ATLAS)
@@ -54,21 +54,21 @@ func is_on_floor() -> bool:
 	return raycast.is_colliding() and (raycast.get_collider() is TileMapLayer or raycast.get_collider() is RigidBody2D)
 
 func detonate(player_cell: Vector2i):	
-	tile_layers.static_objects.erase(self)
+	root_tile_layer.static_objects.erase(self)
 	for cell in cells_to_detonate:
 		if cell == player_cell:
 			Global.restart()
 			return
-		var cell_data = tile_layers.foreground.get_cell_tile_data(cell)
+		var cell_data = root_tile_layer.foreground_layer.get_cell_tile_data(cell)
 		if cell_data and cell_data.get_custom_data("Breakable") and not cell in Global.GUI_CELLS:
 			_create_explosion_particles(cell)
-			tile_layers.foreground.set_cell(cell, -1)
+			root_tile_layer.foreground_layer.set_cell(cell, -1)
 			_update_surrounding(cell)
-		tile_layers.ores.set_cell(cell, -1)
+		root_tile_layer.ore_layer.set_cell(cell, -1)
 
 func _create_explosion_particles(cell: Vector2i):
 	var particles = explosion_scene.instantiate()
-	particles.global_position = tile_layers.map_to_local(cell)
+	particles.global_position = root_tile_layer.map_to_local(cell)
 	particles.get_child(0).emitting = true
 	get_tree().current_scene.add_child(particles)
 
@@ -88,18 +88,18 @@ func _get_cells_to_detonate(cell: Vector2i) -> Array:
 	return cells
 
 func _update_surrounding(pos: Vector2):
-	var surrounding = tile_layers.foreground.get_surrounding_cells(pos)
+	var surrounding = root_tile_layer.foreground_layer.get_surrounding_cells(pos)
 	var to_update = []
 	for cell in surrounding:
-		var cell_data = tile_layers.foreground.get_cell_tile_data(cell)
-		if tile_layers.foreground.get_cell_source_id(cell) != -1 and cell_data and cell_data.get_custom_data("Breakable"):
+		var cell_data = root_tile_layer.foreground_layer.get_cell_tile_data(cell)
+		if root_tile_layer.foreground_layer.get_cell_source_id(cell) != -1 and cell_data and cell_data.get_custom_data("Breakable"):
 			to_update.append(cell)
 	for cell in to_update:
-		tile_layers.foreground.set_cell(cell, -1)
-	tile_layers.foreground.set_cells_terrain_connect(to_update, 0, 0)
+		root_tile_layer.foreground_layer.set_cell(cell, -1)
+	root_tile_layer.foreground_layer.set_cells_terrain_connect(to_update, 0, 0)
 
 func die():
-	get_tree().current_scene.try_detonate_bomb(tile_layers.local_to_map(position))
+	get_tree().current_scene.try_detonate_bomb(root_tile_layer.local_to_map(position))
 
 func remove():
 	# VERY BAD CODE
