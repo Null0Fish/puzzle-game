@@ -1,25 +1,27 @@
 [gd_scene load_steps=5 format=3 uid="uid://6omkuv5lxkmh"]
 
-[ext_resource type="Texture2D" uid="uid://dingfkls8o5da" path="res://assets/bomb_upgrades/epic_upgrade.png" id="1_ha728"]
-[ext_resource type="Script" uid="uid://beffa3340fmfl" path="res://content/level_specific/bomb_upgrade.gd" id="1_nmgsu"]
-[ext_resource type="AudioStream" uid="uid://gadt3yo23qp0" path="res://assets/sounds/upgrade.wav" id="3_qrwv3"]
+[ext_resource type="Script" uid="uid://b41t3wy8o2a8s" path="res://content/level_specific/upgrade.gd" id="1_ntkn4"]
+[ext_resource type="Texture2D" uid="uid://dingfkls8o5da" path="res://assets/bomb_upgrades/epic_upgrade.png" id="2_xmjsk"]
+[ext_resource type="AudioStream" uid="uid://gadt3yo23qp0" path="res://assets/sounds/upgrade.wav" id="3_gpv3s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bko85"]
 size = Vector2(10, 12)
 
 [node name="BombUpgrade" type="Node2D"]
-script = ExtResource("1_nmgsu")
+script = ExtResource("1_ntkn4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_ha728")
+position = Vector2(0, -1)
+texture = ExtResource("2_xmjsk")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_bko85")
 
 [node name="UpgradePlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_qrwv3")
+stream = ExtResource("3_gpv3s")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

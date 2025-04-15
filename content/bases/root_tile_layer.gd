@@ -7,28 +7,9 @@ extends TileMapLayer
 @onready var player: Player = $"../Player"
 
 const VINE_ATLAS: Vector2i = Vector2i(4, 0)
-const KEY_SET_ID: int = 4
 
 func _process(_delta):
 	_destroy_floating_objects()
-	_check_static_object_collisions()
-
-func _check_static_object_collisions():
-	for object in static_objects:
-		var object_cell = local_to_map(object.global_position)
-		if _is_on_cell_type("Lava", object_cell):
-			object.die()
-		elif object is Player and _is_on_cell_type("Key", object_cell):
-			_handle_key_collision(object_cell)
-
-func _handle_key_collision(object_cell: Vector2i):
-	var key_coord = foreground_layer.get_cell_atlas_coords(object_cell)
-	var lock_atlas_coords = key_coord + Vector2i(0, 1)
-	for cell in foreground_layer.get_used_cells():
-		if foreground_layer.get_cell_atlas_coords(cell) == lock_atlas_coords \
-		and foreground_layer.get_cell_source_id(cell) == KEY_SET_ID:
-			foreground_layer.set_cell(cell, -1)
-	foreground_layer.set_cell(object_cell, -1)
 
 func _destroy_floating_objects():
 	for cell in decorative_layer.get_used_cells():
@@ -39,7 +20,6 @@ func _destroy_floating_objects():
 				decorative_layer.set_cell(cell, -1)
 		elif not _is_normal_cell(cell_below):
 			decorative_layer.set_cell(cell, -1)
-
 
 func _is_vine(cell: Vector2i) -> bool:
 	return decorative_layer.get_cell_atlas_coords(cell) == VINE_ATLAS

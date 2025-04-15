@@ -5,7 +5,8 @@ extends Control
 @onready var panel: Panel = $Panel
 @onready var tooltip_label: Label = $TooltipLabel
 
-const TILE_SIZE = Global.TILE_SIZE
+const TILE_SIZE = int(Global.TILE_SIZE)
+const OFFSET = Global.OFFSET
 
 var type: int
 var style_box_flat: StyleBoxFlat = StyleBoxFlat.new()
@@ -25,7 +26,7 @@ func _process(_delta):
 	if dragging:
 		sprite.modulate.a = 0.75
 		if ghost_bomb:
-			var target_position = (get_global_mouse_position() / TILE_SIZE).floor() * TILE_SIZE + Vector2(TILE_SIZE / 2, TILE_SIZE / 2)
+			var target_position = Vector2i(get_global_mouse_position()) / TILE_SIZE * TILE_SIZE + OFFSET
 			_move_ghost_bomb(target_position)
 	else:
 		sprite.modulate.a = 1

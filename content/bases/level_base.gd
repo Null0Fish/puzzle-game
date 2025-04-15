@@ -3,7 +3,6 @@ extends Node2D
 @export var level_name: String
 @export var show_ui: bool
 
-
 @onready var root_tile_layer: TileMapLayer = $RootTileLayer
 @onready var foreground_layer: TileMapLayer = $RootTileLayer/ForegroundLayer
 @onready var hover_layer: TileMapLayer = $RootTileLayer/HoverLayer
@@ -15,7 +14,11 @@ extends Node2D
 
 const TILE_SIZE = Global.TILE_SIZE
 const HOVER_SOURCE: int = 0
+const OFFSET: Vector2i = Global.OFFSET
 
+var key_scene: PackedScene = preload("res://content/level_specific/key.tscn")
+var upgrade_scene: PackedScene = preload("res://content/level_specific/upgrade.tscn")
+var crate_scene: PackedScene = preload("res://content/level_specific/crate.tscn")
 var bomb_scene: PackedScene = preload("res://content/other/bomb.tscn")
 
 var allow_hover_cords: Vector2i = Vector2i(0, 0)
@@ -33,13 +36,16 @@ func _ready():
 	_populate_crate_list()
 
 func _initialize_level():
+	# Initialize variables
 	is_dragging = false
 	last_placement_time = 0.0
 	level_gui.set_title(level_name)
 	level_gui.set_level(str(Global.get_current_level() + 1))
 	Global.paused = false
 	Global.current_bomb_type = Global.DIAGONAL
+	bombs_available = Global.get_bombs_available(Global.get_current_level())
 	
+	# Initialize GUI
 	var level_gui_background = level_gui.get_gui_background()
 	if show_ui:
 		level_gui.bomb_gui.show()
@@ -47,13 +53,28 @@ func _initialize_level():
 	else:
 		level_gui.bomb_gui.hide()
 		level_gui_background.hide()
-	
-	var level_num = Global.get_current_level()
-	bombs_available = Global.get_bombs_available(level_num)
-	
 	for bomb_type in bombs_available.size():
 		guis[bomb_type].set_bomb_count(bombs_available[bomb_type])
 		guis[bomb_type].set_type(bomb_type)
+	
+	# Initialize level objects
+	for cell in foreground_layer.get_used_cells_by_id(1):
+		var cell_data = foreground_layer.get_cell_tile_data(cell)
+		if cell_data.get_custom_data("is_key"):
+			_initialize_scene_at(cell, key_scene)
+		if cell_data.get_custom_data("is_upgrade"):
+			_initialize_scene_at(cell, upgrade_scene)
+		if cell_data.get_custom_data("is_crate"):
+			_initialize_scene_at(cell, crate_scene)
+
+func _initialize_scene_at(cell: Vector2i, scene: PackedScene):
+	var new_scene = scene.instantiate()
+	add_child(new_scene)
+	new_scene.position = _cell_to_cords(cell) + OFFSET
+	foreground_layer.set_cell(cell, -1)
+
+func _cell_to_cords(cell: Vector2i):
+	return Vector2i(cell.x * int(TILE_SIZE), cell.y * int(TILE_SIZE))
 
 func _populate_crate_list():
 	for child in get_children():
@@ -88,16 +109,15 @@ func _pick_up_bomb(index: int):
 
 func _place_bomb(cell: Vector2i, bomb_type: int):
 	var bomb = bomb_scene.instantiate()
-	bomb.position = Vector2(cell.x * TILE_SIZE + TILE_SIZE / 2, cell.y * TILE_SIZE + TILE_SIZE / 2)
+	bomb.position = _cell_to_cords(cell) + OFFSET
 	add_child(bomb)
 	bomb.init(root_tile_layer, bomb_type)
 	_add_bomb_to_lists(bomb, cell, bomb_type)
 
 func _detonate_bomb(index: int):
-	if bombs_placed[index].is_on_floor():
-		explosion_player.play()
-		bombs_placed[index].detonate(root_tile_layer.local_to_map(player.global_position))
-		_remove_bomb_at(index)
+	explosion_player.play()
+	bombs_placed[index].detonate(root_tile_layer.local_to_map(player.global_position))
+	_remove_bomb_at(index)
 
 func _add_bomb_to_lists(bomb: Bomb, cell: Vector2i, bomb_type: int):
 	bombs_placed.append(bomb)
@@ -113,19 +133,20 @@ func _remove_bomb_at(index: int):
 	bombs_placed.remove_at(index)
 
 func _can_place_bomb(cell: Vector2i, bomb_type: int) -> bool:
+	# Checks bomb count of type
 	if bombs_available[bomb_type] <= 0:
 		return false
-	if cell in bomb_locations:
+	# Checks cell for static object
+	if cell in bomb_locations or cell in _get_all_crate_cells():
 		return false
-	if not player.is_on_floor():
-		return false
-	if cell in root_tile_layer.get_player_cells():
-		return false
+	# Checks for static tiles
 	if foreground_layer.get_cell_source_id(cell) != -1:
 		return false
-	if cell in Global.GUI_CELLS:
+	# Checks player data
+	if not player.is_on_floor() or cell in root_tile_layer.get_player_cells():
 		return false
-	if cell in _get_all_crate_cells():
+	# Prevent destorying the hidden GUI cells
+	if cell in Global.GUI_CELLS:
 		return false
 	return true
 
@@ -141,7 +162,7 @@ func _on_death_box_body_entered(body: Node2D) -> void:
 
 func try_pick_up_bomb(cell: Vector2i):
 	var index = bomb_locations.find(cell)
-	if index != -1:
+	if index != -1 and bombs_placed[index].is_on_floor():
 		_pick_up_bomb(index)
 
 func try_detonate_bomb(cell: Vector2i):

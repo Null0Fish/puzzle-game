@@ -1,8 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://77fe7i5w4lbw"]
+[gd_scene load_steps=2 format=4 uid="uid://77fe7i5w4lbw"]
 
 [ext_resource type="PackedScene" uid="uid://crfpgs7m65kr2" path="res://content/bases/level_base.tscn" id="1_uk46k"]
-[ext_resource type="PackedScene" uid="uid://cc3dvhksgjubx" path="res://content/level_specific/crate.tscn" id="2_4vekw"]
-[ext_resource type="PackedScene" uid="uid://6omkuv5lxkmh" path="res://content/level_specific/bomb_upgrade.tscn" id="2_aj5k2"]
 
 [node name="level_-1" instance=ExtResource("1_uk46k")]
 level_name = "DEBUG LEVEL"
@@ -13,51 +11,5 @@ position = Vector2(6, 119)
 [node name="Chest" parent="." index="4"]
 position = Vector2(312, 120)
 
-[node name="Crate" parent="." index="6" instance=ExtResource("2_4vekw")]
-position = Vector2(264, 88)
-
-[node name="UglyUpgradeGrid" type="GridContainer" parent="." index="7"]
-offset_left = 1.0
-offset_top = 2.0
-offset_right = 41.0
-offset_bottom = 42.0
-theme_override_constants/h_separation = 16
-theme_override_constants/v_separation = 16
-columns = 3
-metadata/_edit_group_ = true
-
-[node name="Control" type="Control" parent="UglyUpgradeGrid" index="0"]
-layout_mode = 2
-
-[node name="BombUpgrade" parent="UglyUpgradeGrid/Control" index="0" instance=ExtResource("2_aj5k2")]
-position = Vector2(151, 133)
-
-[node name="Control2" type="Control" parent="UglyUpgradeGrid" index="1"]
-layout_mode = 2
-
-[node name="BombUpgrade" parent="UglyUpgradeGrid/Control2" index="0" instance=ExtResource("2_aj5k2")]
-position = Vector2(151, 133)
-
-[node name="Control3" type="Control" parent="UglyUpgradeGrid" index="2"]
-layout_mode = 2
-
-[node name="BombUpgrade" parent="UglyUpgradeGrid/Control3" index="0" instance=ExtResource("2_aj5k2")]
-position = Vector2(151, 133)
-
-[node name="Control4" type="Control" parent="UglyUpgradeGrid" index="3"]
-layout_mode = 2
-
-[node name="BombUpgrade" parent="UglyUpgradeGrid/Control4" index="0" instance=ExtResource("2_aj5k2")]
-position = Vector2(151, 133)
-
-[node name="Control5" type="Control" parent="UglyUpgradeGrid" index="4"]
-layout_mode = 2
-
-[node name="BombUpgrade" parent="UglyUpgradeGrid/Control5" index="0" instance=ExtResource("2_aj5k2")]
-position = Vector2(151, 133)
-
-[node name="Control6" type="Control" parent="UglyUpgradeGrid" index="5"]
-layout_mode = 2
-
-[node name="BombUpgrade" parent="UglyUpgradeGrid/Control6" index="0" instance=ExtResource("2_aj5k2")]
-position = Vector2(151, 133)
+[node name="ForegroundLayer" parent="RootTileLayer" index="3"]
+tile_map_data = PackedByteArray("AAAUAAwAAAACAAIAAAAUAAsAAAAHAAIAAAAUAAoAAAADAAEAAAAUAAkAAAADAAEAAAAUAAgAAAADAAEAAAAUAAcAAAADAAEAAAAUAAYAAAADAAEAAAAUAAUAAAADAAEAAAAUAAQAAAADAAEAAAAUAAMAAAADAAEAAAAUAAIAAAADAAEAAAAUAAEAAAADAAEAAAAUAAAAAAAHAAEAAAAUAP//AAACAAAAAAATAAAAAAABAAIAAAATAP//AAABAAAAAAASAAAAAAABAAIAAAASAP//AAABAAAAAAARAAAAAAABAAIAAAARAP//AAABAAAAAAAQAAAAAAABAAIAAAAQAP//AAABAAAAAAAPAAAAAAABAAIAAAAPAP//AAABAAAAAAAOAAAAAAABAAIAAAAOAP//AAABAAAAAAANAAAAAAABAAIAAAANAP//AAABAAAAAAAMAAAAAAABAAIAAAAMAP//AAABAAAAAAALAAAAAAABAAIAAAALAP//AAABAAAAAAAKAAAAAAABAAIAAAAKAP//AAABAAAAAAAJAAAAAAABAAIAAAAJAP//AAABAAAAAAAIAAAAAAABAAIAAAAIAP//AAABAAAAAAAHAAAAAAABAAIAAAAHAP//AAABAAAAAAAGAAAAAAABAAIAAAAGAP//AAABAAAAAAAFAAAAAAABAAIAAAAFAP//AAABAAAAAAAEAAAAAAABAAIAAAAEAP//AAABAAAAAAADAAAAAAABAAIAAAADAP//AAABAAAAAAACAAAAAAABAAIAAAACAP//AAABAAAAAAABAAAAAAABAAIAAAABAP//AAABAAAAAAAAAAAAAAABAAIAAAAAAP//AAABAAAAAAD//wwAAAAAAAIAAAD//wsAAAAEAAIAAAD//woAAAADAAEAAAD//wkAAAADAAEAAAD//wgAAAADAAEAAAD//wcAAAADAAEAAAD//wYAAAADAAEAAAD//wUAAAADAAEAAAD//wQAAAADAAEAAAD//wMAAAADAAEAAAD//wIAAAADAAEAAAD//wEAAAADAAEAAAD//wAAAAAEAAEAAAD/////AAAAAAAAAAATAAwAAAABAAIAAAASAAwAAAABAAIAAAARAAwAAAABAAIAAAAQAAwAAAABAAIAAAAPAAwAAAABAAIAAAAOAAwAAAABAAIAAAANAAwAAAABAAIAAAAMAAwAAAABAAIAAAALAAwAAAABAAIAAAAKAAwAAAABAAIAAAAJAAwAAAABAAIAAAAIAAwAAAABAAIAAAAHAAwAAAABAAIAAAAGAAwAAAABAAIAAAAFAAwAAAABAAIAAAAEAAwAAAABAAIAAAADAAwAAAABAAIAAAACAAwAAAABAAIAAAABAAwAAAABAAIAAAAAAAwAAAABAAIAAAATAAsAAAABAAAAAAASAAsAAAABAAAAAAARAAsAAAABAAAAAAAQAAsAAAABAAAAAAAPAAsAAAABAAAAAAAOAAsAAAABAAAAAAANAAsAAAABAAAAAAAMAAsAAAABAAAAAAALAAsAAAABAAAAAAAKAAsAAAABAAAAAAAJAAsAAAABAAAAAAAIAAsAAAABAAAAAAAHAAsAAAABAAAAAAAGAAsAAAABAAAAAAAFAAsAAAABAAAAAAAEAAsAAAABAAAAAAADAAsAAAABAAAAAAACAAsAAAABAAAAAAABAAsAAAABAAAAAAAAAAsAAAABAAAAAAAGAAoAAQAAAAEAAAAHAAgAAQAAAAIAAAAHAAkAAQAAAAIAAAAHAAoAAQAAAAIAAAAKAAkAAQADAAAAAAALAAkAAQADAAAAAAAMAAgAAQADAAAAAAAJAAoAAQADAAEAAAAJAAkAAQADAAEAAAA=")

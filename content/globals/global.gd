@@ -11,6 +11,7 @@ const NONE : Array = [0, 0, 0]
 # Tile information
 const PLAYER_SIZE : float = 16.0
 const TILE_SIZE : float = 16.0
+const OFFSET : Vector2i = Vector2i(8, 8)
 const GUI_TILES : Array = [
 	Vector2i(0, 0),
 	Vector2i(1, 0),
@@ -18,6 +19,7 @@ const GUI_TILES : Array = [
 ]
 
 # Level information
+const LEVEL_FILE : String = "res://content/levels/level_"
 const MAX_LEVELS : int = 4
 const BOMBS_AVAILABLE : Array = [
 	NONE,
@@ -28,8 +30,6 @@ const BOMBS_AVAILABLE : Array = [
 ]
 var current_level_num : int = 0
 var has_restarted : bool = false
-
-const LEVEL_FILE : String = "res://content/levels/level_"
 
 # GUI Information
 const GUI_CELLS : Array = [
