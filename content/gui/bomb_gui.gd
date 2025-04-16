@@ -4,6 +4,7 @@ extends Control
 @onready var bomb_count: Label = $BombCount
 @onready var panel: Panel = $Panel
 @onready var tooltip_label: Label = $TooltipLabel
+@onready var ghost_bomb: Sprite2D = $GhostBomb
 
 const TILE_SIZE = int(Global.TILE_SIZE)
 const OFFSET = Global.OFFSET
@@ -11,7 +12,6 @@ const OFFSET = Global.OFFSET
 var type: int
 var style_box_flat: StyleBoxFlat = StyleBoxFlat.new()
 var dragging: bool = false
-var ghost_bomb: Sprite2D = null
 var tween: Tween = null
 
 func _process(_delta):
@@ -25,10 +25,9 @@ func _process(_delta):
 
 	if dragging:
 		sprite.modulate.a = 0.75
-		if ghost_bomb:
-			var target_position = Vector2i(get_global_mouse_position()) / TILE_SIZE * TILE_SIZE + OFFSET
-			_move_ghost_bomb(target_position)
+		ghost_bomb.show()
 	else:
+		ghost_bomb.hide()
 		sprite.modulate.a = 1
 
 
@@ -53,27 +52,14 @@ func _on_panel_gui_input(event):
 					dragging = true
 					_scene_root().is_dragging = true
 					Global.current_bomb_type = type
-					_create_ghost_bomb()
 			else:
 				if dragging:
 					dragging = false
 					_scene_root().is_dragging = false
-					if ghost_bomb:
-						ghost_bomb.queue_free()
-						ghost_bomb = null
 					_scene_root().try_place_bomb(get_global_mouse_position())
 
 func _is_mouse_over_bomb(mouse_position: Vector2) -> bool:
 	return panel.get_rect().has_point(mouse_position)
-
-func _create_ghost_bomb():
-	ghost_bomb = Sprite2D.new()
-	ghost_bomb.texture = sprite.texture
-	ghost_bomb.global_position = get_global_mouse_position()
-	ghost_bomb.region_enabled = true
-	ghost_bomb.region_rect = sprite.region_rect
-	ghost_bomb.z_index = 7
-	_scene_root().add_child(ghost_bomb)
 
 func _scene_root():
 	return get_tree().get_current_scene()

@@ -2,16 +2,15 @@ Core Gameplay Features:
 	- Bomb Interactions:
 		- Make placed bombs draggable
 	- Animations & Effects:
-		- Player jump and death animations
+		- Add death animations
 		- Add sound effects
 
 Debugging:
 	- Issues arise when a player jumps next two crates, causes quasi death
 
-Level Design:
-	- Would be more optimal if bomb upgrades and crates could be placed as tiles
-
 Advanced / Future Features:
+	- Fun lava bubble up thing?
+	- Make customized loading screen
 	- Level Progression:
 		- Update level menu buttons if a level is completed perfectly (fewest bombs possible)
 	- Player Guidance:

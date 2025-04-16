@@ -13,15 +13,18 @@ const BOMB_TEXTURES: Dictionary = {
 	FULL: preload("res://assets/bombs/full_bomb.png")
 }
 
-@onready var opaque_warning_layer: TileMapLayer = $OpaqueWarningLayer
-@onready var solid_warning_layer: TileMapLayer = $SolidWarningLayer
-@onready var bomb_sprite: Sprite2D = $BombSprite 
+@onready var visual_nodes: Node2D = $VisualNodes
+@onready var opaque_warning_layer: TileMapLayer = $VisualNodes/OpaqueWarningLayer
+@onready var solid_warning_layer: TileMapLayer = $VisualNodes/SolidWarningLayer
+@onready var bomb_sprite: Sprite2D = $VisualNodes/BombSprite
 @onready var raycast: RayCast2D = $RayCast2D
+@onready var ghost_bomb: Sprite2D = $GhostBomb
 
 var explosion_scene = preload("res://content/effects/explosion_particles.tscn")
 var root_tile_layer: TileMapLayer
 var type: int
 var cells_to_detonate: Array = []
+var dragging: bool = false
 
 func init(map: TileMapLayer, variant: int):
 	root_tile_layer = map
@@ -29,10 +32,36 @@ func init(map: TileMapLayer, variant: int):
 	bomb_sprite.texture = BOMB_TEXTURES[type]
 	Global.solid_warning_layers.append(solid_warning_layer)
 	root_tile_layer.static_objects.append(self)
+	
+	if dragging:
+		ghost_bomb.show()
+	else:
+		ghost_bomb.hide()
 
 func _process(_delta):
 	_detect_player_collision()
 	_update_warning_cells()
+	if dragging:
+		ghost_bomb.show()
+		visual_nodes.hide()
+	else:
+		ghost_bomb.hide()
+		visual_nodes.show()
+
+func _scene_root():
+	return get_tree().get_current_scene()
+
+func _on_panel_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				dragging = true
+				_scene_root().is_dragging = true
+			else:
+				if dragging:
+					dragging = false
+					_scene_root().is_dragging = false
+
 
 func _detect_player_collision():
 	if raycast.is_colliding() and raycast.get_collider() is Player:
