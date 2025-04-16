@@ -61,17 +61,20 @@ func _initialize_level():
 	for cell in foreground_layer.get_used_cells_by_id(1):
 		var cell_data = foreground_layer.get_cell_tile_data(cell)
 		if cell_data.get_custom_data("is_key"):
-			_initialize_scene_at(cell, key_scene)
+			var atlas_cords = foreground_layer.get_cell_atlas_coords(cell)
+			var key = _initialize_scene_at(cell, key_scene)
+			key.init(atlas_cords, foreground_layer)
 		if cell_data.get_custom_data("is_upgrade"):
 			_initialize_scene_at(cell, upgrade_scene)
 		if cell_data.get_custom_data("is_crate"):
 			_initialize_scene_at(cell, crate_scene)
 
-func _initialize_scene_at(cell: Vector2i, scene: PackedScene):
+func _initialize_scene_at(cell: Vector2i, scene: PackedScene): 
 	var new_scene = scene.instantiate()
 	add_child(new_scene)
 	new_scene.position = _cell_to_cords(cell) + OFFSET
 	foreground_layer.set_cell(cell, -1)
+	return new_scene
 
 func _cell_to_cords(cell: Vector2i):
 	return Vector2i(cell.x * int(TILE_SIZE), cell.y * int(TILE_SIZE))
