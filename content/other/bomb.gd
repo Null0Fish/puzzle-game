@@ -7,11 +7,7 @@ const DIAGONAL: int = Global.DIAGONAL
 const FULL: int = Global.FULL
 const WARNING_TILE_ATLAS: Vector2i = Vector2i(0, 0)
 const WARNING_ID: int = 0
-const BOMB_TEXTURES: Dictionary = {
-	ADJACENT: preload("res://assets/bombs/adjacent_bomb.png"),
-	DIAGONAL: preload("res://assets/bombs/diagonal_bomb.png"),
-	FULL: preload("res://assets/bombs/full_bomb.png")
-}
+const TILE_SIZE: int = int(Global.TILE_SIZE)
 
 @onready var bomb_sprite: Sprite2D = $BombSprite
 @onready var warning_layers: Node2D = $WarningLayers
@@ -25,11 +21,14 @@ var root_tile_layer: TileMapLayer
 var type: int
 var cells_to_detonate: Array = []
 var dragging: bool = false
+var inital_cell_pos = Vector2i(TILE_SIZE * 2, 0)
+var delta_cell_pos = Vector2i(0, TILE_SIZE)
 
 func init(map: TileMapLayer, variant: int):
 	root_tile_layer = map
 	type = variant
-	bomb_sprite.texture = BOMB_TEXTURES[type]
+	var region_rect = Rect2i(inital_cell_pos + delta_cell_pos * type, Vector2i(TILE_SIZE, TILE_SIZE))
+	bomb_sprite.region_rect = region_rect
 	Global.solid_warning_layers.append(solid_warning_layer)
 	root_tile_layer.static_objects.append(self)
 	
@@ -38,8 +37,12 @@ func init(map: TileMapLayer, variant: int):
 	else:
 		ghost_bomb.hide()
 
+# Pretty lame code so the region does not need to be recalculated localy kinda bad
+func upgrade_bomb_sprite(rect: Rect2i):
+	bomb_sprite.region_rect = rect
+
 func _process(_delta):
-	ghost_bomb.texture = bomb_sprite.texture
+	ghost_bomb.region_rect = bomb_sprite.region_rect
 	_detect_player_collision()
 	_update_warning_cells()
 	if dragging:

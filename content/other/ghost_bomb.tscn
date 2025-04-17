@@ -1,8 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://d3wrw0bctjrmx"]
 
-[ext_resource type="Script" uid="uid://b3ieeelkwwnjy" path="res://content/other/ghost_bomb.gd" id="1_lybff"]
-[ext_resource type="Texture2D" uid="uid://bet4cuja8fy30" path="res://assets/bombs/adjacent_bomb.png" id="1_mxswv"]
+[ext_resource type="Script" path="res://content/other/ghost_bomb.gd" id="1_lybff"]
+[ext_resource type="Texture2D" uid="uid://c43ocwt4gt5wy" path="res://assets/bombs/all_bomb_set.png" id="1_mxswv"]
 
 [node name="GhostBomb" type="Sprite2D"]
 texture = ExtResource("1_mxswv")
+region_enabled = true
 script = ExtResource("1_lybff")

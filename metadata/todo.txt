@@ -7,7 +7,6 @@ Debugging:
 	- Issues arise when a player jumps next two crates, causes quasi death
 	- Player can detonate bombs in mid air
 	- Bomb's not always killing player when landing on head
-	- Placed bomb's not havign sprite change on upgrade
 
 Advanced / Future Features:
 	- Fun lava bubble up thing?

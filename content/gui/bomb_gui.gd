@@ -1,6 +1,5 @@
 extends Control
 
-@onready var sprite: Sprite2D = $BombIcon
 @onready var bomb_count: Label = $BombCount
 @onready var panel: Panel = $Panel
 @onready var tooltip_label: Label = $TooltipLabel
@@ -28,11 +27,11 @@ func _process(_delta):
 		tooltip_label.visible = false
 
 	if dragging:
-		sprite.modulate.a = 0.5
+		bomb_icon.modulate.a = 0.5
 		ghost_bomb.show()
 	else:
 		ghost_bomb.hide()
-		sprite.modulate.a = 1
+		bomb_icon.modulate.a = 1
 
 
 func _move_ghost_bomb(target_position: Vector2):
@@ -69,14 +68,15 @@ func _scene_root():
 	return get_tree().get_current_scene()
 
 func upgrade():
-	var rect_pos = sprite.region_rect.position
+	var rect_pos = bomb_icon.region_rect.position
 	var new_rect = Rect2i(Vector2i(rect_pos.x - TILE_SIZE, rect_pos.y), Vector2i(TILE_SIZE, TILE_SIZE))
-	sprite.region_rect = new_rect
+	bomb_icon.region_rect = new_rect
+	return bomb_icon.region_rect
 
 func set_type(bomb_type: int):
 	type = bomb_type
 	var rect = Rect2(Vector2(TILE_SIZE * 2, TILE_SIZE * type), Vector2(TILE_SIZE, TILE_SIZE))
-	sprite.region_rect = rect
+	bomb_icon.region_rect = rect
 
 func set_bomb_count(val: int):
 	bomb_count.text = str(val)

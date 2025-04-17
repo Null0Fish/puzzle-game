@@ -103,7 +103,11 @@ func _update_bomb_locations():
 		bomb_locations[i] = root_tile_layer.local_to_map(bombs_placed[i].position)
 
 func upgrade_bomb_type(bomb_type: int):
-	guis[bomb_type].upgrade()
+	Global.bomb_levels[bomb_type] = Global.bomb_levels[bomb_type] + 1
+	var region_rect = guis[bomb_type].upgrade()
+	for bomb in bombs_placed:
+		if bomb.type == bomb_type:
+			bomb.upgrade_bomb_sprite(region_rect)
 
 func _pick_up_bomb(index: int):
 	bombs_available[bombs_placed[index].type] += 1
