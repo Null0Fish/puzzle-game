@@ -28,7 +28,7 @@ func _process(_delta):
 		tooltip_label.visible = false
 
 	if dragging:
-		sprite.modulate.a = 0.75
+		sprite.modulate.a = 0.5
 		ghost_bomb.show()
 	else:
 		ghost_bomb.hide()

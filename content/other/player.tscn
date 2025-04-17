@@ -106,7 +106,7 @@ animation = &"idle"
 frame_progress = 0.617638
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 2.51489)
+position = Vector2(-0.5, 3)
 shape = SubResource("RectangleShape2D_0nml6")
 
 [node name="DiePlayer" type="AudioStreamPlayer" parent="."]

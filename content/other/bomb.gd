@@ -13,10 +13,10 @@ const BOMB_TEXTURES: Dictionary = {
 	FULL: preload("res://assets/bombs/full_bomb.png")
 }
 
-@onready var visual_nodes: Node2D = $VisualNodes
-@onready var opaque_warning_layer: TileMapLayer = $VisualNodes/OpaqueWarningLayer
-@onready var solid_warning_layer: TileMapLayer = $VisualNodes/SolidWarningLayer
-@onready var bomb_sprite: Sprite2D = $VisualNodes/BombSprite
+@onready var bomb_sprite: Sprite2D = $BombSprite
+@onready var warning_layers: Node2D = $WarningLayers
+@onready var opaque_warning_layer: TileMapLayer = $WarningLayers/OpaqueWarningLayer
+@onready var solid_warning_layer: TileMapLayer = $WarningLayers/SolidWarningLayer
 @onready var raycast: RayCast2D = $RayCast2D
 @onready var ghost_bomb: Sprite2D = $GhostBomb
 
@@ -43,11 +43,13 @@ func _process(_delta):
 	_detect_player_collision()
 	_update_warning_cells()
 	if dragging:
+		bomb_sprite.modulate.a = .5
 		ghost_bomb.show()
-		visual_nodes.hide()
+		warning_layers.hide()
 	else:
+		bomb_sprite.modulate.a = 1
 		ghost_bomb.hide()
-		visual_nodes.show()
+		warning_layers.show()
 
 func _scene_root():
 	return get_tree().get_current_scene()
