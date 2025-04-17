@@ -39,6 +39,7 @@ func init(map: TileMapLayer, variant: int):
 		ghost_bomb.hide()
 
 func _process(_delta):
+	ghost_bomb.texture = bomb_sprite.texture
 	_detect_player_collision()
 	_update_warning_cells()
 	if dragging:
@@ -61,6 +62,7 @@ func _on_panel_gui_input(event: InputEvent) -> void:
 				if dragging:
 					dragging = false
 					_scene_root().is_dragging = false
+					_scene_root().try_move_bomb_to(get_global_mouse_position(), self)
 
 
 func _detect_player_collision():

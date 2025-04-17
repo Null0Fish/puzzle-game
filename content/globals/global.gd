@@ -9,7 +9,7 @@ const MAX_BOMB_LEVEL : int = 2
 const NONE : Array = [0, 0, 0]
 
 # Tile information
-const PLAYER_SIZE : float = 16.0
+const PLAYER_SIZE : float = 8.0
 const TILE_SIZE : float = 16.0
 const OFFSET : Vector2i = Vector2i(8, 8)
 const GUI_TILES : Array = [

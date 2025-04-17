@@ -5,6 +5,7 @@ extends Control
 @onready var panel: Panel = $Panel
 @onready var tooltip_label: Label = $TooltipLabel
 @onready var ghost_bomb: Sprite2D = $GhostBomb
+@onready var bomb_icon: Sprite2D = $BombIcon
 
 const TILE_SIZE = int(Global.TILE_SIZE)
 const OFFSET = Global.OFFSET
@@ -15,6 +16,9 @@ var dragging: bool = false
 var tween: Tween = null
 
 func _process(_delta):
+	ghost_bomb.texture = bomb_icon.texture
+	ghost_bomb.region_enabled = true
+	ghost_bomb.region_rect = bomb_icon.region_rect
 	_update_panel_style()
 	
 	if panel.get_rect().has_point(panel.get_local_mouse_position()):

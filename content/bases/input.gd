@@ -23,4 +23,5 @@ func _input(event):
 			if event.button_index == MOUSE_BUTTON_RIGHT:
 				level_base.try_detonate_bomb(cell)
 			if event.button_index == MOUSE_BUTTON_LEFT:
-				level_base.try_pick_up_bomb(cell)
+				pass
+				#level_base.try_pick_up_bomb(cell)

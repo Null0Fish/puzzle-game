@@ -135,9 +135,9 @@ func _remove_bomb_at(index: int):
 	bomb_locations.remove_at(index)
 	bombs_placed.remove_at(index)
 
-func _can_place_bomb(cell: Vector2i, bomb_type: int) -> bool:
+func _can_place_bomb(cell: Vector2i, bomb_type: int, moving_placed_bomb=false) -> bool:
 	# Checks bomb count of type
-	if bombs_available[bomb_type] <= 0:
+	if bombs_available[bomb_type] <= 0 and not moving_placed_bomb:
 		return false
 	# Checks cell for static object
 	if cell in bomb_locations or cell in _get_all_crate_cells():
@@ -163,17 +163,32 @@ func _on_death_box_body_entered(body: Node2D) -> void:
 	if body is Player:
 		body.call_deferred("die")
 
-func try_pick_up_bomb(cell: Vector2i):
+func try_move_bomb_to(pos: Vector2, bomb: Bomb) -> bool:
+	var cell = root_tile_layer.local_to_map(pos)
+	var index = bombs_placed.find(bomb)
+	if _can_place_bomb(cell, bomb.type, true):
+		_pick_up_bomb(index)
+		_place_bomb(cell, bomb.type)
+		return true
+	return false
+
+func try_pick_up_bomb(cell: Vector2i) -> bool:
 	var index = bomb_locations.find(cell)
 	if index != -1 and bombs_placed[index].is_on_floor():
 		_pick_up_bomb(index)
+		return true
+	return false
 
-func try_detonate_bomb(cell: Vector2i):
+func try_detonate_bomb(cell: Vector2i) -> bool:
 	var index = bomb_locations.find(cell)
 	if index != -1:
 		_detonate_bomb(index)
+		return true
+	return false
 
-func try_place_bomb(cell: Vector2):
+func try_place_bomb(cell: Vector2) -> bool:
 	cell = root_tile_layer.local_to_map(cell)
 	if _can_place_bomb(cell, Global.current_bomb_type):
 		_place_bomb(cell, Global.current_bomb_type)
+		return true
+	return false
