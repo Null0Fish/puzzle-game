@@ -185,7 +185,7 @@ func try_pick_up_bomb(cell: Vector2i) -> bool:
 
 func try_detonate_bomb(cell: Vector2i) -> bool:
 	var index = bomb_locations.find(cell)
-	if index != -1:
+	if index != -1 and bombs_placed[index].is_on_floor():
 		_detonate_bomb(index)
 		return true
 	return false

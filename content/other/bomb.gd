@@ -43,7 +43,6 @@ func upgrade_bomb_sprite(rect: Rect2i):
 
 func _process(_delta):
 	ghost_bomb.region_rect = bomb_sprite.region_rect
-	_detect_player_collision()
 	_update_warning_cells()
 	if dragging:
 		bomb_sprite.modulate.a = .5
@@ -69,10 +68,9 @@ func _on_panel_gui_input(event: InputEvent) -> void:
 					_scene_root().is_dragging = false
 					_scene_root().try_move_bomb_to(get_global_mouse_position(), self)
 
-
-func _detect_player_collision():
-	if raycast.is_colliding() and raycast.get_collider() is Player:
-		Global.restart()
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body is Player:
+		Global.call_deferred("reset")
 
 func _update_warning_cells():
 	solid_warning_layer.global_position = Vector2.ZERO
