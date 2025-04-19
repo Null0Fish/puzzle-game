@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvijg2uq2m7ei"]
+[gd_scene load_steps=5 format=3 uid="uid://cvijg2uq2m7ei"]
 
 [ext_resource type="Script" uid="uid://wrg4ncmrj62y" path="res://content/level_specific/lava.gd" id="1_61cur"]
 [ext_resource type="Texture2D" uid="uid://da7w651nsrh6t" path="res://assets/laval.png" id="1_ltp6t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61cur"]
 size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2eho"]
+size = Vector2(16, 10)
 
 [node name="Lava" type="Node2D"]
 z_index = 7
@@ -17,5 +20,12 @@ texture = ExtResource("1_ltp6t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_61cur")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_g2eho")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

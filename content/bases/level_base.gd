@@ -26,7 +26,7 @@ var allow_hover_cords: Vector2i = Vector2i(0, 0)
 var disallow_hover_cords: Vector2i = Vector2i(2, 0)
 var bombs_placed: Array = []
 var bomb_locations: Array = []
-var crates: Array = []
+var crate_list: Array = []
 var bombs_available: Array
 var last_placement_time: float
 var is_dragging: bool
@@ -34,7 +34,6 @@ var is_dragging: bool
 func _ready():
 	fade.show()
 	_initialize_level()
-	_populate_crate_list()
 
 func _initialize_level():
 	# Initialize variables
@@ -45,7 +44,6 @@ func _initialize_level():
 	Global.paused = false
 	Global.current_bomb_type = Global.DIAGONAL
 	bombs_available = Global.get_bombs_available(Global.get_current_level())
-	
 	# Initialize GUI
 	var level_gui_background = level_gui.get_gui_background()
 	if show_ui:
@@ -57,7 +55,6 @@ func _initialize_level():
 	for bomb_type in bombs_available.size():
 		guis[bomb_type].set_bomb_count(bombs_available[bomb_type])
 		guis[bomb_type].set_type(bomb_type)
-	
 	# Initialize level objects
 	for cell in foreground_layer.get_used_cells_by_id(1):
 		var cell_data = foreground_layer.get_cell_tile_data(cell)
@@ -68,10 +65,9 @@ func _initialize_level():
 		if cell_data.get_custom_data("is_upgrade"):
 			_initialize_scene_at(cell, upgrade_scene)
 		if cell_data.get_custom_data("is_crate"):
-			_initialize_scene_at(cell, crate_scene)
+			crate_list.append(_initialize_scene_at(cell, crate_scene))
 		if cell_data.get_custom_data("is_lava"):
 			_initialize_scene_at(cell, lava_scene)
-
 
 func _initialize_scene_at(cell: Vector2i, scene: PackedScene): 
 	var new_scene = scene.instantiate()
@@ -82,11 +78,6 @@ func _initialize_scene_at(cell: Vector2i, scene: PackedScene):
 
 func _cell_to_cords(cell: Vector2i):
 	return Vector2i(cell.x * int(TILE_SIZE), cell.y * int(TILE_SIZE))
-
-func _populate_crate_list():
-	for child in get_children():
-		if child is Crate:
-			crates.append(child)
 
 func _process(_delta):
 	hover_layer.clear()
@@ -105,13 +96,6 @@ func _update_hover_layer(atlas_cords: Vector2i):
 func _update_bomb_locations():
 	for i in range(bombs_placed.size()):
 		bomb_locations[i] = root_tile_layer.local_to_map(bombs_placed[i].position)
-
-func upgrade_bomb_type(bomb_type: int):
-	Global.bomb_levels[bomb_type] = Global.bomb_levels[bomb_type] + 1
-	var region_rect = guis[bomb_type].upgrade()
-	for bomb in bombs_placed:
-		if bomb.type == bomb_type:
-			bomb.upgrade_bomb_sprite(region_rect)
 
 func _pick_up_bomb(index: int):
 	bombs_available[bombs_placed[index].type] += 1
@@ -160,13 +144,14 @@ func _can_place_bomb(cell: Vector2i, bomb_type: int, moving_placed_bomb=false) -
 	# Prevent destorying the hidden GUI cells
 	if cell in Global.GUI_CELLS:
 		return false
+	# Checked paused status
 	if Global.paused:
 		return false
 	return true
 
 func _get_all_crate_cells() -> Array:
 	var cells = []
-	for crate in crates:
+	for crate in crate_list:
 		cells.append(root_tile_layer.local_to_map(crate.global_position))
 	return cells
 
@@ -190,9 +175,9 @@ func try_pick_up_bomb(cell: Vector2i) -> bool:
 		return true
 	return false
 
-func try_detonate_bomb(cell: Vector2i) -> bool:
+func try_detonate_bomb(cell: Vector2i, is_in_laval: bool = false) -> bool:
 	var index = bomb_locations.find(cell)
-	if index != -1 and bombs_placed[index].is_on_floor():
+	if index != -1 and (bombs_placed[index].is_on_floor() or is_in_laval):
 		_detonate_bomb(index)
 		return true
 	return false
@@ -203,3 +188,10 @@ func try_place_bomb(cell: Vector2) -> bool:
 		_place_bomb(cell, Global.current_bomb_type)
 		return true
 	return false
+
+func upgrade_bomb_type(bomb_type: int):
+	Global.bomb_levels[bomb_type] = Global.bomb_levels[bomb_type] + 1
+	var region_rect = guis[bomb_type].upgrade()
+	for bomb in bombs_placed:
+		if bomb.type == bomb_type:
+			bomb.upgrade_bomb_sprite(region_rect)

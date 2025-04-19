@@ -1,8 +1,7 @@
 Core Gameplay Features:
-	- Animations & Effects:
-		- Add sound effects
-			- Key pickup
-			- Jump
+	- Add sound effects
+		- Key pickup
+		- Jump
 
 Advanced / Future Features:
 	- Fun lava bubble up thing?

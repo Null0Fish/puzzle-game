@@ -17,7 +17,8 @@ var is_dead: bool = false
 
 func _physics_process(delta):
 	if is_dead:
-		velocity = Vector2.ZERO
+		velocity = Vector2(0, velocity.y)
+		move_and_slide()
 		return
 	
 	if is_on_floor():
