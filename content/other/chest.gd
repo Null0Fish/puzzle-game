@@ -6,12 +6,9 @@ class_name Chest
 @onready var timer: Timer = $Timer
 @onready var win_particles: Node2D = $WinParticles
 @onready var fade: Control = $Fade
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 var next_level: int
-
-func _ready() -> void:
-	pass
-	#fade.fade_in()
 
 func _on_body_entered(body : Node):
 	if body is Player:
@@ -22,6 +19,7 @@ func _on_body_entered(body : Node):
 		Global.paused = true
 		win_particles.show()
 		timer.start(1.65)
+		audio_stream_player.play()
 
 func _on_timer_timeout():
 	await fade.fade_out()

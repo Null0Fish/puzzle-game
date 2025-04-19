@@ -9,7 +9,9 @@ Chest:
 Font:
 	- https://www.fontspace.com/teeny-tiny-pixls-font-f30095
 	- https://www.fontspace.com/et-bt6001-font-f9581
-Characters:
+Character animations:
 	- https://almostapixel.itch.io/smallburg-town-pack
 Explosion Sound:
 	- https://mixkit.co/free-sound-effects/explosion/
+Win Sound:
+	- https://pixabay.com/sound-effects/search/treasure/

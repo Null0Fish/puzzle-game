@@ -27,10 +27,6 @@ func _is_vine(cell: Vector2i) -> bool:
 func _is_normal_cell(cell: Vector2i) -> bool:
 	return foreground_layer.get_cell_source_id(cell) != -1
 
-func _is_on_cell_type(type: String, cell: Vector2i) -> bool:
-	var cell_data = foreground_layer.get_cell_tile_data(cell)
-	return cell_data and cell_data.get_custom_data(type)
-
 func get_near_cells(object) -> Array:
 	var cells = []
 	var pos = object.global_position

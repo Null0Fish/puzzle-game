@@ -20,6 +20,7 @@ var key_scene: PackedScene = preload("res://content/level_specific/key.tscn")
 var upgrade_scene: PackedScene = preload("res://content/level_specific/upgrade.tscn")
 var crate_scene: PackedScene = preload("res://content/level_specific/crate.tscn")
 var bomb_scene: PackedScene = preload("res://content/other/bomb.tscn")
+var lava_scene: PackedScene = preload("res://content/level_specific/lava.tscn")
 
 var allow_hover_cords: Vector2i = Vector2i(0, 0)
 var disallow_hover_cords: Vector2i = Vector2i(2, 0)
@@ -68,6 +69,9 @@ func _initialize_level():
 			_initialize_scene_at(cell, upgrade_scene)
 		if cell_data.get_custom_data("is_crate"):
 			_initialize_scene_at(cell, crate_scene)
+		if cell_data.get_custom_data("is_lava"):
+			_initialize_scene_at(cell, lava_scene)
+
 
 func _initialize_scene_at(cell: Vector2i, scene: PackedScene): 
 	var new_scene = scene.instantiate()

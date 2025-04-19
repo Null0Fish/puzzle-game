@@ -2,6 +2,8 @@ Core Gameplay Features:
 	- Animations & Effects:
 		- Add death animations
 		- Add sound effects
+			- Key pickup
+			- Player death
 
 Debugging:
 	- Odd dubble crate stack visual glitch

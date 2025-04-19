@@ -70,7 +70,7 @@ func _on_panel_gui_input(event: InputEvent) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
-		Global.call_deferred("reset")
+		body.call_deferred("die")
 
 func _update_warning_cells():
 	solid_warning_layer.global_position = Vector2.ZERO
