@@ -24,23 +24,6 @@ var dragging: bool = false
 var inital_cell_pos = Vector2i(TILE_SIZE * 2, 0)
 var delta_cell_pos = Vector2i(0, TILE_SIZE)
 
-func init(map: TileMapLayer, variant: int):
-	root_tile_layer = map
-	type = variant
-	var region_rect = Rect2i(inital_cell_pos + delta_cell_pos * type, Vector2i(TILE_SIZE, TILE_SIZE))
-	bomb_sprite.region_rect = region_rect
-	Global.solid_warning_layers.append(solid_warning_layer)
-	root_tile_layer.static_objects.append(self)
-	
-	if dragging:
-		ghost_bomb.show()
-	else:
-		ghost_bomb.hide()
-
-# Pretty lame code so the region does not need to be recalculated localy kinda bad
-func upgrade_bomb_sprite(rect: Rect2i):
-	bomb_sprite.region_rect = rect
-
 func _process(_delta):
 	ghost_bomb.region_rect = bomb_sprite.region_rect
 	_update_warning_cells()
@@ -84,22 +67,6 @@ func _update_warning_cells():
 		else:
 			opaque_warning_layer.set_cell(cell, WARNING_ID, WARNING_TILE_ATLAS)
 
-func is_on_floor() -> bool:
-	return raycast.is_colliding() and (raycast.get_collider() is TileMapLayer or raycast.get_collider() is RigidBody2D)
-
-func detonate(player_cell: Vector2i):	
-	root_tile_layer.static_objects.erase(self)
-	for cell in cells_to_detonate:
-		if cell == player_cell:
-			Global.restart()
-			return
-		var cell_data = root_tile_layer.foreground_layer.get_cell_tile_data(cell)
-		if cell_data and cell_data.get_custom_data("Breakable") and not cell in Global.GUI_CELLS:
-			_create_explosion_particles(cell)
-			root_tile_layer.foreground_layer.set_cell(cell, -1)
-			_update_surrounding(cell)
-		root_tile_layer.ore_layer.set_cell(cell, -1)
-
 func _create_explosion_particles(cell: Vector2i):
 	var particles = explosion_scene.instantiate()
 	particles.global_position = root_tile_layer.map_to_local(cell)
@@ -132,6 +99,35 @@ func _update_surrounding(pos: Vector2):
 		root_tile_layer.foreground_layer.set_cell(cell, -1)
 	root_tile_layer.foreground_layer.set_cells_terrain_connect(to_update, 0, 0)
 
+func init(map: TileMapLayer, variant: int):
+	root_tile_layer = map
+	type = variant
+	var region_rect = Rect2i(inital_cell_pos + delta_cell_pos * type, Vector2i(TILE_SIZE, TILE_SIZE))
+	bomb_sprite.region_rect = region_rect
+	Global.solid_warning_layers.append(solid_warning_layer)
+	root_tile_layer.static_objects.append(self)
+	
+	if dragging:
+		ghost_bomb.show()
+	else:
+		ghost_bomb.hide()
+
+func is_on_floor() -> bool:
+	return raycast.is_colliding() and (raycast.get_collider() is TileMapLayer or raycast.get_collider() is RigidBody2D)
+
+func detonate(player_cell: Vector2i):	
+	root_tile_layer.static_objects.erase(self)
+	for cell in cells_to_detonate:
+		if cell == player_cell:
+			Global.restart()
+			return
+		var cell_data = root_tile_layer.foreground_layer.get_cell_tile_data(cell)
+		if cell_data and cell_data.get_custom_data("Breakable") and not cell in Global.GUI_CELLS:
+			_create_explosion_particles(cell)
+			root_tile_layer.foreground_layer.set_cell(cell, -1)
+			_update_surrounding(cell)
+		root_tile_layer.ore_layer.set_cell(cell, -1)
+
 func die():
 	get_tree().current_scene.try_detonate_bomb(root_tile_layer.local_to_map(position))
 
@@ -141,3 +137,7 @@ func remove():
 	if index != -1:
 		Global.solid_warning_layers.remove_at(index)
 	queue_free()
+
+# Pretty lame code so the region does not need to be recalculated localy kinda bad
+func upgrade_bomb_sprite(rect: Rect2i):
+	bomb_sprite.region_rect = rect

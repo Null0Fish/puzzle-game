@@ -1,13 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cfsfwps6dsd7j"]
+[gd_scene load_steps=6 format=3 uid="uid://cfsfwps6dsd7j"]
 
 [ext_resource type="Script" uid="uid://2vc8fm0ou8ic" path="res://content/gui/level_gui.gd" id="1_8elk5"]
 [ext_resource type="PackedScene" uid="uid://8xsf5j74u2cf" path="res://content/gui/bomb_gui.tscn" id="1_uuanb"]
 [ext_resource type="Texture2D" uid="uid://cpafvkjcxb2y" path="res://assets/gui/bomb_gui_background.png" id="2_83etd"]
-[ext_resource type="Texture2D" uid="uid://dc55hjvuarvqq" path="res://assets/unused/gui_background.png" id="3_6o77t"]
 [ext_resource type="PackedScene" uid="uid://ccjisfwchk5mo" path="res://content/gui/question_gui.tscn" id="3_xxy6k"]
-[ext_resource type="Texture2D" uid="uid://212mqtlm5mpm" path="res://assets/unused/level_button.png" id="4_u0pcm"]
-[ext_resource type="Texture2D" uid="uid://b6qgjxbqlvl6u" path="res://assets/unused/home_button.png" id="5_5umfk"]
-[ext_resource type="Texture2D" uid="uid://bt3bsualusgqv" path="res://assets/unused/restart_button.png" id="5_r4655"]
 [ext_resource type="PackedScene" uid="uid://hdgt7r6w4gub" path="res://content/gui/level_info.tscn" id="8_xxy6k"]
 
 [node name="LevelGUI" type="Control"]
@@ -56,37 +52,6 @@ layout_mode = 2
 [node name="QuestionGUI" parent="BombGUI" instance=ExtResource("3_xxy6k")]
 layout_mode = 2
 
-[node name="ControlGUI" type="Control" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 0
-offset_right = 48.0
-offset_bottom = 16.0
-
-[node name="Background" type="TextureRect" parent="ControlGUI"]
-layout_mode = 1
-offset_right = 16.0
-offset_bottom = 16.0
-texture = ExtResource("3_6o77t")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ControlGUI"]
-layout_mode = 0
-offset_right = 16.0
-offset_bottom = 40.0
-theme_override_constants/separation = 0
-
-[node name="HomeButton" type="TextureButton" parent="ControlGUI/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("5_5umfk")
-
-[node name="LevelButton" type="TextureButton" parent="ControlGUI/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("4_u0pcm")
-
-[node name="RestartButton" type="TextureButton" parent="ControlGUI/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("5_r4655")
-
 [node name="LevelInfo" parent="." instance=ExtResource("8_xxy6k")]
 visible = false
 layout_mode = 1
@@ -101,7 +66,3 @@ offset_right = 42.0
 offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[connection signal="pressed" from="ControlGUI/HBoxContainer/HomeButton" to="." method="_on_home_button_pressed"]
-[connection signal="pressed" from="ControlGUI/HBoxContainer/LevelButton" to="." method="_on_level_button_pressed"]
-[connection signal="pressed" from="ControlGUI/HBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

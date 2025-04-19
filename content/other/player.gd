@@ -13,12 +13,13 @@ const COYOTE_TIME: float = 0.05
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var coyote_timer: float = 0.0
-var is_frozen: bool = false
+var is_dead: bool = false
 
 func _physics_process(delta):
-	if is_frozen:
+	if is_dead:
 		velocity = Vector2.ZERO
 		return
+	
 	if is_on_floor():
 		coyote_timer = COYOTE_TIME
 	else:
@@ -60,14 +61,19 @@ func _update_facing_direction():
 	else:
 		sprite.play("idle")
 
-var currently_dieing = false
+var death_scene: PackedScene = preload("res://content/other/death_animation.tscn")
 
 func die():
 	Global.paused = true
-	is_frozen = true
+	# Replace with propper animation
 	sprite.play("idle")
-	if not currently_dieing:
-		currently_dieing = true
+	if not is_dead:
+		var death_animation = death_scene.instantiate()
+		add_child(death_animation)
+		death_animation.position = sprite.position
+		death_animation.z_index = 10
+		is_dead = true
 		die_player.play()
 		await die_player.finished
-		Global.call_deferred("restart")
+		await death_animation.finished
+		Global.call_deferred("reset")

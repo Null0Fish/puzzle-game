@@ -990,7 +990,6 @@ texture = ExtResource("9_5k8t0")
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8y0ho"]
 texture = ExtResource("10_aqsxg")
 0:0/0 = 0
-0:0/0/custom_data_1 = true
 0:0/0/custom_data_2 = true
 1:0/0 = 0
 1:0/0/custom_data_2 = true

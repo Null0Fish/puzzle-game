@@ -1,21 +1,15 @@
 Core Gameplay Features:
 	- Animations & Effects:
 		- Add death animations
+			- Closing circle zoom in on player
 		- Add sound effects
 			- Key pickup
-			- Player death
-
-Debugging:
-	- Odd dubble crate stack visual glitch
+			- Jump
 
 Advanced / Future Features:
 	- Fun lava bubble up thing?
 	- Make customized loading screen
-	- Level Progression:
-		- Update level menu buttons if a level is completed perfectly (fewest bombs possible)
-	- Player Guidance:
-		- Create indicator icons to hint at optimal bomb placements
-	- Optimization:
-		- Refactor all tile layers to reduce redundant resources
-	- Bomb GUI:
-		- Make question button toggle with bomb gui
+	- Level Progression
+	- Player Guidance
+	- Settings Buttons
+	- Credits

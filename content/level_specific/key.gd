@@ -4,6 +4,7 @@ extends Node2D
 
 const SIZE = Vector2i(16, 16)
 const OFFSET = Vector2i(0, 1)
+const SOURCE_ID: int = 1
 
 var lock_block_atlas_cords : Vector2i
 var foreground_layer: TileMapLayer
@@ -22,4 +23,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _unlock_cells():
 	for cell in foreground_layer.get_used_cells():
 		if foreground_layer.get_cell_atlas_coords(cell) == lock_block_atlas_cords:
-			foreground_layer.set_cell(cell, -1)
+			var id = foreground_layer.get_cell_source_id(cell)
+			if id == SOURCE_ID:
+				foreground_layer.set_cell(cell, -1)

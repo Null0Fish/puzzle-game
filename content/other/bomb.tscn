@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://d4axcaigntahs"]
 
 [ext_resource type="Script" uid="uid://3r1iiqm6f5rc" path="res://content/other/bomb.gd" id="1_ukdw2"]
-[ext_resource type="Texture2D" uid="uid://c43ocwt4gt5wy" path="res://assets/bombs/all_bomb_set.png" id="3_1ff8c"]
+[ext_resource type="Texture2D" uid="uid://c43ocwt4gt5wy" path="res://assets/all_bomb_set.png" id="3_1ff8c"]
 [ext_resource type="Texture2D" uid="uid://dyrkgm6wt01e1" path="res://assets/tiles/opaque_warning_tile.png" id="3_o2vj0"]
 [ext_resource type="Texture2D" uid="uid://dofboosxtvhm3" path="res://assets/tiles/solid_warning_tile.png" id="4_fpio6"]
 [ext_resource type="PackedScene" uid="uid://d3wrw0bctjrmx" path="res://content/other/ghost_bomb.tscn" id="5_1ff8c"]
