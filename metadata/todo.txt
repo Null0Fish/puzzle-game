@@ -1,8 +1,3 @@
-Core Gameplay Features:
-	- Add sound effects
-		- Key pickup
-		- Jump
-
 Advanced / Future Features:
 	- Fun lava bubble up thing?
 	- Make customized loading screen

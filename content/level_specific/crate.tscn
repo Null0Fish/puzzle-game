@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cc3dvhksgjubx"]
 
-[ext_resource type="Texture2D" uid="uid://dtigib8pt3m2c" path="res://assets/crate.png" id="1_mohwq"]
+[ext_resource type="Texture2D" uid="uid://dtigib8pt3m2c" path="res://assets/other/crate.png" id="1_mohwq"]
 [ext_resource type="Script" uid="uid://dp83uq4y8dvif" path="res://content/level_specific/crate.gd" id="1_rl0sg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jng1c"]
@@ -10,7 +10,7 @@ size = Vector2(16, 16)
 size = Vector2(15, 1)
 
 [node name="Crate" type="RigidBody2D"]
-z_index = 1
+z_index = 8
 can_sleep = false
 script = ExtResource("1_rl0sg")
 

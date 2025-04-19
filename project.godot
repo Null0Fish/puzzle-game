@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.4", "Mobile")
 
 [autoload]
 
-Global="*res://content/global.gd"
+Global="*res://content/other/global.gd"
 
 [display]
 

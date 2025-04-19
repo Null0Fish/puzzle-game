@@ -15,3 +15,5 @@ Explosion Sound:
 	- https://mixkit.co/free-sound-effects/explosion/
 Win Sound:
 	- https://pixabay.com/sound-effects/search/treasure/
+Other SOunds:
+	- https://sfxr.me/

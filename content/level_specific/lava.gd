@@ -5,5 +5,3 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		body.call_deferred("die")
 	if body is Bomb:
 		body.call_deferred("die")
-	if body is Crate:
-		pass

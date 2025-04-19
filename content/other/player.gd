@@ -5,6 +5,7 @@ class_name Player
 @onready var sprite: AnimatedSprite2D = $PlayerSprite
 @onready var window_size = get_viewport_rect().size
 @onready var die_player: AudioStreamPlayer = $DiePlayer
+@onready var jump_player: AudioStreamPlayer = $JumpPlayer
 
 const PLAYER_SIZE = Global.PLAYER_SIZE
 const SPEED: float = 75.0
@@ -30,6 +31,7 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 	
 	if Input.is_action_just_pressed("jump") and coyote_timer > 0.0 and not Global.paused:
+		jump_player.play()
 		velocity.y = JUMP_VELOCITY
 		coyote_timer = 0.0  
 	

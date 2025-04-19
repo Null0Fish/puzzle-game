@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var pickup_player: AudioStreamPlayer = $PickupPlayer
 
 const SIZE = Vector2i(16, 16)
 const OFFSET = Vector2i(0, 1)
@@ -18,6 +19,9 @@ func init(atlas_cords: Vector2i, tile_layer: TileMapLayer) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
 		_unlock_cells()
+		pickup_player.play()
+		hide()
+		await pickup_player.finished
 		queue_free()
 
 func _unlock_cells():
