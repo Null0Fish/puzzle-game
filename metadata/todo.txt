@@ -1,7 +1,5 @@
 Core Gameplay Features:
 	- Animations & Effects:
-		- Add death animations
-			- Closing circle zoom in on player
 		- Add sound effects
 			- Key pickup
 			- Jump

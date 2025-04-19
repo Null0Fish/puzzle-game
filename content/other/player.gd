@@ -66,7 +66,7 @@ var death_scene: PackedScene = preload("res://content/other/death_animation.tscn
 func die():
 	Global.paused = true
 	# Replace with propper animation
-	sprite.play("idle")
+	sprite.play("dead")
 	if not is_dead:
 		var death_animation = death_scene.instantiate()
 		add_child(death_animation)

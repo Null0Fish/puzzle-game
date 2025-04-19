@@ -23,6 +23,7 @@ var cells_to_detonate: Array = []
 var dragging: bool = false
 var inital_cell_pos = Vector2i(TILE_SIZE * 2, 0)
 var delta_cell_pos = Vector2i(0, TILE_SIZE)
+var player: Player
 
 func _process(_delta):
 	ghost_bomb.region_rect = bomb_sprite.region_rect
@@ -119,7 +120,7 @@ func detonate(player_cell: Vector2i):
 	root_tile_layer.static_objects.erase(self)
 	for cell in cells_to_detonate:
 		if cell == player_cell:
-			Global.restart()
+			player.die()
 			return
 		var cell_data = root_tile_layer.foreground_layer.get_cell_tile_data(cell)
 		if cell_data and cell_data.get_custom_data("Breakable") and not cell in Global.GUI_CELLS:

@@ -123,6 +123,7 @@ func _place_bomb(cell: Vector2i, bomb_type: int):
 	bomb.position = _cell_to_cords(cell) + OFFSET
 	add_child(bomb)
 	bomb.init(root_tile_layer, bomb_type)
+	bomb.player = player
 	_add_bomb_to_lists(bomb, cell, bomb_type)
 
 func _detonate_bomb(index: int):
@@ -158,6 +159,8 @@ func _can_place_bomb(cell: Vector2i, bomb_type: int, moving_placed_bomb=false) -
 		return false
 	# Prevent destorying the hidden GUI cells
 	if cell in Global.GUI_CELLS:
+		return false
+	if Global.paused:
 		return false
 	return true
 
