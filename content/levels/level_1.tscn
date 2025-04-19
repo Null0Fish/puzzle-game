@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ck4kc3lfpd58f"]
 
 [ext_resource type="PackedScene" uid="uid://crfpgs7m65kr2" path="res://content/bases/level_base.tscn" id="1_eiord"]
-[ext_resource type="PackedScene" uid="uid://cqkwtlr5v4t2k" path="res://content/level_specific/tutorial_text.tscn" id="2_j2lr0"]
+[ext_resource type="PackedScene" uid="uid://cqkwtlr5v4t2k" path="res://content/other/tutorial_text.tscn" id="2_j2lr0"]
 
 [node name="level_1" instance=ExtResource("1_eiord")]
 level_name = "Restarting"

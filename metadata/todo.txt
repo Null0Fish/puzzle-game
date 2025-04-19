@@ -1,7 +1,12 @@
-Advanced / Future Features:
-	- Fun lava bubble up thing?
-	- Make customized loading screen
-	- Level Progression
+Must Do:
+	- Level progression, add levels D;
+	- Settings button should do something
+		- Will need to make up settings 
+	- Credit screen
+
+Funny ideas:
+	- Fun laval bubble up thing
+	- Customized loading screen
+
+Currently being thought about:
 	- Player Guidance
-	- Settings Buttons
-	- Credits

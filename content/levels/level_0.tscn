@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://garmdbmxy5gb"]
 
 [ext_resource type="PackedScene" uid="uid://crfpgs7m65kr2" path="res://content/bases/level_base.tscn" id="1_chai2"]
-[ext_resource type="PackedScene" uid="uid://cqkwtlr5v4t2k" path="res://content/level_specific/tutorial_text.tscn" id="2_a4l8r"]
+[ext_resource type="PackedScene" uid="uid://cqkwtlr5v4t2k" path="res://content/other/tutorial_text.tscn" id="2_a4l8r"]
 
 [node name="level_0" instance=ExtResource("1_chai2")]
 level_name = "First Steps"

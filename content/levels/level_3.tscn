@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://g17uugfoqf2y"]
 
 [ext_resource type="PackedScene" uid="uid://crfpgs7m65kr2" path="res://content/bases/level_base.tscn" id="1_gxbyd"]
-[ext_resource type="PackedScene" uid="uid://cqkwtlr5v4t2k" path="res://content/level_specific/tutorial_text.tscn" id="3_0icbu"]
+[ext_resource type="PackedScene" uid="uid://cqkwtlr5v4t2k" path="res://content/other/tutorial_text.tscn" id="3_0icbu"]
 
 [node name="level_3" instance=ExtResource("1_gxbyd")]
 level_name = "Reusage"
