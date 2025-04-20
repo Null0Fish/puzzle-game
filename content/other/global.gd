@@ -39,6 +39,14 @@ const GUI_CELLS : Array = [
 	Vector2i(11,0),
 ]
 
+# Lava tint variables
+var lava_tint: Color = Color(1.0, 1.0, 1.0)
+var base_tint: Color = Color(1.0, 1.0, 1.0)
+var peak_tint: Color = Color(1.0, 0.7, 0.3)
+var tint_speed: float = 1.0 
+var tint_phase: float = 0.0
+
+
 # State variables
 var paused : bool = false
 var current_bomb_type : int = DIAGONAL
@@ -47,6 +55,11 @@ var unlocked_levels : Array = [0]
 var solid_warning_layers : Array = []
 
 # Functions
+func _process(delta: float) -> void:
+	tint_phase += delta * tint_speed
+	var t = (sin(tint_phase) + 1.0) / 2.0
+	lava_tint = base_tint.lerp(peak_tint, t)
+
 func get_bombs_available(level : int) -> Array:
 	if level == -1:
 		return [9, 9, 9]

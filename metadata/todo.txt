@@ -1,8 +1,6 @@
 Must Do:
 	- Level progression, add levels D;
-	- Settings button should do something
-		- Will need to make up settings 
-	- Credit screen
+	- Go through credit assets and find what needs to be cited
 
 Funny ideas:
 	- Fun laval bubble up thing
@@ -10,3 +8,4 @@ Funny ideas:
 
 Currently being thought about:
 	- Player Guidance
+	- Adding rigid body in lava to prevent player sinkiing
