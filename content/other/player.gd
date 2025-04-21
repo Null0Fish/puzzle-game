@@ -18,6 +18,7 @@ var is_dead: bool = false
 
 func _physics_process(delta):
 	if is_dead:
+		velocity.y += gravity * delta
 		velocity = Vector2(0, velocity.y)
 		move_and_slide()
 		return

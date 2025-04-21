@@ -24,11 +24,14 @@ var lava_scene: PackedScene = preload("res://content/level_specific/lava.tscn")
 
 var allow_hover_cords: Vector2i = Vector2i(0, 0)
 var disallow_hover_cords: Vector2i = Vector2i(2, 0)
-var bombs_placed: Array = []
-var bomb_locations: Array = []
-var crate_list: Array = []
 var bombs_available: Array
 var last_placement_time: float
+var bomb_list: Array = []
+var bomb_locations: Array = []
+var crate_list: Array = []
+var crate_locations: Array = []
+var lava_list: Array = []
+var lavaa_locations: Array = []
 var is_dragging: bool
 
 func _ready():
@@ -67,7 +70,8 @@ func _initialize_level():
 		if cell_data.get_custom_data("is_crate"):
 			crate_list.append(_initialize_scene_at(cell, crate_scene))
 		if cell_data.get_custom_data("is_lava"):
-			_initialize_scene_at(cell, lava_scene)
+			var lava = _initialize_scene_at(cell, lava_scene)
+			lava_list.append(lava)
 
 func _initialize_scene_at(cell: Vector2i, scene: PackedScene): 
 	var new_scene = scene.instantiate()
@@ -88,18 +92,28 @@ func _process(_delta):
 		else:
 			_update_hover_layer(disallow_hover_cords)
 	fade.modulate.a -= 0.01
-	_update_bomb_locations()
+	bomb_locations = _update_array(bomb_list)
+	crate_locations = _update_array(crate_list)
+	lavaa_locations = _update_array(lava_list)
+	for crate_cell in crate_locations:
+		for lava_cell in lavaa_locations:
+			if crate_cell == lava_cell:
+				var index = lavaa_locations.find(lava_cell)
+				lava_list[index].queue_free()
+				lava_list.remove_at(index)
 
 func _update_hover_layer(atlas_cords: Vector2i):
 	hover_layer.set_cell(hover_layer.local_to_map(get_local_mouse_position()), HOVER_SOURCE, atlas_cords)
 
-func _update_bomb_locations():
-	for i in range(bombs_placed.size()):
-		bomb_locations[i] = root_tile_layer.local_to_map(bombs_placed[i].position)
+func _update_array(array_1: Array):
+	var temp_array = []
+	for i in range(array_1.size()):
+		temp_array.append(root_tile_layer.local_to_map(array_1[i].position))
+	return temp_array
 
 func _pick_up_bomb(index: int):
-	bombs_available[bombs_placed[index].type] += 1
-	guis[bombs_placed[index].type].set_bomb_count(bombs_available[bombs_placed[index].type])
+	bombs_available[bomb_list[index].type] += 1
+	guis[bomb_list[index].type].set_bomb_count(bombs_available[bomb_list[index].type])
 	_remove_bomb_at(index)
 
 func _place_bomb(cell: Vector2i, bomb_type: int):
@@ -112,21 +126,21 @@ func _place_bomb(cell: Vector2i, bomb_type: int):
 
 func _detonate_bomb(index: int):
 	explosion_player.play()
-	bombs_placed[index].detonate(root_tile_layer.local_to_map(player.global_position))
+	bomb_list[index].detonate(root_tile_layer.local_to_map(player.global_position))
 	_remove_bomb_at(index)
 
 func _add_bomb_to_lists(bomb: Bomb, cell: Vector2i, bomb_type: int):
-	bombs_placed.append(bomb)
+	bomb_list.append(bomb)
 	bomb_locations.append(cell)
 	bombs_available[bomb_type] -= 1
 	guis[bomb_type].set_bomb_count(bombs_available[bomb_type])
 	last_placement_time = Time.get_ticks_msec() / 1000.0
 
 func _remove_bomb_at(index: int):
-	root_tile_layer.static_objects.erase(bombs_placed[index])
-	bombs_placed[index].remove()
+	root_tile_layer.static_objects.erase(bomb_list[index])
+	bomb_list[index].remove()
 	bomb_locations.remove_at(index)
-	bombs_placed.remove_at(index)
+	bomb_list.remove_at(index)
 
 func _can_place_bomb(cell: Vector2i, bomb_type: int, moving_placed_bomb=false) -> bool:
 	# Checks bomb count of type
@@ -161,7 +175,7 @@ func _on_death_box_body_entered(body: Node2D) -> void:
 
 func try_move_bomb_to(pos: Vector2, bomb: Bomb) -> bool:
 	var cell = root_tile_layer.local_to_map(pos)
-	var index = bombs_placed.find(bomb)
+	var index = bomb_list.find(bomb)
 	if _can_place_bomb(cell, bomb.type, true):
 		_pick_up_bomb(index)
 		_place_bomb(cell, bomb.type)
@@ -170,14 +184,14 @@ func try_move_bomb_to(pos: Vector2, bomb: Bomb) -> bool:
 
 func try_pick_up_bomb(cell: Vector2i) -> bool:
 	var index = bomb_locations.find(cell)
-	if index != -1 and bombs_placed[index].is_on_floor():
+	if index != -1 and bomb_list[index].is_on_floor():
 		_pick_up_bomb(index)
 		return true
 	return false
 
 func try_detonate_bomb(cell: Vector2i, is_in_laval: bool = false) -> bool:
 	var index = bomb_locations.find(cell)
-	if index != -1 and (bombs_placed[index].is_on_floor() or is_in_laval):
+	if index != -1 and (bomb_list[index].is_on_floor() or is_in_laval):
 		_detonate_bomb(index)
 		return true
 	return false
@@ -192,6 +206,6 @@ func try_place_bomb(cell: Vector2) -> bool:
 func upgrade_bomb_type(bomb_type: int):
 	Global.bomb_levels[bomb_type] = Global.bomb_levels[bomb_type] + 1
 	var region_rect = guis[bomb_type].upgrade()
-	for bomb in bombs_placed:
+	for bomb in bomb_list:
 		if bomb.type == bomb_type:
 			bomb.upgrade_bomb_sprite(region_rect)

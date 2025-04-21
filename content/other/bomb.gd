@@ -100,6 +100,13 @@ func _update_surrounding(pos: Vector2):
 		root_tile_layer.foreground_layer.set_cell(cell, -1)
 	root_tile_layer.foreground_layer.set_cells_terrain_connect(to_update, 0, 0)
 
+func _is_wall_cell(cell: Vector2i) -> bool:
+	if cell.x < 0 or cell.x > 19:
+		return true
+	if cell.y < 0 or cell.y > 11:
+		return true
+	return false
+
 func init(map: TileMapLayer, variant: int):
 	root_tile_layer = map
 	type = variant
@@ -114,7 +121,11 @@ func init(map: TileMapLayer, variant: int):
 		ghost_bomb.hide()
 
 func is_on_floor() -> bool:
-	return raycast.is_colliding() and (raycast.get_collider() is TileMapLayer or raycast.get_collider() is RigidBody2D)
+	if raycast.is_colliding():
+		var collider = raycast.get_collider()
+		if collider is TileMapLayer or collider is RigidBody2D or collider is Crate:
+			return true
+	return false
 
 func detonate(player_cell: Vector2i):	
 	root_tile_layer.static_objects.erase(self)
@@ -123,7 +134,8 @@ func detonate(player_cell: Vector2i):
 			player.die()
 			return
 		var cell_data = root_tile_layer.foreground_layer.get_cell_tile_data(cell)
-		if cell_data and cell_data.get_custom_data("Breakable") and not cell in Global.GUI_CELLS:
+		if cell_data and cell_data.get_custom_data("Breakable") \
+		and not cell in Global.GUI_CELLS and not _is_wall_cell(cell):
 			_create_explosion_particles(cell)
 			root_tile_layer.foreground_layer.set_cell(cell, -1)
 			_update_surrounding(cell)

@@ -9,7 +9,7 @@ shader = ExtResource("2_g2eho")
 shader_parameter/lava_tint = Vector4(0, 0, 0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61cur"]
-size = Vector2(16, 15)
+size = Vector2(14, 16)
 
 [node name="Lava" type="Node2D"]
 z_index = 7
