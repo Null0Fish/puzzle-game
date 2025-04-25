@@ -4,6 +4,7 @@ extends Control
 @onready var label: Label = $TitleUI/PlayButton/Label
 @onready var timer: Timer = $Timer
 @onready var foreground_layer: TileMapLayer = $MenuTileLayers/ForegroundLayer
+@onready var art_credits_label: Label = $CreditsUI/ArtCreditsLabel
 
 const HORIZONTAL_DELTA: Vector2 = Vector2(320, 0)
 const VERTICAL_DELTA: Vector2 = Vector2(0, 192)
@@ -27,13 +28,8 @@ func _initialize_credits():
 	var formated_data = ""
 	for key in raw_data.keys():
 		var value = raw_data[key]
-		if value is Array:
-			formated_data += key + ":\n"
-			for val in value:
-				formated_data += "  - " + str(val) + "\n"
-		else:
-			formated_data += key + ": " + str(value) + "\n"
-	$CreditsUI/CreditsLabel.text = formated_data
+		formated_data += "\n" + str(value) + "\n"
+	art_credits_label.text += "\n" + formated_data
 
 func _initialize_menu():
 	for level in Global.unlocked_levels:

@@ -1,19 +1,26 @@
 Tile Set:
+	Credit not required but appricated
 	- https://trident19.itch.io/caves-and-mines-tileset-2d-asset-pack
 Key:
+	Universal Creative Commons
 	- https://dustdfg.itch.io/pixel-art-keys?download
 Lava:
+	Emailed artist
 	- https://www.artstation.com/artwork/5B9ZLE
 Chest:
+	Creative Commons requires citation
 	- https://skalding.itch.io/chest-16x16-open-and-closed
 Font:
+	Freeware
 	- https://www.fontspace.com/teeny-tiny-pixls-font-f30095
+	Freeware
 	- https://www.fontspace.com/et-bt6001-font-f9581
 Character animations:
+	Not citation rqurired but ecuraged
 	- https://almostapixel.itch.io/smallburg-town-pack
 Explosion Sound:
+	Freeware
 	- https://mixkit.co/free-sound-effects/explosion/
 Win Sound:
+	Freeware
 	- https://pixabay.com/sound-effects/search/treasure/
-Other SOunds:
-	- https://sfxr.me/

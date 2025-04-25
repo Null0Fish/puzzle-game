@@ -1,14 +1,7 @@
 {
-  "Tile Set": "https://trident19.itch.io/caves-and-mines-tileset-2d-asset-pack",
-  "Key": "https://dustdfg.itch.io/pixel-art-keys?download",
-  "Lava": "https://www.artstation.com/artwork/5B9ZLE",
-  "Chest": "https://skalding.itch.io/chest-16x16-open-and-closed",
-  "Font": [
-	"https://www.fontspace.com/teeny-tiny-pixls-font-f30095",
-	"https://www.fontspace.com/et-bt6001-font-f9581"
-  ],
-  "Character animations": "https://almostapixel.itch.io/smallburg-town-pack",
-  "Explosion Sound": "https://mixkit.co/free-sound-effects/explosion/",
-  "Win Sound": "https://pixabay.com/sound-effects/search/treasure/",
-  "Other Sounds": "https://sfxr.me/"
+  "Tile Set": "JoyTree Studios",
+  "Key": "dustdfg",
+  "Lava": "Abhigyan Borgohain",
+  "Chest": "SkaldingDelight",
+  "Character animations": "almostApixel"
 }
