@@ -13,7 +13,7 @@ position = Vector2(8, 152.5)
 position = Vector2(312, 56)
 
 [node name="TutorialText" parent="." index="7" instance=ExtResource("3_0icbu")]
-z_index = 1
+z_index = 5
 offset_left = 216.0
 offset_top = 144.0
 offset_right = 264.0

@@ -1070,10 +1070,10 @@ shape = SubResource("RectangleShape2D_4xmh2")
 z_index = 2
 
 [node name="Player" parent="." instance=ExtResource("3_dmeoe")]
-position = Vector2(8, 88)
+position = Vector2(8, 167)
 
 [node name="Chest" parent="." instance=ExtResource("3_vg8a1")]
-position = Vector2(312, 88)
+position = Vector2(312, 168)
 
 [node name="Input" type="Control" parent="."]
 layout_mode = 3

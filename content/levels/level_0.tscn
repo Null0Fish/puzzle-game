@@ -7,11 +7,14 @@
 level_name = "First Steps"
 show_ui = false
 
+[node name="Player" parent="." index="3"]
+position = Vector2(8, 87)
+
 [node name="Chest" parent="." index="4"]
 position = Vector2(312, 40)
 
 [node name="TutorialText" parent="." index="7" instance=ExtResource("2_a4l8r")]
-z_index = 1
+z_index = 5
 offset_left = 21.0
 offset_top = 25.0
 offset_right = 98.0

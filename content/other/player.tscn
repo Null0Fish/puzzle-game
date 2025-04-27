@@ -113,7 +113,7 @@ z_index = 6
 script = ExtResource("1_a8vbq")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 1.5)
+position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_ejter")
 animation = &"idle"
 frame_progress = 0.578407

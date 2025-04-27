@@ -20,7 +20,7 @@ const GUI_TILES : Array = [
 
 # Level information
 const LEVEL_FILE : String = "res://content/levels/level_"
-const MAX_LEVELS : int = 19
+const MAX_LEVELS : int = 20
 const BOMBS_AVAILABLE : Array = [
 	NONE,
 	NONE,

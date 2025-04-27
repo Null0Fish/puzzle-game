@@ -7,11 +7,14 @@
 level_name = "Restarting"
 show_ui = false
 
+[node name="Player" parent="." index="3"]
+position = Vector2(8, 87)
+
 [node name="Chest" parent="." index="4"]
 position = Vector2(312, 56)
 
 [node name="TutorialText" parent="." index="7" instance=ExtResource("2_j2lr0")]
-z_index = 1
+z_index = 5
 offset_left = 131.0
 offset_top = 116.0
 offset_right = 197.0

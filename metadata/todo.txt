@@ -1,6 +1,5 @@
 Must Do:
-	- Level progression, add levels D;
-	- Strange issue with dragging bombs invalid place hover layer look
+	- Make levels 5 -21
 	- Add shared to darked decor items
 
 Funny ideas:
@@ -9,3 +8,5 @@ Funny ideas:
 Currently being thought about:
 	- Player Guidance
 	- Adding rigid body in lava to prevent player sinkiing
+	- Redraw sprites for level boxes
+	- Consider thinking more about the current gui font colors (white is lame)

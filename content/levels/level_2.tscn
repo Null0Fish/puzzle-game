@@ -10,6 +10,9 @@ level_name = "First Explosions"
 [node name="Player" parent="." index="3"]
 position = Vector2(8, 120)
 
+[node name="Chest" parent="." index="4"]
+position = Vector2(312, 88)
+
 [node name="ExplosionPlayer" parent="." index="6"]
 volume_db = -16.0
 
@@ -17,6 +20,7 @@ volume_db = -16.0
 script = ExtResource("3_jukad")
 
 [node name="FirstTutorialText" parent="TutorialTextControler" index="0" instance=ExtResource("4_2jvad")]
+z_index = 5
 anchors_preset = 0
 anchor_left = 0.0
 anchor_top = 0.0
@@ -31,6 +35,7 @@ grow_vertical = 1
 text = "Drag a bomb to place it"
 
 [node name="SecondTutorialText" parent="TutorialTextControler" index="1" instance=ExtResource("4_2jvad")]
+z_index = 5
 anchors_preset = 0
 anchor_left = 0.0
 anchor_top = 0.0
@@ -43,6 +48,21 @@ offset_bottom = 173.0
 grow_horizontal = 1
 grow_vertical = 1
 text = "Detonate placed bombs by right clicking them"
+
+[node name="ThirdTutorialTexxt" parent="TutorialTextControler" index="2" instance=ExtResource("4_2jvad")]
+z_index = 5
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 256.0
+offset_top = 152.0
+offset_right = 296.0
+offset_bottom = 184.0
+grow_horizontal = 1
+grow_vertical = 1
+text = "Keep using bombs to reach the chest"
 
 [node name="DecorativeLayer" parent="RootTileLayer" index="1"]
 tile_map_data = PackedByteArray("AAADAAMAAAACAAAAAAADAAQAAAACAAAAAAADAAUAAAACAAAAAAAJAAQAAAACAAAAAAAJAAUAAAACAAAAAAARAAMAAAACAAAAAAARAAQAAAACAAAAAAARAAUAAAACAAAAAAAQAAcAAAABAAAAAAAGAAUAAAABAAAAAAACAAYAAAAEAAAAAAAKAAgAAAACAAEAAAA=")

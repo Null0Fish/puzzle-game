@@ -90,7 +90,7 @@ func _process(_delta):
 	hover_layer.clear()
 	if is_dragging:
 		var cell = root_tile_layer.local_to_map(get_local_mouse_position())
-		if _can_place_bomb(cell, Global.current_bomb_type):
+		if _can_place_bomb(cell, Global.current_bomb_type, true):
 			_update_hover_layer(allow_hover_cords)
 		else:
 			_update_hover_layer(disallow_hover_cords)
