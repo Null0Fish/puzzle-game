@@ -1,6 +1,6 @@
 Must Do:
 	- Level progression, add levels D;
-	- Go through credit assets and find what needs to be cited
+	- Background music
 
 Funny ideas:
 	- Customized loading screen

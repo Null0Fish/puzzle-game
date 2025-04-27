@@ -46,6 +46,9 @@ var peak_tint: Color = Color(1.0, 0.7, 0.3)
 var tint_speed: float = 1.0 
 var tint_phase: float = 0.0
 
+# Music Player variables
+const MUSIC_FILE = preload("res://assets/sounds/background.mp3")
+var audio_player : AudioStreamPlayer
 
 # State variables
 var paused : bool = false
@@ -55,6 +58,23 @@ var unlocked_levels : Array = [0]
 var solid_warning_layers : Array = []
 
 # Functions
+func _ready():
+	audio_player = AudioStreamPlayer.new()
+	add_child(audio_player)
+	audio_player.stream = MUSIC_FILE
+	audio_player.finished.connect(_play_audio)
+	audio_player.play()
+
+func stop_audio():
+	audio_player.stop()
+
+func _play_audio():
+	audio_player.play()
+
+func try_play_background_music():
+	if not audio_player.playing:
+		_play_audio()
+
 func _process(delta: float) -> void:
 	tint_phase += delta * tint_speed
 	var t = (sin(tint_phase) + 1.0) / 2.0
@@ -106,6 +126,3 @@ func type_to_string(type : int):
 		return "Diagonal"
 	if type == FULL:
 		return "Full"
-
-func play_audio(audio_player : AudioStreamPlayer):
-	audio_player.play()

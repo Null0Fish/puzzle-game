@@ -35,6 +35,7 @@ var lavaa_locations: Array = []
 var is_dragging: bool
 
 func _ready():
+	Global.try_play_background_music()
 	fade.show()
 	_initialize_level()
 
