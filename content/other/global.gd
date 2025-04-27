@@ -63,15 +63,19 @@ func _ready():
 	add_child(audio_player)
 	audio_player.stream = MUSIC_FILE
 	audio_player.finished.connect(_play_audio)
+	audio_player.volume_db = -6
+	lower_audio_vol()
 	audio_player.play()
 
-func stop_audio():
-	audio_player.stop()
+func lower_audio_vol():
+	audio_player.volume_db = -16
 
 func _play_audio():
+	audio_player.volume_db = -8
 	audio_player.play()
 
 func try_play_background_music():
+	audio_player.volume_db = -8
 	if not audio_player.playing:
 		_play_audio()
 

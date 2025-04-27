@@ -1081,6 +1081,7 @@ script = ExtResource("7_lhmjq")
 
 [node name="ExplosionPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamWAV_vnh2l")
+volume_db = -10.0
 
 [node name="RootTileLayer" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_ora2t")

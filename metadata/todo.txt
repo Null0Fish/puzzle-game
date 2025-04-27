@@ -1,6 +1,7 @@
 Must Do:
 	- Level progression, add levels D;
-	- Background music
+	- Background music, work more on it
+	- Add shared to darked decor items
 
 Funny ideas:
 	- Customized loading screen

@@ -11,7 +11,7 @@ func _input(event):
 		Global.restart()
 	
 	if event.is_action_released("exit"):
-		# Global.stop_audio()
+		Global.lower_audio_vol()
 		get_tree().change_scene_to_file("res://content/gui/start_screen.tscn")
 	
 	for key in range(KEY_0, KEY_9 + 1):
