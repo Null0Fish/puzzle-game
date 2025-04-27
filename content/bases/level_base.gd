@@ -69,7 +69,9 @@ func _initialize_level():
 		if cell_data.get_custom_data("is_upgrade"):
 			_initialize_scene_at(cell, upgrade_scene)
 		if cell_data.get_custom_data("is_crate"):
-			crate_list.append(_initialize_scene_at(cell, crate_scene))
+			var crate = _initialize_scene_at(cell, crate_scene)
+			crate.z_index = 1
+			crate_list.append(crate)
 		if cell_data.get_custom_data("is_lava"):
 			var lava = _initialize_scene_at(cell, lava_scene)
 			lava_list.append(lava)

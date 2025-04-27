@@ -1067,6 +1067,7 @@ position = Vector2(160, 198.812)
 shape = SubResource("RectangleShape2D_4xmh2")
 
 [node name="LevelGUI" parent="." instance=ExtResource("6_worh7")]
+z_index = 2
 
 [node name="Player" parent="." instance=ExtResource("3_dmeoe")]
 position = Vector2(8, 88)

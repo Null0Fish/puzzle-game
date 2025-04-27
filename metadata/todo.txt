@@ -1,6 +1,6 @@
 Must Do:
 	- Level progression, add levels D;
-	- Background music, work more on it
+	- Strange issue with dragging bombs invalid place hover layer look
 	- Add shared to darked decor items
 
 Funny ideas:

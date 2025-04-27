@@ -6,7 +6,7 @@ extends TileMapLayer
 @onready var static_objects: Array = [$"../Player"]
 @onready var player: Player = $"../Player"
 
-const VINE_ATLAS: Vector2i = Vector2i(4, 0)
+const VINE_ATLAS: Vector2i = Vector2i(2, 0)
 
 func _process(_delta):
 	_destroy_floating_objects()

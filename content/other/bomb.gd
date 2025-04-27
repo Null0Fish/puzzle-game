@@ -140,6 +140,7 @@ func detonate(player_cell: Vector2i):
 			root_tile_layer.foreground_layer.set_cell(cell, -1)
 			_update_surrounding(cell)
 		root_tile_layer.ore_layer.set_cell(cell, -1)
+		root_tile_layer.decorative_layer.set_cell(cell, -1)
 
 func die():
 	get_tree().current_scene.try_detonate_bomb(root_tile_layer.local_to_map(position), true)

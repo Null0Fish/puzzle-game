@@ -2,17 +2,21 @@ extends Area2D
 
 class_name Chest
 
-@onready var open_texture: Texture = preload("res://assets/chest/open_chest.png")
 @onready var timer: Timer = $Timer
 @onready var win_particles: Node2D = $WinParticles
 @onready var fade: Control = $Fade
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var sprite_2d: Sprite2D = $Sprite2D
+
+@onready var open_texture: Texture = preload("res://assets/chest/open_chest.png")
 
 var next_level: int
+var currently_dieing: bool = false
 
 func _on_body_entered(body : Node):
-	if body is Player:
-		$Sprite2D.texture = open_texture
+	if body is Player and not currently_dieing:
+		currently_dieing = true
+		sprite_2d.texture = open_texture
 		next_level = Global.get_current_level() + 1
 		if not Global.unlocked_levels.has(next_level):
 			Global.unlocked_levels.append(next_level)

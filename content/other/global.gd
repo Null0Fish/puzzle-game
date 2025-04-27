@@ -20,7 +20,7 @@ const GUI_TILES : Array = [
 
 # Level information
 const LEVEL_FILE : String = "res://content/levels/level_"
-const MAX_LEVELS : int = 4
+const MAX_LEVELS : int = 19
 const BOMBS_AVAILABLE : Array = [
 	NONE,
 	NONE,
@@ -47,8 +47,10 @@ var tint_speed: float = 1.0
 var tint_phase: float = 0.0
 
 # Music Player variables
-const MUSIC_FILE = preload("res://assets/sounds/background.mp3")
-var audio_player : AudioStreamPlayer
+const MIN_VOL: int = -16
+const MAX_VOL: int = -8
+const MUSIC_FILE: AudioStreamMP3 = preload("res://assets/sounds/background.mp3")
+var audio_player: AudioStreamPlayer
 
 # State variables
 var paused : bool = false
@@ -63,19 +65,18 @@ func _ready():
 	add_child(audio_player)
 	audio_player.stream = MUSIC_FILE
 	audio_player.finished.connect(_play_audio)
-	audio_player.volume_db = -6
 	lower_audio_vol()
-	audio_player.play()
+	_play_audio()
 
 func lower_audio_vol():
-	audio_player.volume_db = -16
+	audio_player.volume_db = MIN_VOL
 
 func _play_audio():
-	audio_player.volume_db = -8
+	audio_player.volume_db = MAX_VOL
 	audio_player.play()
 
 func try_play_background_music():
-	audio_player.volume_db = -8
+	audio_player.volume_db = MAX_VOL
 	if not audio_player.playing:
 		_play_audio()
 
