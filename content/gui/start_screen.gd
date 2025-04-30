@@ -9,7 +9,7 @@ extends Control
 const HORIZONTAL_DELTA: Vector2 = Vector2(320, 0)
 const VERTICAL_DELTA: Vector2 = Vector2(0, 192)
 const CAMERA_MOVE_TIME: float = 1.5
-const CREDITS_FILE: String = "res://metadata/asset_sources.json"
+const CREDITS_FILE: String = "res://metadata/credits.json"
 const OFFSET: Vector2i = Global.OFFSET
 const TILE_SIZE = Global.TILE_SIZE
 

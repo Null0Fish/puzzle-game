@@ -6,7 +6,10 @@ extends TileMapLayer
 @onready var static_objects: Array = [$"../Player"]
 @onready var player: Player = $"../Player"
 
-const VINE_ATLAS: Vector2i = Vector2i(2, 0)
+const VINE_ATLAS_CORDS: Array = [
+	Vector2i(0, 0),
+	Vector2i(1, 0)
+]
 
 func _process(_delta):
 	_destroy_floating_objects()
@@ -22,7 +25,10 @@ func _destroy_floating_objects():
 			decorative_layer.set_cell(cell, -1)
 
 func _is_vine(cell: Vector2i) -> bool:
-	return decorative_layer.get_cell_atlas_coords(cell) == VINE_ATLAS
+	for cord in VINE_ATLAS_CORDS:
+		if cord == decorative_layer.get_cell_atlas_coords(cell):
+			return true
+	return false
 
 func _is_normal_cell(cell: Vector2i) -> bool:
 	return foreground_layer.get_cell_source_id(cell) != -1

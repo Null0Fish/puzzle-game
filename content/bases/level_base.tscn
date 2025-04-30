@@ -22,45 +22,11 @@ format = 3
 
 [sub_resource type="TileSet" id="TileSet_ora2t"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ora2t"]
-texture = ExtResource("6_v5hxd")
-0:0/0 = 0
-2:0/0 = 0
-4:0/0 = 0
-0:2/0 = 0
-2:2/0 = 0
-4:2/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-5:0/0 = 0
-3:0/0 = 0
-1:0/0 = 0
-1:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-4:3/0 = 0
-5:3/0 = 0
-5:2/0 = 0
-3:2/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_o6k3o"]
-sources/0 = SubResource("TileSetAtlasSource_ora2t")
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_psg8t"]
 texture = ExtResource("7_ora2t")
 0:0/0 = 0
 2:0/0 = 0
 4:0/0 = 0
-6:0/0 = 0
-0:2/0 = 0
-2:2/0 = 0
-4:2/0 = 0
 1:0/0 = 0
 3:0/0 = 0
 5:0/0 = 0
@@ -70,15 +36,6 @@ texture = ExtResource("7_ora2t")
 3:1/0 = 0
 4:1/0 = 0
 5:1/0 = 0
-1:2/0 = 0
-3:2/0 = 0
-5:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-4:3/0 = 0
-5:3/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_8nnp0"]
 sources/0 = SubResource("TileSetAtlasSource_psg8t")
@@ -1034,6 +991,36 @@ custom_data_layer_4/type = 1
 sources/1 = SubResource("TileSetAtlasSource_8y0ho")
 sources/0 = SubResource("TileSetAtlasSource_aqsxg")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ora2t"]
+texture = ExtResource("6_v5hxd")
+0:0/0 = 0
+2:0/0 = 0
+4:0/0 = 0
+0:2/0 = 0
+2:2/0 = 0
+4:2/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+5:0/0 = 0
+3:0/0 = 0
+1:0/0 = 0
+1:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+5:2/0 = 0
+3:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_o6k3o"]
+sources/0 = SubResource("TileSetAtlasSource_ora2t")
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_52cq8"]
 texture = ExtResource("11_8y0ho")
 0:0/0 = 0
@@ -1088,13 +1075,8 @@ volume_db = -10.0
 tile_set = SubResource("TileSet_ora2t")
 script = ExtResource("6_ora2t")
 
-[node name="OreLayer" type="TileMapLayer" parent="RootTileLayer"]
-z_index = 1
-use_parent_material = true
-tile_set = SubResource("TileSet_o6k3o")
-metadata/_edit_lock_ = true
-
 [node name="DecorativeLayer" type="TileMapLayer" parent="RootTileLayer"]
+modulate = Color(0.703808, 0.703808, 0.703808, 0.756863)
 use_parent_material = true
 tile_set = SubResource("TileSet_8nnp0")
 metadata/_edit_lock_ = true
@@ -1107,6 +1089,12 @@ metadata/_edit_lock_ = true
 [node name="ForegroundLayer" type="TileMapLayer" parent="RootTileLayer"]
 tile_map_data = PackedByteArray("AAAUAAwAAAACAAIAAAAUAAsAAAAHAAIAAAAUAAoAAAADAAEAAAAUAAkAAAADAAEAAAAUAAgAAAADAAEAAAAUAAcAAAADAAEAAAAUAAYAAAADAAEAAAAUAAUAAAADAAEAAAAUAAQAAAADAAEAAAAUAAMAAAADAAEAAAAUAAIAAAADAAEAAAAUAAEAAAADAAEAAAAUAAAAAAAHAAEAAAAUAP//AAACAAAAAAATAAAAAAABAAIAAAATAP//AAABAAAAAAASAAAAAAABAAIAAAASAP//AAABAAAAAAARAAAAAAABAAIAAAARAP//AAABAAAAAAAQAAAAAAABAAIAAAAQAP//AAABAAAAAAAPAAAAAAABAAIAAAAPAP//AAABAAAAAAAOAAAAAAABAAIAAAAOAP//AAABAAAAAAANAAAAAAABAAIAAAANAP//AAABAAAAAAAMAAAAAAABAAIAAAAMAP//AAABAAAAAAALAAAAAAABAAIAAAALAP//AAABAAAAAAAKAAAAAAABAAIAAAAKAP//AAABAAAAAAAJAAAAAAABAAIAAAAJAP//AAABAAAAAAAIAAAAAAABAAIAAAAIAP//AAABAAAAAAAHAAAAAAABAAIAAAAHAP//AAABAAAAAAAGAAAAAAABAAIAAAAGAP//AAABAAAAAAAFAAAAAAABAAIAAAAFAP//AAABAAAAAAAEAAAAAAABAAIAAAAEAP//AAABAAAAAAADAAAAAAABAAIAAAADAP//AAABAAAAAAACAAAAAAABAAIAAAACAP//AAABAAAAAAABAAAAAAABAAIAAAABAP//AAABAAAAAAAAAAAAAAABAAIAAAAAAP//AAABAAAAAAD//wwAAAAAAAIAAAD//wsAAAAEAAIAAAD//woAAAADAAEAAAD//wkAAAADAAEAAAD//wgAAAADAAEAAAD//wcAAAADAAEAAAD//wYAAAADAAEAAAD//wUAAAADAAEAAAD//wQAAAADAAEAAAD//wMAAAADAAEAAAD//wIAAAADAAEAAAD//wEAAAADAAEAAAD//wAAAAAEAAEAAAD/////AAAAAAAAAAATAAwAAAABAAIAAAASAAwAAAABAAIAAAARAAwAAAABAAIAAAAQAAwAAAABAAIAAAAPAAwAAAABAAIAAAAOAAwAAAABAAIAAAANAAwAAAABAAIAAAAMAAwAAAABAAIAAAALAAwAAAABAAIAAAAKAAwAAAABAAIAAAAJAAwAAAABAAIAAAAIAAwAAAABAAIAAAAHAAwAAAABAAIAAAAGAAwAAAABAAIAAAAFAAwAAAABAAIAAAAEAAwAAAABAAIAAAADAAwAAAABAAIAAAACAAwAAAABAAIAAAABAAwAAAABAAIAAAAAAAwAAAABAAIAAAATAAsAAAABAAAAAAASAAsAAAABAAAAAAARAAsAAAABAAAAAAAQAAsAAAABAAAAAAAPAAsAAAABAAAAAAAOAAsAAAABAAAAAAANAAsAAAABAAAAAAAMAAsAAAABAAAAAAALAAsAAAABAAAAAAAKAAsAAAABAAAAAAAJAAsAAAABAAAAAAAIAAsAAAABAAAAAAAHAAsAAAABAAAAAAAGAAsAAAABAAAAAAAFAAsAAAABAAAAAAAEAAsAAAABAAAAAAADAAsAAAABAAAAAAACAAsAAAABAAAAAAABAAsAAAABAAAAAAAAAAsAAAABAAAAAAA=")
 tile_set = SubResource("TileSet_gcxns")
+metadata/_edit_lock_ = true
+
+[node name="OreLayer" type="TileMapLayer" parent="RootTileLayer"]
+z_index = 1
+use_parent_material = true
+tile_set = SubResource("TileSet_o6k3o")
 metadata/_edit_lock_ = true
 
 [node name="BackgroundLayer" type="TileMapLayer" parent="RootTileLayer"]

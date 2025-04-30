@@ -2,13 +2,14 @@ extends Control
 
 @onready var level_base: Node2D = $".."
 @onready var root_tile_layer: TileMapLayer = $"../RootTileLayer"
+@onready var player: Player = $"../Player"
 
 func _input(event):
 	if Global.paused:
 		return
 		
 	if event.is_action_released("restart_level"):
-		Global.restart()
+		player.die()
 	
 	if event.is_action_released("exit"):
 		Global.lower_audio_vol()

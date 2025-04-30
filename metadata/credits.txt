@@ -27,3 +27,6 @@ Win Sound:
 Background Sound:
 	Freeware
 	- https://pixabay.com/music/search/atmospheric/
+Plants:
+	- Comercial use allowed 
+	- https://danaida.itch.io/free-pixel-plants-16x16

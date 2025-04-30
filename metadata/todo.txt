@@ -1,6 +1,7 @@
 Must Do:
 	- Make levels 5 -21
-	- Add shared to darked decor items
+	- Add plant decorations
+	- Write big bad shader code for ore layer :(
 
 Funny ideas:
 	- Customized loading screen
