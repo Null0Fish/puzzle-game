@@ -1,6 +1,6 @@
 extends PanelContainer
 
-@onready var label: Label = $Background/CenterContainer2/Label
+@onready var label: Label = $Background/Label
 @onready var lock: TextureRect = $Background/CenterContainer/Lock
 
 var locked

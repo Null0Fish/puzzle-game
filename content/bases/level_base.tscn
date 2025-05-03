@@ -1,10 +1,9 @@
-[gd_scene load_steps=27 format=4 uid="uid://crfpgs7m65kr2"]
+[gd_scene load_steps=24 format=4 uid="uid://crfpgs7m65kr2"]
 
 [ext_resource type="Script" uid="uid://dvahp7cotmlpa" path="res://content/bases/level_base.gd" id="1_r71if"]
 [ext_resource type="PackedScene" uid="uid://6i873xlrfq18" path="res://content/other/player.tscn" id="3_dmeoe"]
 [ext_resource type="PackedScene" uid="uid://c3xsraeg0wpln" path="res://content/other/chest.tscn" id="3_vg8a1"]
 [ext_resource type="Script" uid="uid://o51rufe8fd5y" path="res://content/bases/root_tile_layer.gd" id="6_ora2t"]
-[ext_resource type="Texture2D" uid="uid://blw1ho6lu6ksa" path="res://assets/tiles/ore_tiles.png" id="6_v5hxd"]
 [ext_resource type="PackedScene" uid="uid://cfsfwps6dsd7j" path="res://content/gui/level_gui.tscn" id="6_worh7"]
 [ext_resource type="Script" uid="uid://22vxynpu2cw0" path="res://content/bases/input.gd" id="7_lhmjq"]
 [ext_resource type="Texture2D" uid="uid://b70xug0nkj3md" path="res://assets/tiles/decorative_tiles.png" id="7_ora2t"]
@@ -29,13 +28,11 @@ texture = ExtResource("7_ora2t")
 4:0/0 = 0
 1:0/0 = 0
 3:0/0 = 0
-5:0/0 = 0
 0:1/0 = 0
 1:1/0 = 0
 2:1/0 = 0
 3:1/0 = 0
 4:1/0 = 0
-5:1/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_8nnp0"]
 sources/0 = SubResource("TileSetAtlasSource_psg8t")
@@ -862,10 +859,6 @@ texture = ExtResource("10_aqsxg")
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:1/0 = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-1:2/0 = 0
-1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-2:2/0 = 0
-2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:1/0 = 0
 2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:2/0 = 0
@@ -896,36 +889,6 @@ custom_data_layer_4/name = "is_upgrade"
 custom_data_layer_4/type = 1
 sources/1 = SubResource("TileSetAtlasSource_8y0ho")
 sources/0 = SubResource("TileSetAtlasSource_aqsxg")
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ora2t"]
-texture = ExtResource("6_v5hxd")
-0:0/0 = 0
-2:0/0 = 0
-4:0/0 = 0
-0:2/0 = 0
-2:2/0 = 0
-4:2/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-5:0/0 = 0
-3:0/0 = 0
-1:0/0 = 0
-1:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-4:3/0 = 0
-5:3/0 = 0
-5:2/0 = 0
-3:2/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_o6k3o"]
-sources/0 = SubResource("TileSetAtlasSource_ora2t")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_52cq8"]
 texture = ExtResource("11_8y0ho")
@@ -995,12 +958,6 @@ metadata/_edit_lock_ = true
 [node name="ForegroundLayer" type="TileMapLayer" parent="RootTileLayer"]
 tile_map_data = PackedByteArray("AAAUAAwAAAACAAIAAAAUAAsAAAAHAAIAAAAUAAoAAAADAAEAAAAUAAkAAAADAAEAAAAUAAgAAAADAAEAAAAUAAcAAAADAAEAAAAUAAYAAAADAAEAAAAUAAUAAAADAAEAAAAUAAQAAAADAAEAAAAUAAMAAAADAAEAAAAUAAIAAAADAAEAAAAUAAEAAAADAAEAAAAUAAAAAAAHAAEAAAAUAP//AAACAAAAAAATAAAAAAABAAIAAAATAP//AAABAAAAAAASAAAAAAABAAIAAAASAP//AAABAAAAAAARAAAAAAABAAIAAAARAP//AAABAAAAAAAQAAAAAAABAAIAAAAQAP//AAABAAAAAAAPAAAAAAABAAIAAAAPAP//AAABAAAAAAAOAAAAAAABAAIAAAAOAP//AAABAAAAAAANAAAAAAABAAIAAAANAP//AAABAAAAAAAMAAAAAAABAAIAAAAMAP//AAABAAAAAAALAAAAAAABAAIAAAALAP//AAABAAAAAAAKAAAAAAABAAIAAAAKAP//AAABAAAAAAAJAAAAAAABAAIAAAAJAP//AAABAAAAAAAIAAAAAAABAAIAAAAIAP//AAABAAAAAAAHAAAAAAABAAIAAAAHAP//AAABAAAAAAAGAAAAAAABAAIAAAAGAP//AAABAAAAAAAFAAAAAAABAAIAAAAFAP//AAABAAAAAAAEAAAAAAABAAIAAAAEAP//AAABAAAAAAADAAAAAAABAAIAAAADAP//AAABAAAAAAACAAAAAAABAAIAAAACAP//AAABAAAAAAABAAAAAAABAAIAAAABAP//AAABAAAAAAAAAAAAAAABAAIAAAAAAP//AAABAAAAAAD//wwAAAAAAAIAAAD//wsAAAAEAAIAAAD//woAAAADAAEAAAD//wkAAAADAAEAAAD//wgAAAADAAEAAAD//wcAAAADAAEAAAD//wYAAAADAAEAAAD//wUAAAADAAEAAAD//wQAAAADAAEAAAD//wMAAAADAAEAAAD//wIAAAADAAEAAAD//wEAAAADAAEAAAD//wAAAAAEAAEAAAD/////AAAAAAAAAAATAAwAAAABAAIAAAASAAwAAAABAAIAAAARAAwAAAABAAIAAAAQAAwAAAABAAIAAAAPAAwAAAABAAIAAAAOAAwAAAABAAIAAAANAAwAAAABAAIAAAAMAAwAAAABAAIAAAALAAwAAAABAAIAAAAKAAwAAAABAAIAAAAJAAwAAAABAAIAAAAIAAwAAAABAAIAAAAHAAwAAAABAAIAAAAGAAwAAAABAAIAAAAFAAwAAAABAAIAAAAEAAwAAAABAAIAAAADAAwAAAABAAIAAAACAAwAAAABAAIAAAABAAwAAAABAAIAAAAAAAwAAAABAAIAAAATAAsAAAABAAAAAAASAAsAAAABAAAAAAARAAsAAAABAAAAAAAQAAsAAAABAAAAAAAPAAsAAAABAAAAAAAOAAsAAAABAAAAAAANAAsAAAABAAAAAAAMAAsAAAABAAAAAAALAAsAAAABAAAAAAAKAAsAAAABAAAAAAAJAAsAAAABAAAAAAAIAAsAAAABAAAAAAAHAAsAAAABAAAAAAAGAAsAAAABAAAAAAAFAAsAAAABAAAAAAAEAAsAAAABAAAAAAADAAsAAAABAAAAAAACAAsAAAABAAAAAAABAAsAAAABAAAAAAAAAAsAAAABAAAAAAA=")
 tile_set = SubResource("TileSet_gcxns")
-metadata/_edit_lock_ = true
-
-[node name="OreLayer" type="TileMapLayer" parent="RootTileLayer"]
-z_index = 1
-use_parent_material = true
-tile_set = SubResource("TileSet_o6k3o")
 metadata/_edit_lock_ = true
 
 [node name="BackgroundLayer" type="TileMapLayer" parent="RootTileLayer"]

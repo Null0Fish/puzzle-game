@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/small_font.ttf-7bd8c85b12c242865bf08361829134
 [params]
 
 Rendering=null
-antialiasing=1
+antialiasing=0
 generate_mipmaps=false
 disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
@@ -29,7 +29,13 @@ Fallbacks=null
 fallbacks=[]
 Compress=null
 compress=true
-preload=[]
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "New Configuration",
+"size": Vector2i(16, 0),
+&"variation_embolden": 0.0
+}]
 language_support={}
 script_support={}
 opentype_features={}

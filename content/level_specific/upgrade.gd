@@ -2,8 +2,11 @@ extends Node2D
 
 @onready var upgrade_player: AudioStreamPlayer = $UpgradePlayer
 
+var player_has_entered: bool = false
+
 func _on_area_2d_body_entered(body):
-	if body is Player:
+	if body is Player and not player_has_entered:
+		player_has_entered = true
 		var current_bomb_type = Global.current_bomb_type
 		var current_bomb_level = Global.bomb_levels[current_bomb_type]
 		if current_bomb_level < Global.MAX_BOMB_LEVEL:

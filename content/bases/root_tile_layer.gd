@@ -2,7 +2,6 @@ extends TileMapLayer
 
 @onready var foreground_layer: TileMapLayer = $ForegroundLayer
 @onready var decorative_layer: TileMapLayer = $DecorativeLayer
-@onready var ore_layer: TileMapLayer = $OreLayer
 @onready var static_objects: Array = [$"../Player"]
 @onready var player: Player = $"../Player"
 

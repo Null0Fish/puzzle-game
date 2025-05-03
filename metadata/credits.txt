@@ -1,32 +1,47 @@
-Tile Set:
-	Credit not required but appricated
-	- https://trident19.itch.io/caves-and-mines-tileset-2d-asset-pack
-Key:
-	Universal Creative Commons
-	- https://dustdfg.itch.io/pixel-art-keys?download
-Lava:
-	Emailed artist
-	- https://www.artstation.com/artwork/5B9ZLE
-Chest:
-	Creative Commons requires citation
-	- https://skalding.itch.io/chest-16x16-open-and-closed
-Font:
-	Freeware
-	- https://www.fontspace.com/teeny-tiny-pixls-font-f30095
-	Freeware
-	- https://www.fontspace.com/et-bt6001-font-f9581
-Character animations:
-	Not citation rqurired but ecuraged
-	- https://almostapixel.itch.io/smallburg-town-pack
-Explosion Sound:
-	Freeware
-	- https://mixkit.co/free-sound-effects/explosion/
-Win Sound:
-	Freeware
-	- https://pixabay.com/sound-effects/search/treasure/
-Background Sound:
-	Freeware
-	- https://pixabay.com/music/search/atmospheric/
-Plants:
-	- Comercial use allowed 
-	- https://danaida.itch.io/free-pixel-plants-16x16
+Vines
+- Credit not required but appreciated
+- https://trident19.itch.io/caves-and-mines-tileset-2d-asset-pack
+
+Plants
+- Commercial use allowed
+- https://danaida.itch.io/free-pixel-plants-16x16
+
+Tilesets
+- Pay some amount for commercial use
+- https://ipixl.itch.io/pixel-art-16x16-nature-tiles
+
+Lava
+- Emailed artist (usage status unclear)
+- https://www.artstation.com/artwork/5B9ZLE
+
+Key
+- Universal Creative Commons
+- https://dustdfg.itch.io/pixel-art-keys?download
+
+Chest
+- Creative Commons, requires citation
+- https://skalding.itch.io/chest-16x16-open-and-closed
+
+Character Animations
+- No citation required, but encouraged
+- https://almostapixel.itch.io/smallburg-town-pack
+
+Teeny Tiny Pixls
+- Freeware
+- https://www.fontspace.com/teeny-tiny-pixls-font-f30095
+
+Normal Font
+- Freeware
+- https://www.fontspace.com/et-bt6001-font-f9581
+
+Explosion Sound
+- Freeware
+- https://mixkit.co/free-sound-effects/explosion/
+
+Win Sound
+- Freeware
+- https://pixabay.com/sound-effects/search/treasure/
+
+Background Sound
+- Freeware
+- https://pixabay.com/music/search/atmospheric/
