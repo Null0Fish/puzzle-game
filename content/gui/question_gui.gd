@@ -3,6 +3,9 @@ extends Control
 @onready var label: Label = $Label
 @onready var panel: Panel = $CenterContainer/Panel
 
+const ACTIVE_COLOR: Color = Global.ACTIVE_COLOR
+const INACTIVE_COLOR: Color = Global.INACTIVE_COLOR
+
 var style_box_flat: StyleBoxFlat = StyleBoxFlat.new()
 var is_active_panel: bool = false
 
@@ -12,10 +15,10 @@ func _process(_delta: float) -> void:
 func _update_panel_style():
 	if is_active_panel:
 		label.show()
-		style_box_flat.bg_color = Color(0.130728, 0.159803, 0.357762)
+		style_box_flat.bg_color = ACTIVE_COLOR
 	else:
 		label.hide()
-		style_box_flat.bg_color = Color(0.133, 0.125, 0.204)
+		style_box_flat.bg_color = INACTIVE_COLOR
 	panel.add_theme_stylebox_override("panel", style_box_flat)
 
 

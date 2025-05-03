@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfsfwps6dsd7j"]
+[gd_scene load_steps=5 format=3 uid="uid://cfsfwps6dsd7j"]
 
 [ext_resource type="Script" uid="uid://2vc8fm0ou8ic" path="res://content/gui/level_gui.gd" id="1_8elk5"]
 [ext_resource type="PackedScene" uid="uid://8xsf5j74u2cf" path="res://content/gui/bomb_gui.tscn" id="1_uuanb"]
-[ext_resource type="Texture2D" uid="uid://cpafvkjcxb2y" path="res://assets/gui/bomb_gui_background.png" id="2_83etd"]
 [ext_resource type="PackedScene" uid="uid://ccjisfwchk5mo" path="res://content/gui/question_gui.tscn" id="3_xxy6k"]
 [ext_resource type="PackedScene" uid="uid://hdgt7r6w4gub" path="res://content/gui/level_info.tscn" id="8_xxy6k"]
 
@@ -13,17 +12,6 @@ offset_right = 320.0
 offset_bottom = 192.0
 script = ExtResource("1_8elk5")
 metadata/_edit_lock_ = true
-
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -33.0
-offset_right = 33.0
-offset_bottom = 16.0
-grow_horizontal = 2
-texture = ExtResource("2_83etd")
 
 [node name="BombGUI" type="HBoxContainer" parent="."]
 layout_mode = 1

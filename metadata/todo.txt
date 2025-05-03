@@ -1,13 +1,10 @@
 Must Do:
 	- Make levels 5 -21
-	- Add plant decorations
-	- Figure out how to manage ore layer
-
-Funny ideas:
-	- Customized loading screen
+	- Issues with text antialising causes missing pixles :(
 
 Currently being thought about:
+	- Customized loading screen
 	- Player Guidance
 	- Adding rigid body in lava to prevent player sinkiing
-	- Redraw sprites for level boxes
-	- Consider thinking more about the current gui font colors (white is lame)
+	- Make dragging a placed bomb back to bomb GUI pick it back up
+	- Make the player move toward the center of the chest on win

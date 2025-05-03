@@ -49,13 +49,10 @@ func _initialize_level():
 	Global.current_bomb_type = Global.DIAGONAL
 	bombs_available = Global.get_bombs_available(Global.get_current_level())
 	# Initialize GUI
-	var level_gui_background = level_gui.get_gui_background()
 	if show_ui:
 		level_gui.bomb_gui.show()
-		level_gui_background.show()
 	else:
 		level_gui.bomb_gui.hide()
-		level_gui_background.hide()
 	for bomb_type in bombs_available.size():
 		guis[bomb_type].set_bomb_count(bombs_available[bomb_type])
 		guis[bomb_type].set_type(bomb_type)
@@ -70,7 +67,7 @@ func _initialize_level():
 			_initialize_scene_at(cell, upgrade_scene)
 		if cell_data.get_custom_data("is_crate"):
 			var crate = _initialize_scene_at(cell, crate_scene)
-			crate.z_index = 1
+			crate.z_index = 8
 			crate_list.append(crate)
 		if cell_data.get_custom_data("is_lava"):
 			var lava = _initialize_scene_at(cell, lava_scene)
@@ -98,12 +95,13 @@ func _process(_delta):
 	bomb_locations = _update_array(bomb_list)
 	crate_locations = _update_array(crate_list)
 	lavaa_locations = _update_array(lava_list)
-	for crate_cell in crate_locations:
-		for lava_cell in lavaa_locations:
-			if crate_cell == lava_cell:
-				var index = lavaa_locations.find(lava_cell)
-				lava_list[index].queue_free()
-				lava_list.remove_at(index)
+	#Worked hard on this but no longer needed
+	#for crate_cell in crate_locations:
+		#for lava_cell in lavaa_locations:
+			#if crate_cell == lava_cell:
+				#var index = lavaa_locations.find(lava_cell)
+				#lava_list[index].queue_free()
+				#lava_list.remove_at(index)
 
 func _update_hover_layer(atlas_cords: Vector2i):
 	hover_layer.set_cell(hover_layer.local_to_map(get_local_mouse_position()), HOVER_SOURCE, atlas_cords)

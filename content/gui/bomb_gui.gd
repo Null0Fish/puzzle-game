@@ -8,6 +8,8 @@ extends Control
 
 const TILE_SIZE = int(Global.TILE_SIZE)
 const OFFSET = Global.OFFSET
+const ACTIVE_COLOR: Color = Global.ACTIVE_COLOR
+const INACTIVE_COLOR: Color = Global.INACTIVE_COLOR
 
 var type: int
 var style_box_flat: StyleBoxFlat = StyleBoxFlat.new()
@@ -42,9 +44,9 @@ func _move_ghost_bomb(target_position: Vector2):
 
 func _update_panel_style():
 	if Global.current_bomb_type == type:
-		style_box_flat.bg_color = Color(0.130728, 0.159803, 0.357762)
+		style_box_flat.bg_color = ACTIVE_COLOR
 	else:
-		style_box_flat.bg_color = Color(0.133, 0.125, 0.204)
+		style_box_flat.bg_color = INACTIVE_COLOR
 	panel.add_theme_stylebox_override("panel", style_box_flat)
 
 func _on_panel_gui_input(event):

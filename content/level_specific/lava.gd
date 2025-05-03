@@ -5,7 +5,6 @@ var shader_material: ShaderMaterial
 
 func _ready() -> void:
 	shader_material = sprite_2d.material as ShaderMaterial
-
 	update_lava_tint()
 
 func _process(_delta: float) -> void:

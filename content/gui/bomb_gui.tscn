@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d3wrw0bctjrmx" path="res://content/other/ghost_bomb.tscn" id="5_nvm75"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yyuc4"]
-bg_color = Color(0.133333, 0.12549, 0.203922, 1)
+bg_color = Color(0.129412, 0.0941176, 0.105882, 1)
 
 [node name="BombGUI" type="Control"]
 z_index = 2
@@ -40,7 +40,7 @@ offset_right = 17.0
 offset_bottom = 17.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.598845, 0.618756, 0.191105, 1)
+theme_override_colors/font_color = Color(0.207843, 0.305882, 0.152941, 1)
 theme_override_fonts/font = ExtResource("3_v788k")
 theme_override_font_sizes/font_size = 5
 text = "0"

@@ -869,6 +869,7 @@ texture = ExtResource("10_aqsxg")
 3:1/0/custom_data_4 = true
 3:2/0 = 0
 3:2/0/custom_data_4 = true
+1:2/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_gcxns"]
 physics_layer_0/collision_layer = 1

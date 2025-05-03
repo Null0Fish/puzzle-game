@@ -39,6 +39,10 @@ const GUI_CELLS : Array = [
 	Vector2i(11,0),
 ]
 
+# Colors
+const ACTIVE_COLOR: Color = Color("#3b2027")
+const INACTIVE_COLOR: Color = Color("#21181b")
+
 # Lava tint variables
 var lava_tint: Color = Color(1.0, 1.0, 1.0)
 var base_tint: Color = Color(1.0, 1.0, 1.0)
