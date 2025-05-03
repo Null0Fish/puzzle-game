@@ -11,11 +11,11 @@ func _process(_delta: float) -> void:
 	new_gradient.interpolation_mode = Gradient.GRADIENT_INTERPOLATE_CONSTANT
 
 	if last_point <= 0.025:
-		new_gradient.add_point(0.0, Color("#4f6781"))
+		new_gradient.add_point(0.0, Color("#21181b"))
 		finished.emit()
 	else:
 		last_point -= 0.025
 		new_gradient.add_point(0.0, Color("#00000000"))
-		new_gradient.add_point(last_point, Color("#4f6781"))
+		new_gradient.add_point(last_point, Color("#21181b"))
 
 	grad_tex.gradient = new_gradient

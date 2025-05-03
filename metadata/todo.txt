@@ -1,7 +1,7 @@
 Must Do:
 	- Make levels 5 -21
 	- Add plant decorations
-	- Write big bad shader code for ore layer :(
+	- Figure out how to manage ore layer
 
 Funny ideas:
 	- Customized loading screen
