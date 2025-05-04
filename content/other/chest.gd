@@ -1,5 +1,4 @@
 extends Area2D
-
 class_name Chest
 
 @onready var timer: Timer = $Timer
@@ -13,7 +12,7 @@ class_name Chest
 var next_level: int
 var currently_dieing: bool = false
 
-func _on_body_entered(body : Node):
+func _on_body_entered(body: Node):
 	if body is Player and not currently_dieing:
 		currently_dieing = true
 		sprite_2d.texture = open_texture
@@ -22,8 +21,13 @@ func _on_body_entered(body : Node):
 			Global.unlocked_levels.append(next_level)
 		Global.paused = true
 		win_particles.show()
-		timer.start(1.65)
-		audio_stream_player.play()
+		var tween = create_tween()
+		tween.tween_property(body, "global_position", global_position, .25).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_callback(Callable(self, "_on_player_centered"))
+
+func _on_player_centered():
+	timer.start(1.65)
+	audio_stream_player.play()
 
 func _on_timer_timeout():
 	await fade.fade_out()

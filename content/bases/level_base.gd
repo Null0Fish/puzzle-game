@@ -1,5 +1,7 @@
 extends Node2D
 
+signal fade_finished
+
 @export var level_name: String
 @export var show_ui: bool
 
@@ -33,6 +35,7 @@ var crate_locations: Array = []
 var lava_list: Array = []
 var lavaa_locations: Array = []
 var is_dragging: bool
+var should_fade: bool
 
 func _ready():
 	Global.try_play_background_music()
@@ -41,6 +44,7 @@ func _ready():
 
 func _initialize_level():
 	# Initialize variables
+	should_fade = true
 	is_dragging = false
 	last_placement_time = 0.0
 	level_gui.set_title(level_name)
@@ -91,7 +95,11 @@ func _process(_delta):
 			_update_hover_layer(allow_hover_cords)
 		else:
 			_update_hover_layer(disallow_hover_cords)
-	fade.modulate.a -= 0.01
+	if should_fade:
+		fade.modulate.a -= 0.01
+		if fade.modulate.a <= 0:
+			should_fade = false
+			fade_finished.emit()
 	bomb_locations = _update_array(bomb_list)
 	crate_locations = _update_array(crate_list)
 	lavaa_locations = _update_array(lava_list)
@@ -181,6 +189,8 @@ func try_move_bomb_to(pos: Vector2, bomb: Bomb) -> bool:
 		_pick_up_bomb(index)
 		_place_bomb(cell, bomb.type)
 		return true
+	if cell in Global.GUI_CELLS:
+		_pick_up_bomb(index)
 	return false
 
 func try_pick_up_bomb(cell: Vector2i) -> bool:

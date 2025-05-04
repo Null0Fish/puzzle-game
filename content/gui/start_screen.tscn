@@ -830,6 +830,19 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_w33ff")
 
+[node name="Fade" type="ColorRect" parent="."]
+visible = false
+z_index = 27
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 320.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.129412, 0.0941176, 0.105882, 1)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(160, 96)
 

@@ -5,6 +5,7 @@ extends Control
 @onready var timer: Timer = $Timer
 @onready var foreground_layer: TileMapLayer = $MenuTileLayers/ForegroundLayer
 @onready var art_credits_label: Label = $CreditsUI/HBoxContainer/VBoxContainer/ArtCreditsLabel
+@onready var fade: ColorRect = $Fade
 
 const HORIZONTAL_DELTA: Vector2 = Vector2(320, 0)
 const VERTICAL_DELTA: Vector2 = Vector2(0, 192)
@@ -18,10 +19,14 @@ var lava_scene: PackedScene = preload("res://content/level_specific/lava.tscn")
 var max_level_num: int = 0
 var block_input: bool = false
 
+func _process(_delta: float) -> void:
+	fade.modulate.a -= 0.01
+
 func _ready():
+	fade.show()
 	_initialize_credits()
 	_initialize_menu()
-	_initialize_laval()
+	_initialize_lava()
 
 func _initialize_credits():
 	var raw_data = JSON.parse_string(FileAccess.get_file_as_string(CREDITS_FILE))
@@ -36,7 +41,7 @@ func _initialize_menu():
 		max_level_num = max(max_level_num, level)
 	label.text = "Resume Game" if max_level_num != 0 else "Start Game"
 
-func _initialize_laval():
+func _initialize_lava():
 		for cell in foreground_layer.get_used_cells_by_id(1):
 			var cell_data = foreground_layer.get_cell_tile_data(cell)
 			if cell_data.get_custom_data("is_lava"):
@@ -80,7 +85,6 @@ func _on_home_button_pressed():
 	if camera_2d.position.y == -VERTICAL_DELTA.y / 2:
 		_move_camera(VERTICAL_DELTA)
 	else:
-		print(camera_2d.position.y)
 		_move_camera(-HORIZONTAL_DELTA)
 
 func _move_camera(delta: Vector2):

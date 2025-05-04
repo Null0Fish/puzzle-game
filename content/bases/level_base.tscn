@@ -937,6 +937,8 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("7_lhmjq")
 
+[node name="Timer" type="Timer" parent="Input"]
+
 [node name="ExplosionPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamWAV_vnh2l")
 volume_db = -10.0
@@ -968,3 +970,4 @@ tile_set = SubResource("TileSet_xokx3")
 metadata/_edit_lock_ = true
 
 [connection signal="body_entered" from="DeathBox" to="." method="_on_death_box_body_entered"]
+[connection signal="timeout" from="Input/Timer" to="Input" method="_on_timer_timeout"]
