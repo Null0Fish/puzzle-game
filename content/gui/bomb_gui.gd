@@ -21,7 +21,7 @@ func _process(_delta):
 	ghost_bomb.region_enabled = true
 	ghost_bomb.region_rect = bomb_icon.region_rect
 	_update_panel_style()
-	
+
 	if panel.get_rect().has_point(panel.get_local_mouse_position()):
 		tooltip_label.text = Global.type_to_string(type)
 		tooltip_label.visible = true

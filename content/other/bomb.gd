@@ -77,7 +77,7 @@ func _create_explosion_particles(cell: Vector2i):
 func _get_cells_to_detonate(cell: Vector2i) -> Array:
 	var bomb_level = Global.bomb_levels[type]
 	var cells = []
-	#cells.append(cell)
+	#qqcells.append(cell)
 	for y in range(cell.y - bomb_level - 1, cell.y + bomb_level + 2):
 		for x in range(cell.x - bomb_level - 1, cell.x + bomb_level + 2):
 			if cell.x != x or cell.y != y:

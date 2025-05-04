@@ -7,10 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://d3wrw0bctjrmx" path="res://content/other/ghost_bomb.tscn" id="5_1ff8c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fpio6"]
-size = Vector2(15, 16)
+size = Vector2(13, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ff8c"]
-size = Vector2(15, 1)
+size = Vector2(13, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ff8c"]
 bg_color = Color(0, 0, 0, 0)

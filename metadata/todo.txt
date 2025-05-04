@@ -1,6 +1,7 @@
 Must Do:
 	- Make levels 5 -21
 	- Issues with text antialising causes missing pixles :(
+	- Make question mark pop up better
 
 Currently being thought about:
 	- Customized loading screen
