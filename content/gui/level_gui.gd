@@ -5,8 +5,8 @@ extends Control
 
 func get_guis():
 	return [
-		$BombGUI/AdjacentGUI, 
-		$BombGUI/DiagonalGUI, 
+		$BombGUI/AdjacentGUI,
+		$BombGUI/DiagonalGUI,
 		$BombGUI/FullGUI
 	]
 

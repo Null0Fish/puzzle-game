@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfsfwps6dsd7j"]
+[gd_scene load_steps=10 format=3 uid="uid://cfsfwps6dsd7j"]
 
 [ext_resource type="Script" uid="uid://2vc8fm0ou8ic" path="res://content/gui/level_gui.gd" id="1_8elk5"]
 [ext_resource type="PackedScene" uid="uid://8xsf5j74u2cf" path="res://content/gui/bomb_gui.tscn" id="1_uuanb"]
 [ext_resource type="PackedScene" uid="uid://ccjisfwchk5mo" path="res://content/gui/question_gui.tscn" id="3_xxy6k"]
+[ext_resource type="Texture2D" uid="uid://ckh6vcx3a44y3" path="res://assets/gui/left_click_icon.png" id="5_xxy6k"]
+[ext_resource type="Texture2D" uid="uid://cbeta8otwn02h" path="res://assets/gui/right_click_icon.png" id="6_83etd"]
+[ext_resource type="Texture2D" uid="uid://dtdfoiqn6133y" path="res://assets/gui/esc_button_icon.png" id="7_43j10"]
+[ext_resource type="FontFile" uid="uid://b66nc4dsrjg1t" path="res://assets/fonts/normal_font.ttf" id="8_ukaem"]
 [ext_resource type="PackedScene" uid="uid://hdgt7r6w4gub" path="res://content/gui/level_info.tscn" id="8_xxy6k"]
+[ext_resource type="Texture2D" uid="uid://2o8nogehxxlr" path="res://assets/gui/r_button_icon.png" id="9_83etd"]
 
 [node name="LevelGUI" type="Control"]
 layout_mode = 3
@@ -54,3 +59,116 @@ offset_right = 42.0
 offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="InputInfoGUI" type="Control" parent="."]
+custom_minimum_size = Vector2(96, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -40.0
+offset_right = 48.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="InputInfoGUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.352821, 0.676093, 0.432004, 1)
+
+[node name="Control" type="Control" parent="InputInfoGUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -34.5
+offset_right = 40.0
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InputInfoGUI/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -28.0
+offset_right = 61.0
+offset_bottom = 28.0
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="InputInfoGUI/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_ukaem")
+theme_override_font_sizes/font_size = 8
+text = "Place bomb"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="InputInfoGUI/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_ukaem")
+theme_override_font_sizes/font_size = 8
+text = "Detonate bomb"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="InputInfoGUI/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_ukaem")
+theme_override_font_sizes/font_size = 8
+text = "Exit"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="InputInfoGUI/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_ukaem")
+theme_override_font_sizes/font_size = 8
+text = "Restart"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="InputInfoGUI/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 4
+
+[node name="TextureRect" type="TextureRect" parent="InputInfoGUI/Control/VBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("5_xxy6k")
+stretch_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="InputInfoGUI/Control/VBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("6_83etd")
+stretch_mode = 3
+
+[node name="TextureRect4" type="TextureRect" parent="InputInfoGUI/Control/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("9_83etd")
+stretch_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="InputInfoGUI/Control/VBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("7_43j10")
+stretch_mode = 3

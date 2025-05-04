@@ -2,8 +2,10 @@ Must Do:
 	- Make levels 5 -21
 	- Issues with text antialising causes missing pixles :(
 	- Make question mark pop up better
+	- Redraw bomb textures
 
 Currently being thought about:
 	- Customized loading screen
 	- Player Guidance
 	- Adding rigid body in lava to prevent player sinkiin
+	- Make title pretty somehow
