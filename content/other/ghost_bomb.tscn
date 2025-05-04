@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c43ocwt4gt5wy" path="res://assets/other/all_bomb_set.png" id="1_mxswv"]
 
 [node name="GhostBomb" type="Sprite2D"]
+z_index = 15
 texture = ExtResource("1_mxswv")
 region_enabled = true
 script = ExtResource("1_lybff")

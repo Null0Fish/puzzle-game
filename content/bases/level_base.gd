@@ -88,6 +88,14 @@ func _cell_to_cords(cell: Vector2i):
 	return Vector2i(cell.x * int(TILE_SIZE), cell.y * int(TILE_SIZE))
 
 func _process(_delta):
+	if should_fade:
+		fade.modulate.a -= 0.01
+		if fade.modulate.a <= 0:
+			should_fade = false
+			fade_finished.emit()
+	if Global.paused:
+		return
+
 	hover_layer.clear()
 	if is_dragging:
 		var cell = root_tile_layer.local_to_map(get_local_mouse_position())
@@ -95,21 +103,9 @@ func _process(_delta):
 			_update_hover_layer(allow_hover_cords)
 		else:
 			_update_hover_layer(disallow_hover_cords)
-	if should_fade:
-		fade.modulate.a -= 0.01
-		if fade.modulate.a <= 0:
-			should_fade = false
-			fade_finished.emit()
 	bomb_locations = _update_array(bomb_list)
 	crate_locations = _update_array(crate_list)
 	lavaa_locations = _update_array(lava_list)
-	#Worked hard on this but no longer needed
-	#for crate_cell in crate_locations:
-		#for lava_cell in lavaa_locations:
-			#if crate_cell == lava_cell:
-				#var index = lavaa_locations.find(lava_cell)
-				#lava_list[index].queue_free()
-				#lava_list.remove_at(index)
 
 func _update_hover_layer(atlas_cords: Vector2i):
 	hover_layer.set_cell(hover_layer.local_to_map(get_local_mouse_position()), HOVER_SOURCE, atlas_cords)

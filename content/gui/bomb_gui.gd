@@ -17,10 +17,13 @@ var dragging: bool = false
 var tween: Tween = null
 
 func _process(_delta):
+	_update_panel_style()
+	if Global.paused:
+		return
+
 	ghost_bomb.texture = bomb_icon.texture
 	ghost_bomb.region_enabled = true
 	ghost_bomb.region_rect = bomb_icon.region_rect
-	_update_panel_style()
 
 	if panel.get_rect().has_point(panel.get_local_mouse_position()):
 		tooltip_label.text = Global.type_to_string(type)
@@ -43,7 +46,7 @@ func _move_ghost_bomb(target_position: Vector2):
 	tween.tween_property(ghost_bomb, "global_position", target_position, 0.25).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 func _update_panel_style():
-	if Global.current_bomb_type == type:
+	if Global.current_bomb_type == type and not Global.question_mark_override:
 		style_box_flat.bg_color = ACTIVE_COLOR
 	else:
 		style_box_flat.bg_color = INACTIVE_COLOR

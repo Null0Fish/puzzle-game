@@ -65,7 +65,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1ff8c")
 
 [node name="BombSprite" type="Sprite2D" parent="."]
-z_index = 3
+z_index = 12
 texture = ExtResource("3_1ff8c")
 region_enabled = true
 region_rect = Rect2(32, 32, 16, 16)

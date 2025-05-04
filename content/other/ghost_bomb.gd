@@ -6,6 +6,9 @@ const OFFSET = Global.OFFSET
 var tween: Tween = null
 
 func _process(_delta: float) -> void:
+	if Global.paused:
+		return
+
 	var target_position = Vector2i(get_global_mouse_position()) / TILE_SIZE * TILE_SIZE + OFFSET
 	_move_ghost_bomb(target_position)
 

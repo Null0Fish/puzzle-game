@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://pv2w6bme65lh" path="res://content/gui/level_grid.gd" id="5_vdpax"]
 [ext_resource type="Texture2D" uid="uid://cck0i5mi4au60" path="res://assets/gui/back_button.png" id="5_w33ff"]
 [ext_resource type="Texture2D" uid="uid://c8t74536kqdiu" path="res://assets/other/player.png" id="7_b8x6n"]
-[ext_resource type="Texture2D" uid="uid://b70xug0nkj3md" path="res://assets/tiles/decorative_tiles.png" id="8_xtlku"]
+[ext_resource type="Texture2D" uid="uid://b70xug0nkj3md" path="res://assets/tiles/plant_tiles.png" id="8_xtlku"]
 [ext_resource type="Texture2D" uid="uid://bantl5cgj53um" path="res://assets/tiles/foreground_terrian_tiles.png" id="10_5tkyv"]
 [ext_resource type="Texture2D" uid="uid://cjsc322y0bplp" path="res://assets/tiles/foreground_tiles.png" id="11_yudno"]
 [ext_resource type="Texture2D" uid="uid://cjfpqjvffkj27" path="res://assets/tiles/background_tiles.png" id="12_dvmkk"]
@@ -28,7 +28,7 @@ texture = ExtResource("8_xtlku")
 [sub_resource type="TileSet" id="TileSet_h1cms"]
 sources/0 = SubResource("TileSetAtlasSource_f5eiq")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wkvo2"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4eq4g"]
 texture = ExtResource("10_5tkyv")
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -783,7 +783,7 @@ texture = ExtResource("10_5tkyv")
 8:9/0/terrains_peering_bit/left_side = 1
 8:9/0/terrains_peering_bit/top_side = 1
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rw505"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tq0wb"]
 texture = ExtResource("11_yudno")
 0:0/0 = 0
 1:0/0 = 0
@@ -813,8 +813,8 @@ terrain_set_0/terrain_1/name = "StrongStone"
 terrain_set_0/terrain_1/color = Color(0.687886, 0.40763, 0.538636, 1)
 custom_data_layer_0/name = "is_lava"
 custom_data_layer_0/type = 1
-sources/1 = SubResource("TileSetAtlasSource_rw505")
-sources/0 = SubResource("TileSetAtlasSource_wkvo2")
+sources/1 = SubResource("TileSetAtlasSource_tq0wb")
+sources/0 = SubResource("TileSetAtlasSource_4eq4g")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gi34h"]
 texture = ExtResource("12_dvmkk")

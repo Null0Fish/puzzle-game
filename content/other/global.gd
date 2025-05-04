@@ -47,7 +47,7 @@ const INACTIVE_COLOR: Color = Color("#21181b")
 var lava_tint: Color = Color(1.0, 1.0, 1.0)
 var base_tint: Color = Color(1.0, 1.0, 1.0)
 var peak_tint: Color = Color(1.0, 0.7, 0.3)
-var tint_speed: float = 1.0 
+var tint_speed: float = 1.0
 var tint_phase: float = 0.0
 
 # Music Player variables
@@ -62,6 +62,7 @@ var current_bomb_type : int = DIAGONAL
 var bomb_levels : Array = [0, 0, 0]
 var unlocked_levels : Array = [0]
 var solid_warning_layers : Array = []
+var question_mark_override: bool = false
 
 # Functions
 func _ready():
