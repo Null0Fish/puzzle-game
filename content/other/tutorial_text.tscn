@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cqkwtlr5v4t2k"]
 
-[ext_resource type="FontFile" uid="uid://b66nc4dsrjg1t" path="res://assets/fonts/normal_font.ttf" id="1_ajp1n"]
+[ext_resource type="FontFile" uid="uid://b66nc4dsrjg1t" path="res://assets/fonts/default_font.ttf" id="1_ajp1n"]
 
 [node name="TutorialText" type="Label"]
 anchors_preset = 8

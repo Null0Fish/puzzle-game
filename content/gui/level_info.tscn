@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://hdgt7r6w4gub"]
 
 [ext_resource type="Script" uid="uid://dx2ajbft27u0q" path="res://content/gui/level_info.gd" id="1_m7733"]
-[ext_resource type="FontFile" uid="uid://b66nc4dsrjg1t" path="res://assets/fonts/normal_font.ttf" id="2_x43af"]
+[ext_resource type="FontFile" uid="uid://b66nc4dsrjg1t" path="res://assets/fonts/default_font.ttf" id="2_x43af"]
 
 [node name="LevelInfo" type="CenterContainer"]
 offset_right = 320.0

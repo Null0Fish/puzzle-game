@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bpw5ibrrxhv81" path="res://assets/gui/question_mark.png" id="1_0ycyd"]
 [ext_resource type="Script" uid="uid://yc0g6j4qpu87" path="res://content/gui/question_gui.gd" id="1_h1bev"]
-[ext_resource type="FontFile" uid="uid://b66nc4dsrjg1t" path="res://assets/fonts/normal_font.ttf" id="3_aoqm3"]
+[ext_resource type="FontFile" uid="uid://b66nc4dsrjg1t" path="res://assets/fonts/default_font.ttf" id="3_aoqm3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1bev"]
 bg_color = Color(0.129412, 0.0941176, 0.105882, 1)

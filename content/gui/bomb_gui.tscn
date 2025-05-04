@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dk8nnm4du2m7w" path="res://content/gui/bomb_gui.gd" id="1_87gd4"]
 [ext_resource type="Texture2D" uid="uid://c43ocwt4gt5wy" path="res://assets/other/all_bomb_set.png" id="2_2jvug"]
-[ext_resource type="FontFile" uid="uid://tbc3f6f8v5hr" path="res://assets/fonts/small_font.ttf" id="3_v788k"]
-[ext_resource type="FontFile" uid="uid://b66nc4dsrjg1t" path="res://assets/fonts/normal_font.ttf" id="4_ioryl"]
+[ext_resource type="FontFile" uid="uid://tbc3f6f8v5hr" path="res://assets/fonts/tiny_font.ttf" id="3_v788k"]
+[ext_resource type="FontFile" uid="uid://b66nc4dsrjg1t" path="res://assets/fonts/default_font.ttf" id="4_ioryl"]
 [ext_resource type="PackedScene" uid="uid://d3wrw0bctjrmx" path="res://content/other/ghost_bomb.tscn" id="5_nvm75"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yyuc4"]
