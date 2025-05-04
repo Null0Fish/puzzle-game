@@ -47,7 +47,7 @@ func _initialize_lava():
 			if cell_data.get_custom_data("is_lava"):
 				_initialize_scene_at(cell, lava_scene)
 
-func _initialize_scene_at(cell: Vector2i, scene: PackedScene): 
+func _initialize_scene_at(cell: Vector2i, scene: PackedScene):
 	var new_scene = scene.instantiate()
 	add_child(new_scene)
 	new_scene.position = _cell_to_cords(cell) + OFFSET

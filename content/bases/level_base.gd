@@ -77,7 +77,7 @@ func _initialize_level():
 			var lava = _initialize_scene_at(cell, lava_scene)
 			lava_list.append(lava)
 
-func _initialize_scene_at(cell: Vector2i, scene: PackedScene): 
+func _initialize_scene_at(cell: Vector2i, scene: PackedScene):
 	var new_scene = scene.instantiate()
 	add_child(new_scene)
 	new_scene.position = _cell_to_cords(cell) + OFFSET

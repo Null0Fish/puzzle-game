@@ -48,7 +48,7 @@ position = Vector2(-0.5, 8)
 shape = SubResource("RectangleShape2D_1ff8c")
 
 [node name="GhostBomb" parent="." instance=ExtResource("5_1ff8c")]
-z_index = 7
+z_index = 12
 
 [node name="Panel" type="Panel" parent="."]
 anchors_preset = 8
@@ -73,12 +73,12 @@ region_rect = Rect2(32, 32, 16, 16)
 [node name="WarningLayers" type="Node2D" parent="."]
 
 [node name="OpaqueWarningLayer" type="TileMapLayer" parent="WarningLayers"]
-z_index = 2
+z_index = 11
 use_parent_material = true
 tile_set = SubResource("TileSet_1ff8c")
 
 [node name="SolidWarningLayer" type="TileMapLayer" parent="WarningLayers"]
-z_index = 2
+z_index = 11
 use_parent_material = true
 tile_set = SubResource("TileSet_7o66m")
 

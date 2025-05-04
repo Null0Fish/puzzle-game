@@ -858,15 +858,15 @@ grow_vertical = 2
 
 [node name="Title" type="Label" parent="TitleUI"]
 layout_mode = 2
-offset_left = 124.0
-offset_top = 36.0
-offset_right = 224.0
-offset_bottom = 40.0
+offset_left = 116.0
+offset_top = 32.0
+offset_right = 222.0
+offset_bottom = 36.0
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.768627, 0.815686, 0.733333, 1)
 theme_override_fonts/font = ExtResource("1_2tyh5")
 theme_override_font_sizes/font_size = 16
-text = "Bomb Miner"
+text = "Tera Bomber"
 horizontal_alignment = 1
 
 [node name="PlayButton" type="TextureButton" parent="TitleUI"]
@@ -1065,7 +1065,7 @@ texture = ExtResource("7_b8x6n")
 [node name="MenuTileLayers" type="Node2D" parent="."]
 
 [node name="DecorativeLayer" type="TileMapLayer" parent="MenuTileLayers"]
-modulate = Color(0.701961, 0.701961, 0.701961, 0.756863)
+modulate = Color(0.796243, 0.796243, 0.796243, 0.756863)
 use_parent_material = true
 tile_map_data = PackedByteArray("AAAlAAMAAAABAAAAAAAlAAQAAAABAAAAAAAeAAEAAAABAAAAAAAeAAIAAAABAAAAAAAeAAMAAAABAAAAAAAaAAIAAAABAAAAAAAaAAMAAAABAAAAAAAaAAQAAAABAAAAAAASAAQAAAABAAAAAAASAAUAAAABAAAAAAAOAAEAAAABAAAAAAAOAAIAAAABAAAAAAAOAAMAAAABAAAAAAAOAAQAAAABAAAAAAAGAAEAAAABAAAAAAAGAAIAAAABAAAAAAAEAAIAAAABAAAAAAAEAAMAAAABAAAAAAAEAAQAAAABAAAAAAAEAAUAAAABAAAAAAACAPf/AAABAAAAAAAJAPb/AAABAAAAAAAJAPf/AAABAAAAAAAJAPj/AAABAAAAAAACAPj/AAABAAAAAAAJAPX/AAABAAAAAAASAPf/AAABAAAAAAASAPj/AAABAAAAAAASAPn/AAABAAAAAAAMAP3/AAABAAAAAAAMAP7/AAABAAAAAAARAPz/AAADAAEAAAABAPv/AAADAAEAAAAAAPj/AAAAAAAAAAAWAAIAAAAAAAAAAAAlAAkAAAAAAAAAAAAeAAoAAAADAAEAAAAYAAgAAAADAAEAAAAPAAkAAAADAAEAAAACAAkAAAAAAAEAAAAcAAkAAAABAAEAAAAnAAUAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_h1cms")

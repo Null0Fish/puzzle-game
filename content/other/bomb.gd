@@ -77,7 +77,7 @@ func _create_explosion_particles(cell: Vector2i):
 func _get_cells_to_detonate(cell: Vector2i) -> Array:
 	var bomb_level = Global.bomb_levels[type]
 	var cells = []
-	cells.append(cell)
+	#cells.append(cell)
 	for y in range(cell.y - bomb_level - 1, cell.y + bomb_level + 2):
 		for x in range(cell.x - bomb_level - 1, cell.x + bomb_level + 2):
 			if cell.x != x or cell.y != y:
@@ -114,7 +114,7 @@ func init(map: TileMapLayer, variant: int):
 	bomb_sprite.region_rect = region_rect
 	Global.solid_warning_layers.append(solid_warning_layer)
 	root_tile_layer.static_objects.append(self)
-	
+
 	if dragging:
 		ghost_bomb.show()
 	else:
@@ -127,7 +127,7 @@ func is_on_floor() -> bool:
 			return true
 	return false
 
-func detonate(player_cell: Vector2i):	
+func detonate(player_cell: Vector2i):
 	root_tile_layer.static_objects.erase(self)
 	for cell in cells_to_detonate:
 		if cell == player_cell:
