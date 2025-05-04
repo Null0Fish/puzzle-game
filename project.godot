@@ -28,6 +28,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="Simple Puzzle Game"
 
+[gui]
+
+theme/default_font_antialiasing=0
+
 [input]
 
 left={

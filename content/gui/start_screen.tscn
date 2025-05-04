@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=4 uid="uid://b81yl7ugq466u"]
 
-[ext_resource type="FontFile" uid="uid://b66nc4dsrjg1t" path="res://assets/fonts/default_font.ttf" id="1_2tyh5"]
+[ext_resource type="Theme" uid="uid://8j076bs8jafv" path="res://assets/other/default_theme.tres" id="1_4eq4g"]
 [ext_resource type="Script" uid="uid://dlda45lx3ar5o" path="res://content/gui/start_screen.gd" id="1_w33ff"]
 [ext_resource type="Texture2D" uid="uid://c8v2wyt438ykn" path="res://assets/gui/button_gui.png" id="2_w33ff"]
 [ext_resource type="PackedScene" uid="uid://61ajonhq2g6l" path="res://content/gui/level_grid.tscn" id="4_noill"]
@@ -828,6 +828,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("1_4eq4g")
 script = ExtResource("1_w33ff")
 
 [node name="Fade" type="ColorRect" parent="."]
@@ -863,8 +864,6 @@ offset_top = 32.0
 offset_right = 222.0
 offset_bottom = 36.0
 size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.768627, 0.815686, 0.733333, 1)
-theme_override_fonts/font = ExtResource("1_2tyh5")
 theme_override_font_sizes/font_size = 16
 text = "Tera Bomber"
 horizontal_alignment = 1
@@ -883,9 +882,6 @@ offset_right = 80.0
 offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.769824, 0.814622, 0.733279, 1)
-theme_override_fonts/font = ExtResource("1_2tyh5")
-theme_override_font_sizes/font_size = 8
 text = "Play Game"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -905,9 +901,6 @@ offset_right = 79.0
 offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.769824, 0.814622, 0.733279, 1)
-theme_override_fonts/font = ExtResource("1_2tyh5")
-theme_override_font_sizes/font_size = 8
 text = "Level Select"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -927,9 +920,6 @@ offset_right = 79.0
 offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.769824, 0.814622, 0.733279, 1)
-theme_override_fonts/font = ExtResource("1_2tyh5")
-theme_override_font_sizes/font_size = 8
 text = "Credits"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1008,8 +998,7 @@ theme_override_constants/separation = -6
 
 [node name="ArtCreditsTitle" type="Label" parent="CreditsUI/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.768627, 0.815686, 0.733333, 1)
-theme_override_fonts/font = ExtResource("1_2tyh5")
+theme_override_font_sizes/font_size = 16
 text = "Art"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1017,10 +1006,6 @@ vertical_alignment = 1
 [node name="ArtCreditsLabel" type="Label" parent="CreditsUI/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(118, 50)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.768627, 0.815686, 0.733333, 1)
-theme_override_constants/line_spacing = 6
-theme_override_fonts/font = ExtResource("1_2tyh5")
-theme_override_font_sizes/font_size = 8
 text = "Art Credits
 "
 horizontal_alignment = 1
@@ -1033,8 +1018,7 @@ theme_override_constants/separation = -6
 
 [node name="CodeCreditsTitle" type="Label" parent="CreditsUI/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.768627, 0.815686, 0.733333, 1)
-theme_override_fonts/font = ExtResource("1_2tyh5")
+theme_override_font_sizes/font_size = 16
 text = "Code"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1042,9 +1026,6 @@ vertical_alignment = 1
 [node name="CodeCreditsLable" type="Label" parent="CreditsUI/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(118, 50)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.768627, 0.815686, 0.733333, 1)
-theme_override_constants/line_spacing = 7
-theme_override_fonts/font = ExtResource("1_2tyh5")
 theme_override_font_sizes/font_size = 8
 text = "All coding was done by 
 me"

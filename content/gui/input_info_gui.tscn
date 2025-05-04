@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://c26poiui76p10"]
+[gd_scene load_steps=8 format=3 uid="uid://c26poiui76p10"]
 
+[ext_resource type="Theme" uid="uid://8j076bs8jafv" path="res://assets/other/default_theme.tres" id="1_4n8tk"]
 [ext_resource type="FontFile" uid="uid://b66nc4dsrjg1t" path="res://assets/fonts/default_font.ttf" id="1_8mka4"]
 [ext_resource type="Texture2D" uid="uid://dq0sgwflbbdyb" path="res://assets/gui/input_info_background.png" id="1_m7717"]
 [ext_resource type="Texture2D" uid="uid://ckh6vcx3a44y3" path="res://assets/gui/left_click_icon.png" id="2_m7717"]
@@ -22,6 +23,7 @@ offset_right = 48.0
 offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_4n8tk")
 metadata/_edit_group_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
