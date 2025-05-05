@@ -873,9 +873,9 @@ horizontal_alignment = 1
 [node name="PlayButton" type="TextureButton" parent="TitleUI"]
 layout_mode = 2
 offset_left = 128.0
-offset_top = 63.0
+offset_top = 64.0
 offset_right = 208.0
-offset_bottom = 79.0
+offset_bottom = 80.0
 texture_normal = ExtResource("2_w33ff")
 
 [node name="Label" type="Label" parent="TitleUI/PlayButton"]
@@ -884,7 +884,7 @@ offset_right = 80.0
 offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Play Game"
+text = "Play"
 horizontal_alignment = 1
 vertical_alignment = 1
 
