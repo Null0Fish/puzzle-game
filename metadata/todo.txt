@@ -1,6 +1,6 @@
 Must Do:
 	- Make levels 5 -21
-	- Issues with text antialising causes missing pixles :(
+	- Make home screen buttons less ugly
 
 Currently being thought about:
 	- Customized loading screen
