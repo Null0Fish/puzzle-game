@@ -1,7 +1,7 @@
 extends Control
 
 @onready var camera_2d: Camera2D = $Camera2D
-@onready var label: Label = $TitleUI/PlayButton/Label
+@onready var label: Label = $TitleUI/ButtonContainer/PlayButton/Label
 @onready var timer: Timer = $Timer
 @onready var foreground_layer: TileMapLayer = $MenuTileLayers/ForegroundLayer
 @onready var art_credits_label: Label = $CreditsUI/HBoxContainer/VBoxContainer/ArtCreditsLabel
@@ -39,7 +39,7 @@ func _initialize_credits():
 func _initialize_menu():
 	for level in Global.unlocked_levels:
 		max_level_num = max(max_level_num, level)
-	label.text = "Resume Game" if max_level_num != 0 else "Start Game"
+	label.text = "Resume" if max_level_num != 0 else "Play"
 
 func _initialize_lava():
 		for cell in foreground_layer.get_used_cells_by_id(1):

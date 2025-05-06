@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://8j076bs8jafv"]
 
-[ext_resource type="FontFile" uid="uid://uailrqh66ki8" path="res://assets/fonts/PublicPixel-rv0pA.ttf" id="1_edn7j"]
+[ext_resource type="FontFile" uid="uid://b66nc4dsrjg1t" path="res://assets/fonts/default_font.ttf" id="1_edn7j"]
 
 [resource]
 Label/colors/font_color = Color(0.768627, 0.815686, 0.733333, 1)

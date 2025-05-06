@@ -45,3 +45,7 @@ Win Sound
 Background Sound
 - Freeware
 - https://pixabay.com/music/search/atmospheric/
+
+Other Font
+- Free ware
+- https://managore.itch.io/m5x7

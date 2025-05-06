@@ -5,6 +5,5 @@ Must Do:
 Currently being thought about:
 	- Customized loading screen
 	- Player Guidance
-	- Adding rigid body in lava to prevent player sinkiin
 	- Make title pretty somehow
 	- Redraw bomb textures

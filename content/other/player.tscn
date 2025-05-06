@@ -109,10 +109,11 @@ animations = [{
 size = Vector2(8, 12)
 
 [node name="Player" type="CharacterBody2D"]
-z_index = 13
+collision_mask = 3
 script = ExtResource("1_a8vbq")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+z_index = 15
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_ejter")
 animation = &"idle"
