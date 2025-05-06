@@ -53,10 +53,10 @@ func _initialize_level():
 	Global.current_bomb_type = Global.DIAGONAL
 	bombs_available = Global.get_bombs_available(Global.get_current_level())
 	# Initialize GUI
-	if show_ui:
-		level_gui.bomb_gui.show()
-	else:
-		level_gui.bomb_gui.hide()
+	if not show_ui:
+		level_gui.position.x += 8
+		for gui in guis:
+			gui.hide()
 	for bomb_type in bombs_available.size():
 		guis[bomb_type].set_bomb_count(bombs_available[bomb_type])
 		guis[bomb_type].set_type(bomb_type)

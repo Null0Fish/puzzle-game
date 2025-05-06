@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqkwtlr5v4t2k"]
+[gd_scene load_steps=3 format=3 uid="uid://cqkwtlr5v4t2k"]
 
 [ext_resource type="Theme" uid="uid://8j076bs8jafv" path="res://assets/other/default_theme.tres" id="1_yv2nm"]
+[ext_resource type="FontFile" uid="uid://bswl43jn17ndt" path="res://assets/fonts/m5x7.ttf" id="2_0ap0y"]
 
 [node name="TutorialText" type="Label"]
 anchors_preset = 8
@@ -17,7 +18,9 @@ grow_vertical = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_yv2nm")
 theme_override_colors/font_color = Color(0.208106, 0.306789, 0.153896, 1)
-theme_override_font_sizes/font_size = 8
+theme_override_constants/line_spacing = -5
+theme_override_fonts/font = ExtResource("2_0ap0y")
+theme_override_font_sizes/font_size = 16
 text = "Text Here"
 horizontal_alignment = 1
 vertical_alignment = 1
