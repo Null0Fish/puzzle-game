@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=4 uid="uid://bkpv1lt0oxgl7"]
 
 [ext_resource type="PackedScene" uid="uid://crfpgs7m65kr2" path="res://content/bases/level_base.tscn" id="1_5pm44"]
-[ext_resource type="Script" uid="uid://dysl6ca35mti0" path="res://content/levels/tutorial_text_controler.gd" id="3_jukad"]
+[ext_resource type="Script" uid="uid://dysl6ca35mti0" path="res://content/levels/level_2_tutorial_text_controler.gd" id="3_jukad"]
 [ext_resource type="PackedScene" uid="uid://cqkwtlr5v4t2k" path="res://content/other/tutorial_text.tscn" id="4_2jvad"]
 
 [node name="level_2" instance=ExtResource("1_5pm44")]
@@ -16,10 +16,10 @@ position = Vector2(312, 88)
 [node name="ExplosionPlayer" parent="." index="6"]
 volume_db = -16.0
 
-[node name="TutorialTextControler" type="Node" parent="." index="7"]
+[node name="Level2TutorialTextControler" type="Node" parent="." index="7"]
 script = ExtResource("3_jukad")
 
-[node name="FirstTutorialText" parent="TutorialTextControler" index="0" instance=ExtResource("4_2jvad")]
+[node name="FirstTutorialText" parent="Level2TutorialTextControler" index="0" instance=ExtResource("4_2jvad")]
 z_index = 5
 anchors_preset = 0
 anchor_left = 0.0
@@ -34,22 +34,22 @@ grow_horizontal = 1
 grow_vertical = 1
 text = "Drag a bomb to place it"
 
-[node name="SecondTutorialText" parent="TutorialTextControler" index="1" instance=ExtResource("4_2jvad")]
+[node name="SecondTutorialText" parent="Level2TutorialTextControler" index="1" instance=ExtResource("4_2jvad")]
 z_index = 5
 anchors_preset = 0
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 64.0
+offset_left = 40.0
 offset_top = 128.0
-offset_right = 104.0
+offset_right = 112.0
 offset_bottom = 189.0
 grow_horizontal = 1
 grow_vertical = 1
 text = "Detonate placed bombs by right clicking them"
 
-[node name="ThirdTutorialTexxt" parent="TutorialTextControler" index="2" instance=ExtResource("4_2jvad")]
+[node name="ThirdTutorialTexxt" parent="Level2TutorialTextControler" index="2" instance=ExtResource("4_2jvad")]
 z_index = 5
 anchors_preset = 0
 anchor_left = 0.0
@@ -64,7 +64,7 @@ grow_horizontal = 1
 grow_vertical = 1
 text = "Keep using bombs to reach the chest"
 
-[node name="FourthTurotialText" parent="TutorialTextControler" index="3" instance=ExtResource("4_2jvad")]
+[node name="FourthTurotialText" parent="Level2TutorialTextControler" index="3" instance=ExtResource("4_2jvad")]
 visible = false
 z_index = 5
 anchors_preset = 0
@@ -73,12 +73,12 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 0.0
-offset_top = -16.0
+offset_top = -8.0
 offset_right = 128.0
-offset_bottom = 45.0
+offset_bottom = 53.0
 grow_horizontal = 1
 grow_vertical = 1
-text = "You can always drag a placed bomb back to put it away"
+text = "You can always drag a placed bomb back up to put it away"
 
 [node name="DecorativeLayer" parent="RootTileLayer" index="0"]
 tile_map_data = PackedByteArray("AAADAAMAAAABAAAAAAADAAQAAAABAAAAAAADAAUAAAABAAAAAAAJAAQAAAABAAAAAAAJAAUAAAABAAAAAAARAAMAAAABAAAAAAARAAQAAAABAAAAAAARAAUAAAABAAAAAAAQAAcAAAACAAAAAAAGAAUAAAABAAEAAAACAAYAAAADAAEAAAAKAAgAAAADAAEAAAAMAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAA=")

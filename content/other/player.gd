@@ -70,12 +70,12 @@ var death_scene: PackedScene = preload("res://content/other/death_animation.tscn
 func die():
 	Global.paused = true
 	sprite.play("dead")
-	sprite.z_index = 0
+	sprite.z_index = 1
 	if not is_dead:
 		var death_animation = death_scene.instantiate()
 		add_child(death_animation)
 		death_animation.position = sprite.position
-		death_animation.z_index = 10
+		death_animation.z_index = 1000
 		is_dead = true
 		die_player.play()
 		await die_player.finished

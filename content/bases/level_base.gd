@@ -34,8 +34,8 @@ var crate_list: Array = []
 var crate_locations: Array = []
 var lava_list: Array = []
 var lavaa_locations: Array = []
-var is_dragging: bool
-var should_fade: bool
+var is_dragging: bool = false
+var should_fade: bool = true
 
 func _ready():
 	_initialize_variables()
@@ -45,8 +45,6 @@ func _ready():
 
 func _initialize_variables():
 	fade.show()
-	should_fade = true
-	is_dragging = false
 	last_placement_time = 0.0
 	level_gui.set_title(level_name)
 	level_gui.set_level(str(Global.get_current_level() + 1))
