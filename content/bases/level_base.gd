@@ -38,12 +38,13 @@ var is_dragging: bool
 var should_fade: bool
 
 func _ready():
-	Global.try_play_background_music()
-	fade.show()
-	_initialize_level()
+	_initialize_variables()
+	_initialize_music()
+	_initialize_gui()
+	_initialize_objects()
 
-func _initialize_level():
-	# Initialize variables
+func _initialize_variables():
+	fade.show()
 	should_fade = true
 	is_dragging = false
 	last_placement_time = 0.0
@@ -52,7 +53,11 @@ func _initialize_level():
 	Global.paused = false
 	Global.current_bomb_type = Global.DIAGONAL
 	bombs_available = Global.get_bombs_available(Global.get_current_level())
-	# Initialize GUI
+
+func _initialize_music():
+	Global.try_play_background_music()
+
+func _initialize_gui():
 	if not show_ui:
 		level_gui.position.x += 8
 		for gui in guis:
@@ -60,7 +65,8 @@ func _initialize_level():
 	for bomb_type in bombs_available.size():
 		guis[bomb_type].set_bomb_count(bombs_available[bomb_type])
 		guis[bomb_type].set_type(bomb_type)
-	# Initialize level objects
+
+func _initialize_objects():
 	for cell in foreground_layer.get_used_cells_by_id(1):
 		var cell_data = foreground_layer.get_cell_tile_data(cell)
 		if cell_data.get_custom_data("is_key"):

@@ -5,7 +5,6 @@ extends Control
 
 const ACTIVE_COLOR: Color = Global.ACTIVE_COLOR
 const INACTIVE_COLOR: Color = Global.INACTIVE_COLOR
-const BAD_CODE: int = -1
 
 var style_box_flat: StyleBoxFlat = StyleBoxFlat.new()
 var is_active_panel: bool = false

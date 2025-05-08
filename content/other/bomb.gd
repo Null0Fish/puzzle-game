@@ -151,6 +151,7 @@ func remove():
 		Global.solid_warning_layers.remove_at(index)
 	queue_free()
 
-# Pretty lame code so the region does not need to be recalculated localy kinda bad
+# BAD CODE
+# Done so the region does not need to be recalculated localy
 func upgrade_bomb_sprite(rect: Rect2i):
 	bomb_sprite.region_rect = rect

@@ -1,7 +1,5 @@
 # Godot-specific files
-# Godot-specific ignores
 .import/
 .godot/
 .godot/mono/
 *.import
-
