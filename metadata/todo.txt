@@ -4,6 +4,6 @@ Must Do:
 
 Currently being thought about:
 	- Customized loading screen
-	- Player Guidance
 	- Make title pretty somehow
+		- Use a .ttf in asseprite
 	- Redraw bomb textures
