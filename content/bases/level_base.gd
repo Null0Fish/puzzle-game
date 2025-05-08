@@ -4,6 +4,9 @@ signal fade_finished
 
 @export var level_name: String
 @export var show_ui: bool
+@export var adjacent_bombs: int
+@export var diagonal_bombs: int
+@export var full_bombs: int
 
 @onready var root_tile_layer: TileMapLayer = $RootTileLayer
 @onready var foreground_layer: TileMapLayer = $RootTileLayer/ForegroundLayer
@@ -50,7 +53,7 @@ func _initialize_variables():
 	level_gui.set_level(str(Global.get_current_level() + 1))
 	Global.paused = false
 	Global.current_bomb_type = Global.DIAGONAL
-	bombs_available = Global.get_bombs_available(Global.get_current_level())
+	bombs_available = [adjacent_bombs, diagonal_bombs, full_bombs]
 
 func _initialize_music():
 	Global.try_play_background_music()

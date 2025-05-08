@@ -6,7 +6,6 @@ const DIAGONAL : int = 1
 const FULL : int = 2
 const LAST_BOMB : int = FULL
 const MAX_BOMB_LEVEL : int = 2
-const NONE : Array = [0, 0, 0]
 
 # Tile information
 const PLAYER_SIZE : float = 8.0
@@ -21,13 +20,6 @@ const GUI_TILES : Array = [
 # Level information
 const LEVEL_FILE : String = "res://content/levels/level_"
 const MAX_LEVELS : int = 20
-const BOMBS_AVAILABLE : Array = [
-	NONE,
-	NONE,
-	[3, 3, 3],
-	[0, 1, 0],
-	[2, 2, 2],
-]
 var current_level_num : int = 0
 var has_restarted : bool = false
 
@@ -89,13 +81,6 @@ func _process(delta: float) -> void:
 	tint_phase += delta * tint_speed
 	var t = (sin(tint_phase) + 1.0) / 2.0
 	lava_tint = base_tint.lerp(peak_tint, t)
-
-func get_bombs_available(level : int) -> Array:
-	if level == -1:
-		return [9, 9, 9]
-	if BOMBS_AVAILABLE.size() >= level + 1:
-		return BOMBS_AVAILABLE[level].duplicate()
-	return NONE.duplicate()
 
 func has_solid_warning_tile_at(cell : Vector2i):
 	for solid_warning_layer in solid_warning_layers:

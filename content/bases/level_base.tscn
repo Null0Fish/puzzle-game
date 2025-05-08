@@ -903,6 +903,8 @@ script = ExtResource("1_r71if")
 level_name = "Text Here"
 show_ui = true
 
+[node name="Node" type="Node" parent="."]
+
 [node name="Fade" type="ColorRect" parent="."]
 visible = false
 z_index = 27

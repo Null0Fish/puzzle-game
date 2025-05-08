@@ -5,11 +5,12 @@
 
 [node name="level_3" instance=ExtResource("1_gxbyd")]
 level_name = "Reusage"
+diagonal_bombs = 1
 
-[node name="Player" parent="." index="3"]
+[node name="Player" parent="." index="4"]
 position = Vector2(8, 152.5)
 
-[node name="Chest" parent="." index="4"]
+[node name="Chest" parent="." index="5"]
 position = Vector2(312, 56)
 
 [node name="TutorialText" parent="." index="7" instance=ExtResource("3_0icbu")]

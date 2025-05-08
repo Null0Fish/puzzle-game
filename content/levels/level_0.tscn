@@ -8,10 +8,10 @@
 level_name = "First Steps"
 show_ui = false
 
-[node name="Player" parent="." index="3"]
+[node name="Player" parent="." index="4"]
 position = Vector2(8, 87)
 
-[node name="Chest" parent="." index="4"]
+[node name="Chest" parent="." index="5"]
 position = Vector2(312, 40)
 
 [node name="Level0TutorialTextControler" type="Node" parent="." index="7"]
