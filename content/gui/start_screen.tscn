@@ -831,8 +831,6 @@ sources/0 = SubResource("TileSetAtlasSource_gi34h")
 [node name="StartScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 theme = ExtResource("1_4eq4g")
 script = ExtResource("1_w33ff")
 
