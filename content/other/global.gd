@@ -94,7 +94,7 @@ func set_level(level_num : int):
 		current_level_num = level_num
 		get_tree().change_scene_to_file(LEVEL_FILE + str(level_num) + ".tscn")
 	else:
-		print("ERROR NO MORE LEVELS")
+		# No more levels
 		get_tree().change_scene_to_file("res://content/gui/start_screen.tscn")
 
 func get_current_level() -> int:

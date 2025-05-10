@@ -1,9 +1,16 @@
 Must Do:
-	- Make levels 5 -21
+	- Make levels 9 -21
 	- Make home screen buttons less ugly
+
+Bugs:
+	- If timmed right the player can jump and die in lava due to cayote time
+	- Ask Kyle for help why crates are like 15 px as collider
 
 Currently being thought about:
 	- Customized loading screen
 	- Make title pretty somehow
 		- Use a .ttf in asseprite
 	- Redraw bomb textures
+	- Think about the ffloating chest issue
+		- Hard stone? act a gui tile? physics?
+	- Make sounds better by adding slight varation to each one
