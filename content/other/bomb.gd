@@ -17,6 +17,7 @@ const TILE_SIZE: int = int(Global.TILE_SIZE)
 @onready var ghost_bomb: Sprite2D = $GhostBomb
 
 var explosion_scene = preload("res://content/effects/explosion_particles.tscn")
+var cell_under_chest: Vector2i
 var root_tile_layer: TileMapLayer
 var type: int
 var cells_to_detonate: Array = []
@@ -77,7 +78,6 @@ func _create_explosion_particles(cell: Vector2i):
 func _get_cells_to_detonate(cell: Vector2i) -> Array:
 	var bomb_level = Global.bomb_levels[type]
 	var cells = []
-	#qqcells.append(cell)
 	for y in range(cell.y - bomb_level - 1, cell.y + bomb_level + 2):
 		for x in range(cell.x - bomb_level - 1, cell.x + bomb_level + 2):
 			if cell.x != x or cell.y != y:
@@ -133,13 +133,23 @@ func detonate(player_cell: Vector2i):
 		if cell == player_cell:
 			player.die()
 			return
-		var cell_data = root_tile_layer.foreground_layer.get_cell_tile_data(cell)
-		if cell_data and cell_data.get_custom_data("Breakable") \
-		and not cell in Global.GUI_CELLS and not _is_wall_cell(cell):
+		if _can_detonate_cell(cell):
 			_create_explosion_particles(cell)
 			root_tile_layer.foreground_layer.set_cell(cell, -1)
 			_update_surrounding(cell)
-		root_tile_layer.decorative_layer.set_cell(cell, -1)
+			root_tile_layer.decorative_layer.set_cell(cell, -1)
+
+func _can_detonate_cell(cell: Vector2i):
+	var cell_data = root_tile_layer.foreground_layer.get_cell_tile_data(cell)
+	if not cell_data or not cell_data.get_custom_data("Breakable"):
+		return false
+	if cell in Global.GUI_CELLS:
+		return false
+	if _is_wall_cell(cell):
+		return false
+	if cell == cell_under_chest:
+		return false
+	return true
 
 func die():
 	get_tree().current_scene.try_detonate_bomb(root_tile_layer.local_to_map(position), true)

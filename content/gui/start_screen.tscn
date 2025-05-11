@@ -1,12 +1,11 @@
-[gd_scene load_steps=24 format=4 uid="uid://b81yl7ugq466u"]
+[gd_scene load_steps=23 format=4 uid="uid://b81yl7ugq466u"]
 
 [ext_resource type="Theme" uid="uid://8j076bs8jafv" path="res://assets/other/default_theme.tres" id="1_4eq4g"]
 [ext_resource type="Script" uid="uid://dlda45lx3ar5o" path="res://content/gui/start_screen.gd" id="1_w33ff"]
 [ext_resource type="Texture2D" uid="uid://c8v2wyt438ykn" path="res://assets/gui/button_gui.png" id="2_w33ff"]
 [ext_resource type="FontFile" uid="uid://b66nc4dsrjg1t" path="res://assets/fonts/default_font.ttf" id="3_tq0wb"]
-[ext_resource type="FontFile" uid="uid://cr4wrvqx3o43i" path="res://assets/fonts/retganon.ttf" id="3_yudno"]
-[ext_resource type="Texture2D" uid="uid://cm1lgkqk2bvar" path="res://assets/gui/other_tile_image.png" id="4_dvmkk"]
 [ext_resource type="PackedScene" uid="uid://61ajonhq2g6l" path="res://content/gui/level_grid.tscn" id="4_noill"]
+[ext_resource type="Texture2D" uid="uid://bgnv0w6kdnlkw" path="res://assets/gui/title_image.png" id="4_yudno"]
 [ext_resource type="FontFile" uid="uid://bswl43jn17ndt" path="res://assets/fonts/m5x7.ttf" id="5_b8x6n"]
 [ext_resource type="Script" uid="uid://pv2w6bme65lh" path="res://content/gui/level_grid.gd" id="5_vdpax"]
 [ext_resource type="Texture2D" uid="uid://cck0i5mi4au60" path="res://assets/gui/back_button.png" id="5_w33ff"]
@@ -856,20 +855,6 @@ anchors_preset = 0
 offset_right = 320.0
 offset_bottom = 192.0
 
-[node name="Title" type="Label" parent="TitleUI"]
-visible = false
-z_index = 4
-layout_mode = 2
-offset_left = 80.0
-offset_top = 24.0
-offset_right = 256.0
-offset_bottom = 52.0
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("3_yudno")
-theme_override_font_sizes/font_size = 32
-text = "Terra Bomber"
-horizontal_alignment = 1
-
 [node name="TextureRect" type="TextureRect" parent="TitleUI"]
 z_index = 2
 layout_mode = 0
@@ -877,7 +862,7 @@ offset_left = 88.0
 offset_top = 24.0
 offset_right = 248.0
 offset_bottom = 64.0
-texture = ExtResource("4_dvmkk")
+texture = ExtResource("4_yudno")
 
 [node name="ButtonContainer" type="Control" parent="TitleUI"]
 custom_minimum_size = Vector2(64, 0)
@@ -1118,7 +1103,7 @@ texture = ExtResource("7_b8x6n")
 [node name="DecorativeLayer" type="TileMapLayer" parent="MenuTileLayers"]
 modulate = Color(0.796243, 0.796243, 0.796243, 0.756863)
 use_parent_material = true
-tile_map_data = PackedByteArray("AAAlAAMAAAABAAAAAAAlAAQAAAABAAAAAAAeAAEAAAABAAAAAAAeAAIAAAABAAAAAAAeAAMAAAABAAAAAAAaAAIAAAABAAAAAAAaAAMAAAABAAAAAAAaAAQAAAABAAAAAAASAAQAAAABAAAAAAASAAUAAAABAAAAAAAOAAEAAAABAAAAAAAOAAIAAAABAAAAAAAOAAMAAAABAAAAAAAOAAQAAAABAAAAAAAGAAEAAAABAAAAAAAGAAIAAAABAAAAAAACAPf/AAABAAAAAAAJAPb/AAABAAAAAAAJAPf/AAABAAAAAAAJAPj/AAABAAAAAAACAPj/AAABAAAAAAAJAPX/AAABAAAAAAASAPf/AAABAAAAAAASAPj/AAABAAAAAAASAPn/AAABAAAAAAAMAP3/AAABAAAAAAAMAP7/AAABAAAAAAARAPz/AAADAAEAAAABAPv/AAADAAEAAAAAAPj/AAAAAAAAAAAWAAIAAAAAAAAAAAAlAAkAAAAAAAAAAAAeAAoAAAADAAEAAAAYAAgAAAADAAEAAAAPAAkAAAADAAEAAAAcAAkAAAABAAEAAAAnAAUAAQAAAAAAAAAQAAIAAAAAAAAAAAAEAAQAAAABAAAAAAAEAAMAAAABAAAAAAAEAAIAAAABAAAAAAAEAAUAAAABAAAAAAACAAMAAAAAAAAAAAACAAkAAAAAAAEAAAA=")
+tile_map_data = PackedByteArray("AAAlAAMAAAABAAAAAAAlAAQAAAABAAAAAAAeAAEAAAABAAAAAAAeAAIAAAABAAAAAAAeAAMAAAABAAAAAAAaAAIAAAABAAAAAAAaAAMAAAABAAAAAAAaAAQAAAABAAAAAAASAAQAAAABAAAAAAASAAUAAAABAAAAAAACAPf/AAABAAAAAAAJAPb/AAABAAAAAAAJAPf/AAABAAAAAAAJAPj/AAABAAAAAAACAPj/AAABAAAAAAAJAPX/AAABAAAAAAASAPf/AAABAAAAAAASAPj/AAABAAAAAAASAPn/AAABAAAAAAAMAP3/AAABAAAAAAAMAP7/AAABAAAAAAARAPz/AAADAAEAAAABAPv/AAADAAEAAAAAAPj/AAAAAAAAAAAWAAIAAAAAAAAAAAAlAAkAAAAAAAAAAAAeAAoAAAADAAEAAAAYAAgAAAADAAEAAAAPAAkAAAADAAEAAAAcAAkAAAABAAEAAAAQAAIAAAAAAAAAAAAEAAQAAAABAAAAAAAEAAMAAAABAAAAAAAEAAIAAAABAAAAAAAEAAUAAAABAAAAAAACAAMAAAAAAAAAAAACAAkAAAAAAAEAAAA=")
 tile_set = SubResource("TileSet_h1cms")
 metadata/_edit_lock_ = true
 

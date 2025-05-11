@@ -16,6 +16,7 @@ signal fade_finished
 @onready var guis: Array = level_gui.get_guis()
 @onready var fade: ColorRect = $Fade
 @onready var explosion_player: AudioStreamPlayer = $ExplosionPlayer
+@onready var chest: Chest = $Chest
 
 const TILE_SIZE = Global.TILE_SIZE
 const HOVER_SOURCE: int = 0
@@ -27,8 +28,9 @@ var crate_scene: PackedScene = preload("res://content/level_specific/crate.tscn"
 var bomb_scene: PackedScene = preload("res://content/other/bomb.tscn")
 var lava_scene: PackedScene = preload("res://content/level_specific/lava.tscn")
 
-var allow_hover_cords: Vector2i = Vector2i(0, 0)
-var disallow_hover_cords: Vector2i = Vector2i(2, 0)
+var allow_hover_atlas_cords: Vector2i = Vector2i(0, 0)
+var disallow_hover_atlas_cords: Vector2i = Vector2i(2, 0)
+var chest_cell_cords: Vector2i
 var bombs_available: Array
 var last_placement_time: float
 var bomb_list: Array = []
@@ -42,12 +44,12 @@ var should_fade: bool = true
 
 func _ready():
 	_initialize_variables()
-	_initialize_music()
+	_initialize_effects()
 	_initialize_gui()
 	_initialize_objects()
 
 func _initialize_variables():
-	fade.show()
+	chest_cell_cords = root_tile_layer.local_to_map(chest.position)
 	last_placement_time = 0.0
 	level_gui.set_title(level_name)
 	level_gui.set_level(str(Global.get_current_level() + 1))
@@ -55,7 +57,8 @@ func _initialize_variables():
 	Global.current_bomb_type = Global.DIAGONAL
 	bombs_available = [adjacent_bombs, diagonal_bombs, full_bombs]
 
-func _initialize_music():
+func _initialize_effects():
+	fade.show()
 	Global.try_play_background_music()
 
 func _initialize_gui():
@@ -107,9 +110,9 @@ func _process(_delta):
 	if is_dragging:
 		var cell = root_tile_layer.local_to_map(get_local_mouse_position())
 		if _can_place_bomb(cell, Global.current_bomb_type, true):
-			_update_hover_layer(allow_hover_cords)
+			_update_hover_layer(allow_hover_atlas_cords)
 		else:
-			_update_hover_layer(disallow_hover_cords)
+			_update_hover_layer(disallow_hover_atlas_cords)
 	bomb_locations = _update_array(bomb_list)
 	crate_locations = _update_array(crate_list)
 	lavaa_locations = _update_array(lava_list)
@@ -134,6 +137,7 @@ func _place_bomb(cell: Vector2i, bomb_type: int):
 	add_child(bomb)
 	bomb.init(root_tile_layer, bomb_type)
 	bomb.player = player
+	bomb.cell_under_chest = chest_cell_cords + Vector2i(0, 1)
 	_add_bomb_to_lists(bomb, cell, bomb_type)
 
 func _detonate_bomb(index: int):
