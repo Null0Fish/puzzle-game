@@ -13,10 +13,10 @@ signal fade_finished
 @onready var hover_layer: TileMapLayer = $RootTileLayer/HoverLayer
 @onready var player: CharacterBody2D = $Player
 @onready var level_gui: Control = $LevelGUI
-@onready var guis: Array = level_gui.get_guis()
 @onready var fade: ColorRect = $Fade
-@onready var explosion_player: AudioStreamPlayer = $ExplosionPlayer
 @onready var chest: Chest = $Chest
+@onready var explosion_audio: AudioStreamPlayer = $ExplosionAudio
+@onready var guis: Array = level_gui.get_guis()
 
 const TILE_SIZE = Global.TILE_SIZE
 const HOVER_SOURCE: int = 0
@@ -141,7 +141,8 @@ func _place_bomb(cell: Vector2i, bomb_type: int):
 	_add_bomb_to_lists(bomb, cell, bomb_type)
 
 func _detonate_bomb(index: int):
-	explosion_player.play()
+	explosion_audio.pitch_scale = randf_range(0.85, 1.15)
+	explosion_audio.play()
 	bomb_list[index].detonate(root_tile_layer.local_to_map(player.global_position))
 	_remove_bomb_at(index)
 

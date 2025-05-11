@@ -123,10 +123,10 @@ sprite_frames = SubResource("SpriteFrames_ejter")
 animation = &"idle"
 frame_progress = 0.578407
 
-[node name="DiePlayer" type="AudioStreamPlayer" parent="."]
+[node name="DeathAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_yvgan")
 volume_db = -10.0
 
-[node name="JumpPlayer" type="AudioStreamPlayer" parent="."]
+[node name="JumpAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_rhxvd")
 volume_db = -16.0

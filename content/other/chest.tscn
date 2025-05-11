@@ -32,7 +32,7 @@ visible = false
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="WinAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_jcu68")
 volume_db = 5.0
 

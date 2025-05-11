@@ -4,7 +4,7 @@ class_name Chest
 @onready var timer: Timer = $Timer
 @onready var win_particles: Node2D = $WinParticles
 @onready var fade: Control = $Fade
-@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var win_audio: AudioStreamPlayer = $WinAudio
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 @onready var open_texture: Texture = preload("res://assets/chest/open_chest.png")
@@ -27,7 +27,7 @@ func _on_body_entered(body: Node):
 
 func _on_player_centered():
 	timer.start(1.65)
-	audio_stream_player.play()
+	win_audio.play()
 
 func _on_timer_timeout():
 	await fade.fade_out()

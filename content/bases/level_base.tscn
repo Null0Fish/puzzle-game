@@ -939,7 +939,7 @@ script = ExtResource("7_lhmjq")
 
 [node name="Timer" type="Timer" parent="Input"]
 
-[node name="ExplosionPlayer" type="AudioStreamPlayer" parent="."]
+[node name="ExplosionAudio" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamWAV_vnh2l")
 volume_db = -10.0
 

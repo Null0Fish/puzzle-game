@@ -12,7 +12,7 @@ shader_parameter/lava_tint = Vector4(0, 0, 0, 0)
 size = Vector2(14, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2eho"]
-size = Vector2(14, 11)
+size = Vector2(12, 11)
 
 [node name="Lava" type="Node2D"]
 z_index = 7

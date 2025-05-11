@@ -3,9 +3,9 @@ extends CharacterBody2D
 class_name Player
 
 @onready var sprite: AnimatedSprite2D = $PlayerSprite
+@onready var death_audio: AudioStreamPlayer = $DeathAudio
+@onready var jump_audio: AudioStreamPlayer = $JumpAudio
 @onready var window_size = get_viewport_rect().size
-@onready var die_player: AudioStreamPlayer = $DiePlayer
-@onready var jump_player: AudioStreamPlayer = $JumpPlayer
 
 const PLAYER_SIZE = Global.PLAYER_SIZE
 const SPEED: float = 75.0
@@ -32,7 +32,8 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	if Input.is_action_just_pressed("jump") and coyote_timer > 0.0 and not Global.paused:
-		jump_player.play()
+		jump_audio.pitch_scale = randf_range(0.95, 1.1)
+		jump_audio.play()
 		velocity.y = JUMP_VELOCITY
 		coyote_timer = 0.0
 
@@ -77,7 +78,7 @@ func die():
 		death_animation.position = sprite.position
 		death_animation.z_index = 1000
 		is_dead = true
-		die_player.play()
-		await die_player.finished
+		death_audio.play()
+		await death_audio.finished
 		await death_animation.finished
 		Global.call_deferred("reset")

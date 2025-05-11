@@ -1,6 +1,5 @@
 Current Tasks:
 	- Make levels 10 -21
-	- Make sounds better by adding slight varation to each one
 
 Future Tasks:
 	- Customized loading screen

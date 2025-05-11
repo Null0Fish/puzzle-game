@@ -21,7 +21,7 @@ position = Vector2(0, -1)
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_bko85")
 
-[node name="UpgradePlayer" type="AudioStreamPlayer" parent="."]
+[node name="UpgradeAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_gpv3s")
 volume_db = -12.0
 

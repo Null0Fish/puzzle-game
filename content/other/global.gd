@@ -46,7 +46,7 @@ var tint_phase: float = 0.0
 const MIN_VOL: int = -16
 const MAX_VOL: int = -8
 const MUSIC_FILE: AudioStreamMP3 = preload("res://assets/sounds/background.mp3")
-var audio_player: AudioStreamPlayer
+var background_audio: AudioStreamPlayer
 
 # State variables
 var paused : bool = false
@@ -58,23 +58,23 @@ var question_mark_override: bool = false
 
 # Functions
 func _ready():
-	audio_player = AudioStreamPlayer.new()
-	add_child(audio_player)
-	audio_player.stream = MUSIC_FILE
-	audio_player.finished.connect(_play_audio)
+	background_audio = AudioStreamPlayer.new()
+	add_child(background_audio)
+	background_audio.stream = MUSIC_FILE
+	background_audio.finished.connect(_play_audio)
 	lower_audio_vol()
 	_play_audio()
 
 func lower_audio_vol():
-	audio_player.volume_db = MIN_VOL
+	background_audio.volume_db = MIN_VOL
 
 func _play_audio():
-	audio_player.volume_db = MAX_VOL
-	audio_player.play()
+	background_audio.volume_db = MAX_VOL
+	background_audio.play()
 
 func try_play_background_music():
-	audio_player.volume_db = MAX_VOL
-	if not audio_player.playing:
+	background_audio.volume_db = MAX_VOL
+	if not background_audio.playing:
 		_play_audio()
 
 func _process(delta: float) -> void:
