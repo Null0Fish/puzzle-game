@@ -57,6 +57,7 @@ func _initialize_scene_at(cell: Vector2i, scene: PackedScene):
 func _cell_to_cords(cell: Vector2i):
 	return Vector2i(cell.x * int(TILE_SIZE), cell.y * int(TILE_SIZE))
 
+# TEMP DEBUG CODE
 func _input(event):
 	_handle_debug_input(event)
 	_handle_test_input(event)

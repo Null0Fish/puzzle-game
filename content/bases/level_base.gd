@@ -42,6 +42,11 @@ var lavaa_locations: Array = []
 var is_dragging: bool = false
 var should_fade: bool = true
 
+# DEBUG CODE
+func _input(event: InputEvent) -> void:
+	if event.is_action_released("debug_skip_level"):
+		Global.set_level(Global.get_current_level() + 1)
+
 func _ready():
 	_initialize_variables()
 	_initialize_effects()
