@@ -13,12 +13,6 @@ func _process(_delta: float) -> void:
 		fade.modulate.a += 0.04
 
 func _input(event):
-	if Global.paused:
-		return
-
-	if event.is_action_released("restart_level"):
-		player.die()
-
 	if event.is_action_released("exit"):
 		if not should_fade:
 			Global.paused = true
@@ -26,6 +20,12 @@ func _input(event):
 				await level_base.fade_finished
 			should_fade = true
 			timer.start(.75)
+
+	if Global.paused:
+		return
+
+	if event.is_action_released("restart_level"):
+		player.die()
 
 	for key in range(KEY_0, KEY_9 + 1):
 		if Input.is_key_pressed(key):

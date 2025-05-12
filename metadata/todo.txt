@@ -4,7 +4,7 @@ Current Tasks:
 Future Tasks:
 	- Customized loading screen
 	- Tweak title and bomb textures
+	- THink about adding undo to last bomb detonation
 
 Bugs:
-	- If timmed right the player can jump and die in lava due to cayote time
 	- Ask Kyle for help why crates are like 15 px as collider

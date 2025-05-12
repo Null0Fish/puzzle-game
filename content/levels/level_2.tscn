@@ -16,9 +16,6 @@ position = Vector2(8, 120)
 [node name="Chest" parent="." index="4"]
 position = Vector2(312, 88)
 
-[node name="ExplosionPlayer" parent="." index="6"]
-volume_db = -16.0
-
 [node name="Level2TutorialTextControler" type="Node" parent="." index="7"]
 script = ExtResource("3_jukad")
 

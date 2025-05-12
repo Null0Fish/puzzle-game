@@ -4,7 +4,7 @@
 
 [node name="level_6" instance=ExtResource("1_qivrd")]
 level_name = "Crate Mover"
-adjacent_bombs = 2
+adjacent_bombs = 1
 diagonal_bombs = 1
 
 [node name="Player" parent="." index="3"]

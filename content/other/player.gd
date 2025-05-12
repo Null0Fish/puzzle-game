@@ -15,10 +15,15 @@ const COYOTE_TIME: float = 0.05
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var coyote_timer: float = 0.0
 var is_dead: bool = false
+var has_zeroed_y_velocity: bool = false
 
 func _physics_process(delta):
 	if is_dead:
-		velocity.y += gravity * delta
+		if not has_zeroed_y_velocity:
+			velocity.y = 0
+			has_zeroed_y_velocity = true
+		else:
+			velocity.y += gravity * delta
 		velocity = Vector2(0, velocity.y)
 		move_and_slide()
 		return
