@@ -1,8 +1,51 @@
-[gd_scene load_steps=5 format=3 uid="uid://6omkuv5lxkmh"]
+[gd_scene load_steps=11 format=3 uid="uid://6omkuv5lxkmh"]
 
 [ext_resource type="Script" uid="uid://b41t3wy8o2a8s" path="res://content/level_specific/upgrade.gd" id="1_ntkn4"]
-[ext_resource type="Texture2D" uid="uid://dingfkls8o5da" path="res://assets/bomb_upgrades/epic_upgrade.png" id="2_xmjsk"]
+[ext_resource type="Texture2D" uid="uid://p7m6g8fx25tl" path="res://assets/anamation_frames/upgrade_animation_frames.png" id="2_ntkn4"]
 [ext_resource type="AudioStream" uid="uid://gadt3yo23qp0" path="res://assets/sounds/upgrade.wav" id="3_gpv3s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntkn4"]
+atlas = ExtResource("2_ntkn4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmjsk"]
+atlas = ExtResource("2_ntkn4")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpv3s"]
+atlas = ExtResource("2_ntkn4")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_socgw"]
+atlas = ExtResource("2_ntkn4")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rje7"]
+atlas = ExtResource("2_ntkn4")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pd5t7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntkn4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmjsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpv3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_socgw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rje7")
+}],
+"loop": false,
+"name": &"shine",
+"speed": 10.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bko85"]
 size = Vector2(10, 12)
@@ -10,9 +53,14 @@ size = Vector2(10, 12)
 [node name="BombUpgrade" type="Node2D"]
 script = ExtResource("1_ntkn4")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -1)
-texture = ExtResource("2_xmjsk")
+sprite_frames = SubResource("SpriteFrames_pd5t7")
+animation = &"shine"
+frame = 4
+frame_progress = 1.0
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, -1)
@@ -25,4 +73,5 @@ shape = SubResource("RectangleShape2D_bko85")
 stream = ExtResource("3_gpv3s")
 volume_db = -12.0
 
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

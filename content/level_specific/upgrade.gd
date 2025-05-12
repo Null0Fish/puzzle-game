@@ -1,8 +1,20 @@
 extends Node2D
 
 @onready var upgrade_audio: AudioStreamPlayer = $UpgradeAudio
+@onready var timer: Timer = $Timer
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 var player_has_entered: bool = false
+
+func _ready() -> void:
+	_start_timer()
+
+func _start_timer():
+	timer.start(5)
+
+func _on_timer_timeout() -> void:
+	animated_sprite_2d.play("shine")
+	_start_timer()
 
 func _on_area_2d_body_entered(body):
 	var current_bomb_type = Global.current_bomb_type

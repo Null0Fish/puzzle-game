@@ -36,9 +36,9 @@ const ACTIVE_COLOR: Color = Color("#3b2027")
 const INACTIVE_COLOR: Color = Color("#21181b")
 
 # Lava tint variables
-var lava_tint: Color = Color(1.0, 1.0, 1.0)
-var base_tint: Color = Color(1.0, 1.0, 1.0)
-var peak_tint: Color = Color(1.0, 0.7, 0.3)
+var lava_tint: Color = Color("#FFFFFF")
+var base_tint: Color = Color("#FFA642")
+var peak_tint: Color = Color("#FFE6A6")
 var tint_speed: float = 1.0
 var tint_phase: float = 0.0
 

@@ -7,7 +7,7 @@ class_name Chest
 @onready var win_audio: AudioStreamPlayer = $WinAudio
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
-@onready var open_texture: Texture = preload("res://assets/chest/open_chest.png")
+@onready var open_texture: Texture = preload("res://assets/other/open_chest.png")
 
 var next_level: int
 var currently_dieing: bool = false
