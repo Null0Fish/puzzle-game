@@ -1,6 +1,7 @@
 Current Tasks:
-	- Make levels 10 -21
+	- Make levels 11 -21
 
 Future Tasks:
 	- Customized loading screen
 	- Tweak title and bomb textures
+	- Have jump key pressed time relate to jump height

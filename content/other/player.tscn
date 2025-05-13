@@ -1,13 +1,18 @@
-[gd_scene load_steps=18 format=3 uid="uid://6i873xlrfq18"]
+[gd_scene load_steps=20 format=3 uid="uid://6i873xlrfq18"]
 
 [ext_resource type="Script" uid="uid://b0o2txq8dip2i" path="res://content/other/player.gd" id="1_a8vbq"]
 [ext_resource type="Texture2D" uid="uid://bjxqhryhxjeiq" path="res://assets/anamation_frames/player_animation_frames.png" id="2_0omj6"]
 [ext_resource type="AudioStream" uid="uid://dspyuye4crtqk" path="res://assets/sounds/die.wav" id="3_yvgan"]
 [ext_resource type="AudioStream" uid="uid://c12rbuhts3km7" path="res://assets/sounds/jump.wav" id="4_rhxvd"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rhxvd"]
-radius = 5.0
-height = 11.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhxvd"]
+size = Vector2(8, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojuat"]
+size = Vector2(6, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sgonx"]
+radius = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ojuat"]
 atlas = ExtResource("2_0omj6")
@@ -113,10 +118,25 @@ animations = [{
 collision_mask = 3
 script = ExtResource("1_a8vbq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
 z_index = 16
-position = Vector2(-0.5, 3.5)
-shape = SubResource("CapsuleShape2D_rhxvd")
+position = Vector2(-0.5, 3)
+shape = SubResource("RectangleShape2D_rhxvd")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+z_index = 16
+position = Vector2(-0.5, 8.375)
+shape = SubResource("RectangleShape2D_ojuat")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+z_index = 16
+position = Vector2(-3.5, 8)
+shape = SubResource("CircleShape2D_sgonx")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+z_index = 16
+position = Vector2(2.5, 8)
+shape = SubResource("CircleShape2D_sgonx")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 z_index = 15

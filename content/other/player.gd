@@ -10,7 +10,7 @@ class_name Player
 const PLAYER_SIZE = Global.PLAYER_SIZE
 const SPEED: float = 75.0
 const JUMP_VELOCITY: float = -280.0
-const COYOTE_TIME: float = 0.05
+const COYOTE_TIME: float = 0.075
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var coyote_timer: float = 0.0

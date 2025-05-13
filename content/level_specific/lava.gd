@@ -14,8 +14,10 @@ func update_lava_tint() -> void:
 	if shader_material:
 		shader_material.set("shader_parameter/lava_tint", Global.lava_tint)
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body is Player:
+func _on_bomb_death_area_body_entered(body: Node2D) -> void:
+	if body is Bomb:
 		body.call_deferred("die")
-	elif body is Bomb:
+
+func _on_player_death_area_body_entered(body: Node2D) -> void:
+	if body is Player:
 		body.call_deferred("die")

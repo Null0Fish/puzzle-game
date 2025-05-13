@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvijg2uq2m7ei"]
+[gd_scene load_steps=8 format=3 uid="uid://cvijg2uq2m7ei"]
 
 [ext_resource type="Script" uid="uid://wrg4ncmrj62y" path="res://content/level_specific/lava.gd" id="1_61cur"]
 [ext_resource type="Texture2D" uid="uid://da7w651nsrh6t" path="res://assets/other/laval.png" id="1_ltp6t"]
@@ -9,6 +9,9 @@ shader = ExtResource("2_g2eho")
 shader_parameter/lava_tint = Vector4(0, 0, 0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61cur"]
+size = Vector2(14, 12.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6b8pp"]
 size = Vector2(14, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2eho"]
@@ -22,11 +25,17 @@ script = ExtResource("1_61cur")
 material = SubResource("ShaderMaterial_6b8pp")
 texture = ExtResource("1_ltp6t")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="PlayerDeathArea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 0.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDeathArea"]
+position = Vector2(0, 2.25)
 shape = SubResource("RectangleShape2D_61cur")
+
+[node name="BombDeathArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BombDeathArea"]
+position = Vector2(0, 0.125)
+shape = SubResource("RectangleShape2D_6b8pp")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -35,4 +44,5 @@ collision_layer = 2
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_g2eho")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="PlayerDeathArea" to="." method="_on_player_death_area_body_entered"]
+[connection signal="body_entered" from="BombDeathArea" to="." method="_on_bomb_death_area_body_entered"]

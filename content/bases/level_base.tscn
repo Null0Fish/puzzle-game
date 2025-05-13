@@ -954,7 +954,7 @@ tile_set = SubResource("TileSet_8nnp0")
 metadata/_edit_lock_ = true
 
 [node name="HoverLayer" type="TileMapLayer" parent="RootTileLayer"]
-z_index = 4
+z_index = 999
 tile_set = SubResource("TileSet_7a2xm")
 metadata/_edit_lock_ = true
 

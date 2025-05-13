@@ -118,6 +118,8 @@ func _process(_delta):
 			_update_hover_layer(allow_hover_atlas_cords)
 		else:
 			_update_hover_layer(disallow_hover_atlas_cords)
+
+func _update_locations():
 	bomb_locations = _update_array(bomb_list)
 	crate_locations = _update_array(crate_list)
 	lavaa_locations = _update_array(lava_list)
@@ -169,7 +171,11 @@ func _can_place_bomb(cell: Vector2i, bomb_type: int, moving_placed_bomb=false) -
 	if bombs_available[bomb_type] <= 0 and not moving_placed_bomb:
 		return false
 	# Checks cell for static object
-	if cell in bomb_locations or cell in _get_all_crate_cells():
+	if cell in bomb_locations:
+		return false
+	if cell in crate_locations:
+		return false
+	if cell in lavaa_locations:
 		return false
 	# Checks for static tiles
 	if foreground_layer.get_cell_source_id(cell) != -1:
@@ -214,6 +220,7 @@ func try_pick_up_bomb(cell: Vector2i) -> bool:
 	return false
 
 func try_detonate_bomb(cell: Vector2i, is_in_laval: bool = false) -> bool:
+	_update_locations()
 	var index = bomb_locations.find(cell)
 	if index != -1 and (bomb_list[index].is_on_floor() or is_in_laval):
 		_detonate_bomb(index)

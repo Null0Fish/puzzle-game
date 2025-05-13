@@ -30,6 +30,7 @@ texture = ExtResource("4_fpio6")
 sources/0 = SubResource("TileSetAtlasSource_1ff8c")
 
 [node name="Bomb" type="RigidBody2D"]
+collision_mask = 3
 can_sleep = false
 lock_rotation = true
 script = ExtResource("1_ukdw2")
