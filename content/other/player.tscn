@@ -5,8 +5,9 @@
 [ext_resource type="AudioStream" uid="uid://dspyuye4crtqk" path="res://assets/sounds/die.wav" id="3_yvgan"]
 [ext_resource type="AudioStream" uid="uid://c12rbuhts3km7" path="res://assets/sounds/jump.wav" id="4_rhxvd"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0nml6"]
-size = Vector2(8, 11)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rhxvd"]
+radius = 5.0
+height = 11.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ojuat"]
 atlas = ExtResource("2_0omj6")
@@ -113,8 +114,9 @@ collision_mask = 3
 script = ExtResource("1_a8vbq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 16
 position = Vector2(-0.5, 3.5)
-shape = SubResource("RectangleShape2D_0nml6")
+shape = SubResource("CapsuleShape2D_rhxvd")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 z_index = 15

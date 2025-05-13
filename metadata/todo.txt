@@ -4,6 +4,3 @@ Current Tasks:
 Future Tasks:
 	- Customized loading screen
 	- Tweak title and bomb textures
-
-Bugs:
-	- Ask Kyle for help why crates are like 15 px as collider
