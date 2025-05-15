@@ -94,7 +94,7 @@ func _update_surrounding(pos: Vector2):
 	var to_update = []
 	for cell in surrounding:
 		var cell_data = root_tile_layer.foreground_layer.get_cell_tile_data(cell)
-		if root_tile_layer.foreground_layer.get_cell_source_id(cell) != -1 and cell_data and cell_data.get_custom_data("Breakable"):
+		if root_tile_layer.foreground_layer.get_cell_source_id(cell) != -1 and cell_data and cell_data.get_custom_data("is_breakable"):
 			to_update.append(cell)
 	for cell in to_update:
 		root_tile_layer.foreground_layer.set_cell(cell, -1)
@@ -133,15 +133,18 @@ func detonate(player_cell: Vector2i):
 		if cell == player_cell:
 			player.die()
 			return
-		if _can_detonate_cell(cell):
+		if _can_detonate_cell(cell) or _decorative_cell_at(cell):
 			_create_explosion_particles(cell)
+			root_tile_layer.decorative_layer.set_cell(cell, -1)
 			root_tile_layer.foreground_layer.set_cell(cell, -1)
 			_update_surrounding(cell)
-			root_tile_layer.decorative_layer.set_cell(cell, -1)
+
+func _decorative_cell_at(cell: Vector2i) -> bool:
+	return root_tile_layer.decorative_layer.get_cell_source_id(cell) != -1
 
 func _can_detonate_cell(cell: Vector2i):
 	var cell_data = root_tile_layer.foreground_layer.get_cell_tile_data(cell)
-	if not cell_data or not cell_data.get_custom_data("Breakable"):
+	if not cell_data or not cell_data.get_custom_data("is_breakable"):
 		return false
 	if cell in Global.GUI_CELLS:
 		return false

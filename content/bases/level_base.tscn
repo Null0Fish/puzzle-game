@@ -24,17 +24,29 @@ format = 3
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_psg8t"]
 texture = ExtResource("7_ora2t")
 0:0/0 = 0
+0:0/0/custom_data_0 = true
 2:0/0 = 0
+2:0/0/custom_data_0 = true
 4:0/0 = 0
+4:0/0/custom_data_0 = true
 1:0/0 = 0
+1:0/0/custom_data_0 = true
 3:0/0 = 0
+3:0/0/custom_data_0 = true
 0:1/0 = 0
+0:1/0/custom_data_0 = true
 1:1/0 = 0
+1:1/0/custom_data_0 = true
 2:1/0 = 0
+2:1/0/custom_data_0 = true
 3:1/0 = 0
+3:1/0/custom_data_0 = true
 4:1/0 = 0
+4:1/0/custom_data_0 = true
 
 [sub_resource type="TileSet" id="TileSet_8nnp0"]
+custom_data_layer_0/name = "is_breakable"
+custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_psg8t")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5k8t0"]
@@ -878,7 +890,7 @@ terrain_set_0/terrain_0/name = "WeakStone"
 terrain_set_0/terrain_0/color = Color(0.372317, 0.218495, 0.38409, 1)
 terrain_set_0/terrain_1/name = "StrongStone"
 terrain_set_0/terrain_1/color = Color(0.687886, 0.40763, 0.538636, 1)
-custom_data_layer_0/name = "Breakable"
+custom_data_layer_0/name = "is_breakable"
 custom_data_layer_0/type = 1
 custom_data_layer_1/name = "is_lava"
 custom_data_layer_1/type = 1

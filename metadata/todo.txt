@@ -1,7 +1,10 @@
 Current Tasks:
-	- Make levels 11 -21
+	- Make 10 more levels
+		- 12 Locked in player starts in area without acessible key
+		- ? Lock Box player needs a crate that is locked up
 
 Future Tasks:
 	- Customized loading screen
 	- Talk to Kyle about making bomb-player collisions circular
+	- Also talk to kyle abt first two stacked crates squish issue
 	- Have jump key pressed time relate to jump height
