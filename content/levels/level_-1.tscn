@@ -14,6 +14,9 @@ position = Vector2(6, 135)
 [node name="Chest" parent="." index="4"]
 position = Vector2(296, 72)
 
+[node name="Input" parent="." index="5"]
+metadata/_edit_use_anchors_ = true
+
 [node name="DecorativeLayer" parent="RootTileLayer" index="0"]
 tile_map_data = PackedByteArray("AAAIAAMAAAAAAAAAAAAGAAIAAAABAAAAAAAGAAMAAAABAAAAAAAJAAYAAAADAAAAAAAIAAcAAAACAAAAAAAHAAcAAAAEAAAAAAAMAAkAAAADAAEAAAANAAkAAAADAAEAAAAFAAcAAAAAAAEAAAAGAAcAAAAEAAEAAAAGAAkAAAACAAEAAAAEAAcAAAABAAEAAAA=")
 

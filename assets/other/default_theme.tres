@@ -3,7 +3,7 @@
 [ext_resource type="FontFile" uid="uid://b66nc4dsrjg1t" path="res://assets/fonts/default_font.ttf" id="1_edn7j"]
 
 [resource]
-Label/colors/font_color = Color(0.756427, 0.937591, 0.781362, 1)
+Label/colors/font_color = Color(0.633324, 0.731006, 0.530211, 1)
 Label/constants/line_spacing = 0
 Label/font_sizes/font_size = 8
 Label/fonts/font = ExtResource("1_edn7j")

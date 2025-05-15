@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cck0i5mi4au60" path="res://assets/gui/back_button.png" id="5_w33ff"]
 [ext_resource type="Texture2D" uid="uid://c8t74536kqdiu" path="res://assets/other/player.png" id="7_b8x6n"]
 [ext_resource type="FontFile" uid="uid://uailrqh66ki8" path="res://assets/fonts/PublicPixel-rv0pA.ttf" id="8_b8x6n"]
-[ext_resource type="Texture2D" uid="uid://b70xug0nkj3md" path="res://assets/tiles/plant_tiles.png" id="8_xtlku"]
+[ext_resource type="Texture2D" uid="uid://b70xug0nkj3md" path="res://assets/tiles/decorative_tiles.png" id="8_xtlku"]
 [ext_resource type="Texture2D" uid="uid://bantl5cgj53um" path="res://assets/tiles/foreground_terrian_tiles.png" id="10_5tkyv"]
 [ext_resource type="Texture2D" uid="uid://cjsc322y0bplp" path="res://assets/tiles/foreground_tiles.png" id="11_yudno"]
 [ext_resource type="Texture2D" uid="uid://cjfpqjvffkj27" path="res://assets/tiles/background_tiles.png" id="12_dvmkk"]

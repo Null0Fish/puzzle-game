@@ -3,5 +3,5 @@ Current Tasks:
 
 Future Tasks:
 	- Customized loading screen
-	- Tweak title and bomb textures
+	- Talk to Kyle about making bomb-player collisions circular
 	- Have jump key pressed time relate to jump height

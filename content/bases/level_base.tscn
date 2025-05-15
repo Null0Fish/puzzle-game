@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://o51rufe8fd5y" path="res://content/bases/root_tile_layer.gd" id="6_ora2t"]
 [ext_resource type="PackedScene" uid="uid://cfsfwps6dsd7j" path="res://content/gui/level_gui.tscn" id="6_worh7"]
 [ext_resource type="Script" uid="uid://22vxynpu2cw0" path="res://content/bases/input.gd" id="7_lhmjq"]
-[ext_resource type="Texture2D" uid="uid://b70xug0nkj3md" path="res://assets/tiles/plant_tiles.png" id="7_ora2t"]
+[ext_resource type="Texture2D" uid="uid://b70xug0nkj3md" path="res://assets/tiles/decorative_tiles.png" id="7_ora2t"]
 [ext_resource type="Texture2D" uid="uid://bjvvhs886uyl0" path="res://assets/tiles/hover_tile.png" id="8_psg8t"]
 [ext_resource type="Texture2D" uid="uid://bantl5cgj53um" path="res://assets/tiles/foreground_terrian_tiles.png" id="9_5k8t0"]
 [ext_resource type="Texture2D" uid="uid://cjsc322y0bplp" path="res://assets/tiles/foreground_tiles.png" id="10_aqsxg"]
