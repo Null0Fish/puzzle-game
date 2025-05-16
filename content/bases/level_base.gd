@@ -204,7 +204,6 @@ func _on_death_box_body_entered(body: Node2D) -> void:
 func try_move_bomb_to(pos: Vector2, bomb: Bomb) -> bool:
 	var cell = root_tile_layer.local_to_map(pos)
 	var index = bomb_list.find(bomb)
-	print("THING")
 	if _can_place_bomb(cell, bomb.type, true):
 		_pick_up_bomb(index)
 		_place_bomb(cell, bomb.type)

@@ -81,7 +81,7 @@ func die():
 		var death_animation = death_scene.instantiate()
 		add_child(death_animation)
 		death_animation.position = sprite.position
-		death_animation.z_index = 1000
+		death_animation.z_index = 4000
 		is_dead = true
 		death_audio.play()
 		await death_audio.finished
