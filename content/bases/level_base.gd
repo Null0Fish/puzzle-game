@@ -119,6 +119,8 @@ func _process(_delta):
 		else:
 			_update_hover_layer(disallow_hover_atlas_cords)
 
+	_update_locations()
+
 func _update_locations():
 	bomb_locations = _update_array(bomb_list)
 	crate_locations = _update_array(crate_list)
@@ -170,24 +172,24 @@ func _can_place_bomb(cell: Vector2i, bomb_type: int, moving_placed_bomb=false) -
 	# Checks bomb count of type
 	if bombs_available[bomb_type] <= 0 and not moving_placed_bomb:
 		return false
-	# Checks cell for static object
+	# Checks player data
+	if not player.is_on_floor():
+		return false
+	# Checked paused status
+	if Global.paused:
+		return false
+	# Ensure the cell is valid
 	if cell in bomb_locations:
 		return false
 	if cell in crate_locations:
 		return false
 	if cell in lavaa_locations:
 		return false
-	# Checks for static tiles
+	if cell in root_tile_layer.get_player_cells():
+		return false
 	if foreground_layer.get_cell_source_id(cell) != -1:
 		return false
-	# Checks player data
-	if not player.is_on_floor() or cell in root_tile_layer.get_player_cells():
-		return false
-	# Prevent destorying the hidden GUI cells
 	if cell in Global.GUI_CELLS:
-		return false
-	# Checked paused status
-	if Global.paused:
 		return false
 	return true
 
@@ -204,6 +206,7 @@ func _on_death_box_body_entered(body: Node2D) -> void:
 func try_move_bomb_to(pos: Vector2, bomb: Bomb) -> bool:
 	var cell = root_tile_layer.local_to_map(pos)
 	var index = bomb_list.find(bomb)
+	print("THING")
 	if _can_place_bomb(cell, bomb.type, true):
 		_pick_up_bomb(index)
 		_place_bomb(cell, bomb.type)

@@ -1,6 +1,5 @@
 Current Tasks:
-	- Make 10 more levels
-		- 12 Locked in player starts in area without acessible key
+	- Make 9 more levels
 		- ? Lock Box player needs a crate that is locked up
 
 Future Tasks:

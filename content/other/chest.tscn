@@ -34,7 +34,7 @@ visible = false
 
 [node name="WinAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_jcu68")
-volume_db = 5.0
+volume_db = -10.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
