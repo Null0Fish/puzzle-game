@@ -960,7 +960,7 @@ tile_set = SubResource("TileSet_ora2t")
 script = ExtResource("6_ora2t")
 
 [node name="DecorativeLayer" type="TileMapLayer" parent="RootTileLayer"]
-modulate = Color(0.796078, 0.796078, 0.796078, 0.756863)
+modulate = Color(0.830336, 0.830335, 0.830335, 0.756863)
 use_parent_material = true
 tile_set = SubResource("TileSet_8nnp0")
 metadata/_edit_lock_ = true

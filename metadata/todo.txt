@@ -1,9 +1,8 @@
 Current Tasks:
-	- Make 9 more levels
-		- ? Lock Box player needs a crate that is locked up
+	- Make more levels
 
 Future Tasks:
 	- Customized loading screen
 	- Talk to Kyle about making bomb-player collisions circular
-	- Also talk to kyle abt first two stacked crates squish issue
+	- Also talk to Kyle abt first two stacked crates squish issue
 	- Have jump key pressed time relate to jump height

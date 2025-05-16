@@ -169,16 +169,14 @@ func _remove_bomb_at(index: int):
 	bomb_list.remove_at(index)
 
 func _can_place_bomb(cell: Vector2i, bomb_type: int, moving_placed_bomb=false) -> bool:
-	# Checks bomb count of type
+	# Checks state varibles are valid
 	if bombs_available[bomb_type] <= 0 and not moving_placed_bomb:
 		return false
-	# Checks player data
 	if not player.is_on_floor():
 		return false
-	# Checked paused status
 	if Global.paused:
 		return false
-	# Ensure the cell is valid
+	# Check if cell is valid
 	if cell in bomb_locations:
 		return false
 	if cell in crate_locations:
