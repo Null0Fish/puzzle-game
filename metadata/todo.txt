@@ -1,6 +1,9 @@
 Current Tasks:
 	- Make more levels
 
+Bugs:
+	- bomb sprite issue on upgrade new placed?
+
 Future Tasks:
 	- Customized loading screen
 	- Talk to Kyle about making bomb-player collisions circular

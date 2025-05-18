@@ -5,7 +5,7 @@ extends Control
 @onready var timer: Timer = $Timer
 @onready var foreground_layer: TileMapLayer = $MenuTileLayers/ForegroundLayer
 @onready var art_credits_label: Label = $CreditsUI/HBoxContainer/VBoxContainer/ArtCreditsLabel
-@onready var fade: ColorRect = $Fade
+@onready var fade: ColorRect = $Camera2D/Fade
 
 const HORIZONTAL_DELTA: Vector2 = Vector2(320, 0)
 const VERTICAL_DELTA: Vector2 = Vector2(0, 192)

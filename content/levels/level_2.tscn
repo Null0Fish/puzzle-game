@@ -49,33 +49,17 @@ grow_horizontal = 1
 grow_vertical = 1
 text = "Detonate placed bombs by right clicking them"
 
-[node name="ThirdTutorialTexxt" parent="Level2TutorialTextControler" index="2" instance=ExtResource("4_2jvad")]
+[node name="ThirdTutorialText" parent="Level2TutorialTextControler" index="2" instance=ExtResource("4_2jvad")]
 z_index = 5
 anchors_preset = 0
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 216.0
-offset_top = 128.0
-offset_right = 280.0
-offset_bottom = 189.0
-grow_horizontal = 1
-grow_vertical = 1
-text = "Keep using bombs to reach the chest"
-
-[node name="FourthTurotialText" parent="Level2TutorialTextControler" index="3" instance=ExtResource("4_2jvad")]
-visible = false
-z_index = 5
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = -8.0
-offset_right = 128.0
-offset_bottom = 53.0
+offset_left = 200.0
+offset_top = 0.0
+offset_right = 304.0
+offset_bottom = 37.0
 grow_horizontal = 1
 grow_vertical = 1
 text = "You can always drag a placed bomb back up to put it away"

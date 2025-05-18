@@ -11,6 +11,7 @@ const OFFSET = Global.OFFSET
 const ACTIVE_COLOR: Color = Global.ACTIVE_COLOR
 const INACTIVE_COLOR: Color = Global.INACTIVE_COLOR
 
+var total_bombs: int
 var type: int
 var style_box_flat: StyleBoxFlat = StyleBoxFlat.new()
 var dragging: bool = false
@@ -46,7 +47,7 @@ func _move_ghost_bomb(target_position: Vector2):
 	tween.tween_property(ghost_bomb, "global_position", target_position, 0.25).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 func _update_panel_style():
-	if Global.current_bomb_type == type and not Global.question_mark_override:
+	if Global.current_bomb_type == type:
 		style_box_flat.bg_color = ACTIVE_COLOR
 	else:
 		style_box_flat.bg_color = INACTIVE_COLOR
@@ -55,7 +56,7 @@ func _update_panel_style():
 func _on_panel_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
+			if event.pressed and total_bombs > 0:
 				if _is_mouse_over_bomb(event.position):
 					dragging = true
 					_scene_root().is_dragging = true
@@ -85,3 +86,4 @@ func set_type(bomb_type: int):
 
 func set_bomb_count(val: int):
 	bomb_count.text = str(val)
+	total_bombs = val

@@ -20,17 +20,17 @@ script = ExtResource("2_y5o78")
 [node name="FirstTutorialText" parent="Level0TutorialTextControler" index="0" instance=ExtResource("2_a4l8r")]
 z_index = 5
 offset_left = -136.0
-offset_top = -80.0
+offset_top = -88.0
 offset_right = -59.0
-offset_bottom = -59.0
+offset_bottom = -67.0
 text = "Use WASD to move"
 
 [node name="SecondTutorialText" parent="Level0TutorialTextControler" index="1" instance=ExtResource("2_a4l8r")]
 z_index = 5
-offset_left = -136.0
-offset_top = -80.0
-offset_right = -42.0
-offset_bottom = -59.0
+offset_left = -144.0
+offset_top = -88.0
+offset_right = -50.0
+offset_bottom = -67.0
 text = "You can also jump with space"
 
 [node name="DecorativeLayer" parent="RootTileLayer" index="0"]
