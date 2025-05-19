@@ -1,5 +1,5 @@
 Current Tasks:
-	- Make more levels
+	- Make 7 more levels
 
 Future Tasks:
 	- Liava tileset?
