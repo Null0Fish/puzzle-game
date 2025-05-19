@@ -14,7 +14,7 @@ script = ExtResource("1_vvc5f")
 
 [node name="Fade" parent="." instance=ExtResource("2_mbo2k")]
 visible = false
-z_index = 99
+z_index = 4096
 offset_left = -32.0
 offset_top = -32.0
 offset_right = -32.0

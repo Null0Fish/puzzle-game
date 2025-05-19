@@ -58,11 +58,11 @@ func _update_panel_style():
 func _on_panel_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed and total_bombs > 0:
-				if _is_mouse_over_bomb(event.position):
-					dragging = true
-					_scene_root().is_dragging = true
-					Global.current_bomb_type = type
+			if event.pressed:
+				Global.current_bomb_type = type
+				if total_bombs > 0 and _is_mouse_over_bomb(event.position):
+						dragging = true
+						_scene_root().is_dragging = true
 			else:
 				if dragging:
 					dragging = false

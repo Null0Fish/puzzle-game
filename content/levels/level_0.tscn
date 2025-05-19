@@ -23,7 +23,7 @@ offset_left = -136.0
 offset_top = -88.0
 offset_right = -59.0
 offset_bottom = -67.0
-text = "Use WASD to move"
+text = "Use WASD or arrow keys to move"
 
 [node name="SecondTutorialText" parent="Level0TutorialTextControler" index="1" instance=ExtResource("2_a4l8r")]
 z_index = 5

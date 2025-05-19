@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://bswl43jn17ndt" path="res://assets/fonts/m5x7.ttf" id="2_0ap0y"]
 
 [node name="TutorialText" type="Label"]
+z_index = 4010
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
