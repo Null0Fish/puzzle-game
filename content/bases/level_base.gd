@@ -146,6 +146,7 @@ func _place_bomb(cell: Vector2i, bomb_type: int):
 	add_child(bomb)
 	bomb.init(root_tile_layer, bomb_type)
 	bomb.player = player
+	bomb.bomb_gui = guis[bomb_type]
 	bomb.cell_under_chest = chest_cell_cords + Vector2i(0, 1)
 	_add_bomb_to_lists(bomb, cell, bomb_type)
 
@@ -236,7 +237,4 @@ func try_place_bomb(cell: Vector2) -> bool:
 
 func upgrade_bomb_type(bomb_type: int):
 	Global.bomb_levels[bomb_type] = Global.bomb_levels[bomb_type] + 1
-	var region_rect = guis[bomb_type].upgrade()
-	for bomb in bomb_list:
-		if bomb.type == bomb_type:
-			bomb.upgrade_bomb_sprite(region_rect)
+	guis[bomb_type].upgrade()

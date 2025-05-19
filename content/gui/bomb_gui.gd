@@ -1,5 +1,7 @@
 extends Control
 
+class_name BombGUI
+
 @onready var bomb_count: Label = $BombCount
 @onready var panel: Panel = $Panel
 @onready var tooltip_label: Label = $TooltipLabel
@@ -77,6 +79,8 @@ func upgrade():
 	var rect_pos = bomb_icon.region_rect.position
 	var new_rect = Rect2i(Vector2i(rect_pos.x - TILE_SIZE, rect_pos.y), Vector2i(TILE_SIZE, TILE_SIZE))
 	bomb_icon.region_rect = new_rect
+
+func get_region_rect():
 	return bomb_icon.region_rect
 
 func set_type(bomb_type: int):

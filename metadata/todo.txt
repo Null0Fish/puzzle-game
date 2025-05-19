@@ -1,11 +1,10 @@
 Current Tasks:
 	- Make more levels
 
-Bugs:
-	- bomb sprite issue on upgrade new placed?
-
 Future Tasks:
+	- Liava tileset?
 	- Customized loading screen
 	- Talk to Kyle about making bomb-player collisions circular
 	- Also talk to Kyle abt first two stacked crates squish issue
+	- Also talk to kyle about bombs on crates falling more than they shoudl
 	- Have jump key pressed time relate to jump height

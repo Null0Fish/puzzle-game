@@ -25,10 +25,18 @@ var dragging: bool = false
 var inital_cell_pos = Vector2i(TILE_SIZE * 2, 0)
 var delta_cell_pos = Vector2i(0, TILE_SIZE)
 var player: Player
+var bomb_gui: BombGUI
 
 func _process(_delta):
-	ghost_bomb.region_rect = bomb_sprite.region_rect
+	_upgrade_bomb_sprite()
+	_update_ghost_bomb()
 	_update_warning_cells()
+
+func _upgrade_bomb_sprite():
+	bomb_sprite.region_rect = bomb_gui.get_region_rect()
+
+func _update_ghost_bomb():
+	ghost_bomb.region_rect = bomb_sprite.region_rect
 	if dragging:
 		bomb_sprite.modulate.a = .5
 		ghost_bomb.show()
@@ -37,6 +45,19 @@ func _process(_delta):
 		bomb_sprite.modulate.a = 1
 		ghost_bomb.hide()
 		warning_layers.show()
+
+func _update_warning_cells():
+	solid_warning_layer.global_position = Vector2.ZERO
+	opaque_warning_layer.global_position = Vector2.ZERO
+	solid_warning_layer.clear()
+	opaque_warning_layer.clear()
+	cells_to_detonate = _get_cells_to_detonate(root_tile_layer.local_to_map(global_position))
+	for cell in cells_to_detonate:
+		if not Global.has_solid_warning_tile_at(cell):
+			solid_warning_layer.set_cell(cell, WARNING_ID, WARNING_TILE_ATLAS)
+		else:
+			opaque_warning_layer.set_cell(cell, WARNING_ID, WARNING_TILE_ATLAS)
+
 
 func _scene_root():
 	return get_tree().get_current_scene()
@@ -56,18 +77,6 @@ func _on_panel_gui_input(event: InputEvent) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
 		body.call_deferred("die")
-
-func _update_warning_cells():
-	solid_warning_layer.global_position = Vector2.ZERO
-	opaque_warning_layer.global_position = Vector2.ZERO
-	solid_warning_layer.clear()
-	opaque_warning_layer.clear()
-	cells_to_detonate = _get_cells_to_detonate(root_tile_layer.local_to_map(global_position))
-	for cell in cells_to_detonate:
-		if not Global.has_solid_warning_tile_at(cell):
-			solid_warning_layer.set_cell(cell, WARNING_ID, WARNING_TILE_ATLAS)
-		else:
-			opaque_warning_layer.set_cell(cell, WARNING_ID, WARNING_TILE_ATLAS)
 
 func _create_explosion_particles(cell: Vector2i):
 	var particles = explosion_scene.instantiate()
@@ -163,8 +172,3 @@ func remove():
 	if index != -1:
 		Global.solid_warning_layers.remove_at(index)
 	queue_free()
-
-# BAD CODE
-# Done so the region does not need to be recalculated localy
-func upgrade_bomb_sprite(rect: Rect2i):
-	bomb_sprite.region_rect = rect
