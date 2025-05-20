@@ -66,6 +66,7 @@ func _on_panel_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
+				Global.current_bomb_type = type
 				dragging = true
 				_scene_root().is_dragging = true
 			else:

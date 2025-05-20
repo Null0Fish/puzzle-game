@@ -1,10 +1,7 @@
 Current Tasks:
 	- Make 6 more levels
+	- Make lava flow :(
 
 Future Tasks:
-	- Liava tileset?
 	- Customized loading screen
-	- Talk to Kyle about making bomb-player collisions circular
-	- Also talk to Kyle abt first two stacked crates squish issue
-	- Also talk to kyle about bombs on crates falling more than they shoudl
 	- Have jump key pressed time relate to jump height
