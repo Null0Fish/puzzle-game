@@ -879,9 +879,9 @@ texture = ExtResource("10_aqsxg")
 3:0/0/custom_data_3 = true
 3:1/0 = 0
 3:1/0/custom_data_4 = true
-3:2/0 = 0
-3:2/0/custom_data_4 = true
 1:2/0 = 0
+2:2/0 = 0
+2:2/0/custom_data_5 = true
 
 [sub_resource type="TileSet" id="TileSet_gcxns"]
 physics_layer_0/collision_layer = 1
@@ -900,6 +900,8 @@ custom_data_layer_3/name = "is_crate"
 custom_data_layer_3/type = 1
 custom_data_layer_4/name = "is_upgrade"
 custom_data_layer_4/type = 1
+custom_data_layer_5/name = "is_lava_spawner"
+custom_data_layer_5/type = 1
 sources/1 = SubResource("TileSetAtlasSource_8y0ho")
 sources/0 = SubResource("TileSetAtlasSource_aqsxg")
 

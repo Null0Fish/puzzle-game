@@ -19,7 +19,10 @@ signal fade_finished
 @onready var guis: Array = level_gui.get_guis()
 
 const TILE_SIZE = Global.TILE_SIZE
-const HOVER_SOURCE: int = 0
+const HOVER_TILE_SOURCE: int = 0
+const OBJECT_TILE_SOURCE: int = 1
+const LAVA_SPAWNER_ALTAS_TILE_CORDS: Vector2i = Vector2i(2, 2)
+const LAVA_ATLAS_TILE_CORDS: Vector2i = Vector2i(0, 2)
 const OFFSET: Vector2i = Global.OFFSET
 
 var key_scene: PackedScene = preload("res://content/level_specific/key.tscn")
@@ -28,8 +31,8 @@ var crate_scene: PackedScene = preload("res://content/level_specific/crate.tscn"
 var bomb_scene: PackedScene = preload("res://content/other/bomb.tscn")
 var lava_scene: PackedScene = preload("res://content/level_specific/lava.tscn")
 
-var allow_hover_atlas_cords: Vector2i = Vector2i(0, 0)
-var disallow_hover_atlas_cords: Vector2i = Vector2i(2, 0)
+var allow_hover_atlas_tile_cords: Vector2i = Vector2i(0, 0)
+var disallow_hover_atlas_tile_cords: Vector2i = Vector2i(2, 0)
 var chest_cell_cords: Vector2i
 var bombs_available: Array
 var last_placement_time: float
@@ -68,7 +71,7 @@ func _initialize_effects():
 
 func _initialize_gui():
 	if not show_ui:
-		level_gui.position.x += 8
+		level_gui.position += Vector2(8,0)
 		for gui in guis:
 			gui.hide()
 	for bomb_type in bombs_available.size():
@@ -76,7 +79,7 @@ func _initialize_gui():
 		guis[bomb_type].set_type(bomb_type)
 
 func _initialize_objects():
-	for cell in foreground_layer.get_used_cells_by_id(1):
+	for cell in foreground_layer.get_used_cells_by_id(OBJECT_TILE_SOURCE):
 		var cell_data = foreground_layer.get_cell_tile_data(cell)
 		if cell_data.get_custom_data("is_key"):
 			var atlas_cords = foreground_layer.get_cell_atlas_coords(cell)
@@ -90,6 +93,7 @@ func _initialize_objects():
 			crate_list.append(crate)
 		if cell_data.get_custom_data("is_lava"):
 			var lava = _initialize_scene_at(cell, lava_scene)
+			foreground_layer.set_cell(cell, OBJECT_TILE_SOURCE, LAVA_SPAWNER_ALTAS_TILE_CORDS)
 			lava_list.append(lava)
 
 func _initialize_scene_at(cell: Vector2i, scene: PackedScene):
@@ -103,31 +107,50 @@ func _cell_to_cords(cell: Vector2i):
 	return Vector2i(cell.x * int(TILE_SIZE), cell.y * int(TILE_SIZE))
 
 func _process(_delta):
+	_update_fade()
+	if Global.paused:
+		return
+	_update_hover_layer()
+	_update_lava()
+	_initialize_objects()
+	_update_locations()
+
+func _update_fade():
 	if should_fade:
 		fade.modulate.a -= 0.01
 		if fade.modulate.a <= 0:
 			should_fade = false
 			fade_finished.emit()
-	if Global.paused:
-		return
 
+func _update_hover_layer():
 	hover_layer.clear()
 	if is_dragging:
 		var cell = root_tile_layer.local_to_map(get_local_mouse_position())
 		if _can_place_bomb(cell, Global.current_bomb_type, true):
-			_update_hover_layer(allow_hover_atlas_cords)
+			_update_hover_layer_tile(allow_hover_atlas_tile_cords)
 		else:
-			_update_hover_layer(disallow_hover_atlas_cords)
+			_update_hover_layer_tile(disallow_hover_atlas_tile_cords)
 
-	_update_locations()
+func _update_lava():
+	for cell in foreground_layer.get_used_cells_by_id(OBJECT_TILE_SOURCE):
+		var cell_data = foreground_layer.get_cell_tile_data(cell)
+		if cell_data.get_custom_data("is_lava_spawner"):
+			var offsets = [Vector2i(-1, 0), Vector2i(1, 0)]
+			for offset in offsets:
+				var offset_cell = cell + offset
+				if _no_foreground_tile_at_cell(offset_cell):
+					foreground_layer.set_cell(offset_cell, 1, LAVA_ATLAS_TILE_CORDS)
+
+func _no_foreground_tile_at_cell(cell: Vector2i):
+	return foreground_layer.get_cell_source_id(cell) == -1
 
 func _update_locations():
 	bomb_locations = _update_array(bomb_list)
 	crate_locations = _update_array(crate_list)
 	lavaa_locations = _update_array(lava_list)
 
-func _update_hover_layer(atlas_cords: Vector2i):
-	hover_layer.set_cell(hover_layer.local_to_map(get_local_mouse_position()), HOVER_SOURCE, atlas_cords)
+func _update_hover_layer_tile(atlas_cords: Vector2i):
+	hover_layer.set_cell(hover_layer.local_to_map(get_local_mouse_position()), HOVER_TILE_SOURCE, atlas_cords)
 
 func _update_array(array_1: Array):
 	var temp_array = []

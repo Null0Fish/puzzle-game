@@ -5,7 +5,8 @@ extends TileMapLayer
 @onready var static_objects: Array = [$"../Player"]
 @onready var player: Player = $"../Player"
 
-const VINE_ATLAS_CORDS: Array = [
+const STONE_TILES_SOURCE: int = 0
+const VINE_ATLAS_TILE_CORDS: Array = [
 	Vector2i(0, 0),
 	Vector2i(1, 0)
 ]
@@ -24,13 +25,17 @@ func _destroy_floating_objects():
 			decorative_layer.set_cell(cell, -1)
 
 func _is_vine(cell: Vector2i) -> bool:
-	for cord in VINE_ATLAS_CORDS:
+	for cord in VINE_ATLAS_TILE_CORDS:
 		if cord == decorative_layer.get_cell_atlas_coords(cell):
 			return true
 	return false
 
 func _is_normal_cell(cell: Vector2i) -> bool:
-	return foreground_layer.get_cell_source_id(cell) != -1
+	var stone_tiles = foreground_layer.get_used_cells_by_id(STONE_TILES_SOURCE)
+	for tile in stone_tiles:
+		if tile == cell:
+			return true
+	return false
 
 func get_near_cells(object) -> Array:
 	var cells = []
