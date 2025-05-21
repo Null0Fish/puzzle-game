@@ -1,5 +1,5 @@
 Current Tasks:
-	- Make 6 more levels
+	- Make 5 more levels
 
 Future Tasks:
 	- Customized loading screen

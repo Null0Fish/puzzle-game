@@ -29,8 +29,9 @@ texture = ExtResource("3_m1oeg")
 [node name="Label" type="Label" parent="Background"]
 visible = false
 layout_mode = 2
+offset_top = 1.0
 offset_right = 18.0
-offset_bottom = 18.0
+offset_bottom = 19.0
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.231373, 0.12549, 0.152941, 1)
 theme_override_fonts/font = ExtResource("4_85x4q")
@@ -38,8 +39,5 @@ theme_override_font_sizes/font_size = 10
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(1, 2)
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
