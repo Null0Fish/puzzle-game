@@ -54,6 +54,7 @@ var current_bomb_type : int = DIAGONAL
 var bomb_levels : Array = [0, 0, 0]
 var unlocked_levels : Array = [0]
 var solid_warning_layers : Array = []
+var debug_enabled: bool = false
 
 # Functions
 func _ready():

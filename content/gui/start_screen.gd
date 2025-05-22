@@ -26,6 +26,7 @@ func _process(_delta: float) -> void:
 	fade.modulate.a -= 0.01
 
 func _ready():
+	Global.debug_enabled = debug_enabled
 	fade.show()
 	_initialize_credits()
 	_initialize_menu()
