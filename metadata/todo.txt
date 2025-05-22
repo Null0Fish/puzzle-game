@@ -1,6 +1,4 @@
-Current Tasks:
-	- Make 4 more levels
-
 Future Tasks:
 	- Customized loading screen
 	- Have jump key pressed time relate to jump height
+	- Add win screen

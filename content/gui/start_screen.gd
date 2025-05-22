@@ -1,11 +1,14 @@
 extends Control
 
+@export var debug_enabled: bool = true
+
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var label: Label = $TitleUI/ButtonContainer/PlayButton/Label
 @onready var timer: Timer = $Timer
 @onready var foreground_layer: TileMapLayer = $MenuTileLayers/ForegroundLayer
-@onready var art_credits_label: Label = $CreditsUI/HBoxContainer/VBoxContainer/ArtCreditsLabel
+@onready var assets_credits_label: Label = $CreditsUI/HBoxContainer/VBoxContainer/AssetsCreditsLabel
 @onready var fade: ColorRect = $Camera2D/Fade
+@onready var level_grid: GridContainer = $MenuUI/LevelGrid
 
 const HORIZONTAL_DELTA: Vector2 = Vector2(320, 0)
 const VERTICAL_DELTA: Vector2 = Vector2(0, 192)
@@ -33,8 +36,11 @@ func _initialize_credits():
 	var formated_data = ""
 	for key in raw_data.keys():
 		var value = raw_data[key]
-		formated_data += "\n" + str(value) + "\n"
-	art_credits_label.text = "\n" + formated_data
+		if key != "":
+			formated_data += "\n" + key + ": " + str(value) + "\n"
+		else:
+			formated_data += "\n" + str(value) + "\n"
+	assets_credits_label.text = "\n" + formated_data
 
 func _initialize_menu():
 	for level in Global.unlocked_levels:
@@ -59,18 +65,19 @@ func _cell_to_cords(cell: Vector2i):
 
 # TEMP DEBUG CODE
 func _input(event):
-	_handle_debug_input(event)
-	_handle_test_input(event)
+	if debug_enabled:
+		if event.is_action_released("debug_unlock_levels"):
+			_unlock_levels()
+		if event.is_action_released("debug_test_level"):
+			_test_level()
 
-func _handle_debug_input(event):
-	if event.is_action_released("debug_unlock_levels"):
-		for i in Global.MAX_LEVELS + 1:
-			Global.unlocked_levels.append(i)
-		$MenuUI/LevelGrid._ready()
+func _unlock_levels():
+	for i in Global.MAX_LEVELS + 1:
+		Global.unlocked_levels.append(i)
+	level_grid._ready()
 
-func _handle_test_input(event):
-	if event.is_action_released("debug_test_level"):
-		get_tree().change_scene_to_file("res://content/levels/level_-1.tscn")
+func _test_level():
+	get_tree().change_scene_to_file("res://content/levels/level_-1.tscn")
 
 func _on_play_button_pressed():
 	Global.set_level(max_level_num)
