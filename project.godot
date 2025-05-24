@@ -13,6 +13,7 @@ config_version=5
 config/name="Bomb Miner"
 run/main_scene="uid://b81yl7ugq466u"
 config/features=PackedStringArray("4.4", "Mobile")
+boot_splash/image="uid://dd8rfmvm38r3s"
 
 [autoload]
 

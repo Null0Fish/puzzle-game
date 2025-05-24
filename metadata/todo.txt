@@ -1,4 +1,3 @@
-Future Tasks:
-	- Customized loading screen
+ToDo:
 	- Have jump key pressed time relate to jump height
 	- Add win screen
