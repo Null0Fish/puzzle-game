@@ -940,7 +940,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_b8x6n")
 theme_override_font_sizes/font_size = 19
-text = "Levels"
+text = "test"
 horizontal_alignment = 1
 vertical_alignment = 1
 
