@@ -18,7 +18,13 @@ func update_panel_style():
 		style_box_flat.bg_color = INACTIVE_COLOR
 	panel.add_theme_stylebox_override("panel", style_box_flat)
 
+func _input(event: InputEvent) -> void:
+	if event.is_pressed() and is_active_panel:
+		_toggle_status()
 
-func _on_question_button_pressed() -> void:
+func _toggle_status():
 	is_active_panel = !is_active_panel
 	update_panel_style()
+
+func _on_question_button_pressed() -> void:
+	_toggle_status()

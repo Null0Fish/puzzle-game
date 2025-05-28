@@ -19,7 +19,7 @@ const TILE_SIZE = Global.TILE_SIZE
 
 var lava_scene: PackedScene = preload("res://content/level_specific/lava.tscn")
 
-var max_level_num: int = 0
+var max_level_num: int = Global._get_max_level_num()
 var block_input: bool = false
 
 func _process(_delta: float) -> void:
@@ -29,7 +29,6 @@ func _ready():
 	Global.debug_enabled = debug_enabled
 	fade.show()
 	_initialize_credits()
-	_initialize_menu()
 	_initialize_lava()
 
 func _initialize_credits():
@@ -42,11 +41,6 @@ func _initialize_credits():
 		else:
 			formated_data += "\n" + str(value) + "\n"
 	assets_credits_label.text = "\n" + formated_data
-
-func _initialize_menu():
-	for level in Global.unlocked_levels:
-		max_level_num = max(max_level_num, level)
-	label.text = "Resume" if max_level_num != 0 else "Play"
 
 func _initialize_lava():
 		for cell in foreground_layer.get_used_cells_by_id(1):

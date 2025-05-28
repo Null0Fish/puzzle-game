@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=4 uid="uid://dxkohgrw0p40"]
+[gd_scene load_steps=3 format=4 uid="uid://dxkohgrw0p40"]
 
 [ext_resource type="PackedScene" uid="uid://crfpgs7m65kr2" path="res://content/bases/level_base.tscn" id="1_slbrm"]
+[ext_resource type="PackedScene" uid="uid://cqkwtlr5v4t2k" path="res://content/other/tutorial_text.tscn" id="2_whtv6"]
 
 [node name="level_13" instance=ExtResource("1_slbrm")]
 level_name = "Getting an Upgrade"
@@ -13,6 +14,17 @@ position = Vector2(8, 103)
 
 [node name="Chest" parent="." index="4"]
 position = Vector2(312, 136)
+
+[node name="TutorialText" parent="." index="5" instance=ExtResource("2_whtv6")]
+z_index = 5
+anchors_preset = -1
+anchor_left = 0.0
+anchor_top = 0.0
+offset_left = 0.0
+offset_top = 128.0
+offset_right = 64.0
+offset_bottom = 189.0
+text = "Bomb upgrades upgrade the selected bomb type"
 
 [node name="DecorativeLayer" parent="RootTileLayer" index="0"]
 tile_map_data = PackedByteArray("AAADAAIAAAAAAAAAAAARAAYAAAAAAAAAAAAHAAMAAAABAAAAAAAHAAQAAAABAAAAAAANAAMAAAABAAAAAAANAAQAAAABAAAAAAANAAUAAAABAAAAAAABAAMAAAABAAAAAAABAAQAAAABAAAAAAACAAUAAAADAAEAAAASAAgAAAADAAEAAAALAAYAAAAAAAEAAAA=")

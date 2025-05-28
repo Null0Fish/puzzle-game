@@ -58,12 +58,26 @@ var debug_enabled: bool = false
 
 # Functions
 func _ready():
+	_load_progress()
 	background_audio = AudioStreamPlayer.new()
 	add_child(background_audio)
 	background_audio.stream = MUSIC_FILE
 	background_audio.finished.connect(_play_audio)
 	lower_audio_vol()
 	_play_audio()
+
+func save_progress() -> void:
+	var file = FileAccess.open("user://save.dat", FileAccess.WRITE)
+	file.store_var(unlocked_levels)
+	file.close()
+
+func _load_progress() -> void:
+	if FileAccess.file_exists("user://save.dat"):
+		var file = FileAccess.open("user://save.dat", FileAccess.READ)
+		unlocked_levels = file.get_var()
+		file.close()
+	else:
+		unlocked_levels = [0]
 
 func lower_audio_vol():
 	background_audio.volume_db = MIN_VOL
@@ -76,6 +90,12 @@ func try_play_background_music():
 	background_audio.volume_db = MAX_VOL
 	if not background_audio.playing:
 		_play_audio()
+
+func _get_max_level_num() -> int:
+	var max_level_num = 0
+	for level in unlocked_levels:
+		max_level_num = max(max_level_num, level)
+	return max_level_num
 
 func _process(delta: float) -> void:
 	tint_phase += delta * tint_speed

@@ -19,6 +19,7 @@ func _on_body_entered(body: Node):
 		next_level = Global.get_current_level() + 1
 		if not Global.unlocked_levels.has(next_level):
 			Global.unlocked_levels.append(next_level)
+			Global.save_progress()
 		Global.paused = true
 		win_particles.show()
 		var tween = create_tween()
