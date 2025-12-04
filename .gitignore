@@ -1,5 +1,4 @@
 # Godot-specific files
 .import/
 .godot/
-.godot/mono/
 *.import
