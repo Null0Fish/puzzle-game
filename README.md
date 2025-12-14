@@ -5,3 +5,5 @@ I created a puzzle game, named Terra Bomber, using the Godot game engine. The ga
 As mentioned, Terra Bomber was the result of my learnings about the world of game development. The development process facilitated me with learning how to design 2D art with tools like Aesprite, writing code in Godot’s native language, GDscript, and how to effectively structure a project of this size. I also got a lot of invaluable experience with git and managing branches so I could effectively work on new content while maintaining a production branch.
 
 A runable instance of this game can be found on [itch.io](https://null0fish.itch.io/terra-bomber)
+
+Spring 2025
